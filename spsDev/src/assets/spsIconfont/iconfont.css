@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "erp"; /* Project id 4017554 */
+  src: url('iconfont.woff2?t=1681812906375') format('woff2'),
+       url('iconfont.woff?t=1681812906375') format('woff'),
+       url('iconfont.ttf?t=1681812906375') format('truetype');
+}
+
+.erp {
+  font-family: "erp" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sps-huaban:before {
+  content: "\e636";
+}
+

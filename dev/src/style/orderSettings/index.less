@@ -1,0 +1,56 @@
+.moveDragContainer {
+  margin: 30px 0;
+}
+
+.moveDragContainer .moveDrag {
+  margin: 0 20px;
+  border: 1px solid #eee;
+  padding: 10px 20px;
+  cursor: move;
+}
+
+.ruleTable {
+  margin-top: 10px;
+}
+
+.smart-search {
+  margin: 5px 0 0 25px;
+}
+
+.pseudoButton {
+  position: relative;
+  float: left;
+  margin-left: -1px;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: 1.5;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 6px 15px;
+  font-size: 12px;
+  border-radius: 4px;
+  transition: color .2s linear, background-color .2s linear, border .2s linear;
+  color: #495060;
+  background-color: #f7f7f7;
+  border-color: #dddee1;
+}
+
+.pseudoButton:not(:first-child):not(:last-child) {
+  border-radius: 0
+}
+
+.ivu-btn-group:not(.ivu-btn-group-vertical)>.pseudoButton:last-child:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}

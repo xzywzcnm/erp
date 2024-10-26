@@ -1,0 +1,16 @@
+{
+  "id": "4017554",
+  "name": "拉帕-ERP 采购系统",
+  "font_family": "erp",
+  "css_prefix_text": "sps-",
+  "description": "拉帕-ERP 采购系统",
+  "glyphs": [
+    {
+      "icon_id": "35119496",
+      "name": "123",
+      "font_class": "huaban",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    }
+  ]
+}

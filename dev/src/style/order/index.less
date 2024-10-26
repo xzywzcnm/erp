@@ -1,0 +1,887 @@
+@import '../main';
+@import '~@/style/variable.less';
+
+/* --------------   messageProcessing STYLES [[ --------------  */
+.noMarkFilter {
+    padding: 0 12px;
+    position: relative;
+}
+
+.messageToBeProcessedFilter,
+.unmatchProduct,
+.interceptOrderFilter,
+.tableControl {
+    position: relative;
+}
+
+/* .ivu-steps .ivu-steps-title,.ivu-steps .ivu-steps-head{background-color: #f3f3f4} */
+.orderNav {
+    padding: 10px 90px 15px;
+    font-size: 14px
+}
+
+.text-navy {
+    color: #1ab394
+}
+
+.orderNav .ibox-content {
+    margin: 0 auto;
+    width: 80%
+}
+
+.orderFilter,
+.orderChildren,
+.orderGlobalOperate {
+    padding: 0 12px;
+}
+
+.orderChildren button {
+    margin-right: 5px
+}
+
+.tableOperate {
+    padding-bottom: 10px;
+}
+
+.onLine {
+    border-top: 1px solid @border-color;
+    position: relative;
+    top: 19px;
+}
+
+.orderCur {
+    color: #333;
+    font-weight: bold;
+}
+
+.orderCur span {
+    color: #3399ff;
+    font-weight: normal;
+}
+
+.orderNav .iconfont {
+    padding-right: 4px
+}
+
+.orderFilter .ivu-form-item {
+    margin-bottom: 15px
+}
+
+.orderFilter .ivu-row:last-child .ivu-form-item {
+    margin-bottom: 0
+}
+
+.tableControl .tcDropDown {
+    margin-left: 10px;
+}
+
+.ivu-table-header th:first-child {
+    text-overflow: clip
+}
+
+.orderNumCol span {
+    background-size: 46%;
+    height: 20px;
+    width: 107px;
+    display: block
+}
+
+.orderNumCol span.amazon {
+    background-position: 0 -20px
+}
+
+.orderNumCol span.alixpress {
+    background-position: 0 -40px
+}
+
+.orderNumCol span.wish_api {
+    background-position: 0 -60px;
+}
+
+.tagsSelectFooter {
+    border-top: 1px solid #e8e8e8;
+    margin-top: 5px
+}
+
+.tagsSelectFooter button {
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.setAllMarkRead .ivu-form-item {
+    margin-bottom: 10px
+}
+
+.ivu-steps .ivu-steps-custom .ivu-steps-title {
+    //margin-top: 2.5px;
+    //position: absolute;
+    //bottom: -55px;
+    //display: block;
+    //width: 146px;
+    //left: -84px;
+    //text-align: center;
+}
+
+.orderDetailsProccessed {
+    padding-bottom: 55px;
+    margin: 10px 0 0 65px;
+}
+
+.orderDetailsProccessed .ivu-steps .ivu-steps-title,
+.orderDetailsProccessed .ivu-steps .ivu-steps-head {
+    background-color: #fff
+}
+
+.tagsList {
+    overflow: auto;
+    max-height: 200px
+}
+
+/* --------------   Details Styles [[ --------------  */
+.modalItemHeaderRight p.setMark {
+    margin-top: 5px
+}
+
+.modalItemHeaderRight p.setEdit span {
+    color: #53a8fe;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.modalItemHeaderRight p.setEdit span.orderSave {
+    color: #82c0fd;
+}
+
+.modalItemHeaderRight p.setEdit span.orderCancelSave {
+    color: #aeb5bf;
+    display: inline-block;
+    width: 50px
+}
+
+.buyerMessageCotainer {
+    padding: 13px 15px;
+    position: relative;
+}
+
+.buyerMessageCotainer span.buyerPic {
+    display: inline-block;
+    width: 53px;
+    height: 53px;
+    background: @global-icon;
+}
+
+.modalItem .orderDetailsProductListRight {
+    right: 12px
+}
+
+.buyerAddressTo {
+    color: #3399ff;
+    position: relative;
+    top: 0;
+    left: -10px
+}
+
+.addressSelect {
+    position: absolute;
+    right: 10px;
+    top: 0
+}
+
+.buyerAddress div {
+    margin: 0 0 6px 5px
+}
+
+.logisticsItem {
+    border-left: 1px solid #d7dde4;
+    padding-left: 26px
+}
+
+.buyerLogisticsItemContent {
+    color: #ff3300;
+    margin-top: 2px
+}
+
+.actuallyLogisticsItemHeader {
+    margin-top: 10px
+}
+
+.actuallyLogisticsItemContent {
+    margin-top: 2px;
+    color: #3399ff
+}
+
+.orderDetailsProductList {
+    padding: 3px 11px 11px
+}
+
+.orderDetailsProductItem {
+    padding-top: 9px;
+    margin-top: 8px;
+    // margin-bottom: 8px;
+    border-top: 1px dashed #d7dde4
+}
+
+.orderDetailsProductItem:first-child {
+    border-top: none;
+}
+
+.orderDetailsProductItemPic img {
+    padding: 4px;
+    border: 1px solid #d7dde4;
+    width: 60px;
+    height: 60px
+}
+
+.odpidProductID .productID {
+    color: #ff3300;
+    white-space: nowrap;
+}
+
+.odpidProductID span,
+.odpidProductParams span {
+    margin-right: 10px
+}
+
+.productHaveATitle em,
+.productLogsticService em {
+    font-style: normal;
+    color: #3399ff
+}
+
+.contact-buyers {
+    color: #00a0e9;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.contact-buyers:hover {
+    text-decoration: underline;
+}
+
+.modalItem {
+    margin: 0 0px 15px 0
+}
+
+.orderDetailsTabGroup {
+    border: 0
+}
+
+.orderDetailsTabGroup .ivu-tabs .ivu-tabs-tabpane {
+    margin-top: -17px;
+    border: 1px solid #dddee1
+}
+
+.orderDetailsTabGroup .ivu-tabs-nav-container {
+    position: relative;
+    z-index: 66
+}
+
+.orderDetailSale {
+    font-size: 16px;
+    margin: 10px;
+}
+
+// .orderDetailSaleAdd {
+//     margin-left: 15px;
+//     font-size: 12px;
+//     color: #2d8cf0;
+//     cursor: pointer
+// }
+
+.orderDetailsTabPay {
+    padding: 15px
+}
+
+.orangeColor {
+    color: #ff3300
+}
+
+.buyerAddressEdit {
+    margin: 0 0 6px 5px
+}
+
+.buyerAddressEdit .ivu-form-item {
+    margin-bottom: 12px
+}
+
+.buyerAddressEdit div.ivu-form-item-error {
+    margin-bottom: 24px
+}
+
+.orderNo {
+    font-size: 18px
+}
+
+.orderTotalPrice {
+    font-size: 18px;
+    color: #ff3300
+}
+
+.orderStatus {
+    font-size: 18px;
+    color: #6d9c0c
+}
+
+.orderDetailsTitle {
+    position: sticky;
+    top: 0;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    background: #fff;
+    z-index: 999;
+    .ivu-col {
+        min-height: 1px
+    }
+
+    .orderBox {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .ivu-poptip-popper {
+        top: 44px;
+        right: -10px
+    }
+
+    .platformOrderNo {
+        display: inline-block;
+        margin: 0 10px;
+        font-size: 13px;
+        font-weight: bold;
+        color: #1180F2;
+    }
+}
+
+.markItem {
+    padding: 10px
+}
+
+.markItemHeader {
+    font-size: 14px;
+    color: #5c697a;
+    line-height: 24px
+}
+
+.mih_left {
+    float: left;
+}
+
+.mih_left span {
+    margin: 0 10px
+}
+
+.mih_right {
+    float: right;
+    margin-top: -3px
+}
+
+.mih_right span {
+    color: #53a8fe;
+    font-size: 18px
+}
+
+.addRemarkBit {
+    text-align: right;
+    color: #53a8fe;
+    padding: 0 6px 0 0;
+    cursor: pointer;
+}
+
+.addRemarkBit span {
+    font-size: 24px
+}
+
+.markItemContent {
+    padding: 10px;
+    border: 1px solid #e9ecee;
+    border-radius: 4px;
+    box-shadow: 1px 0px 6px 0px #e9ecee;
+    position: relative;
+    margin-top: 5px
+}
+
+.markArrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid #e9ecee;
+    position: absolute;
+    top: -10px;
+    left: 13px
+}
+
+.markArrowTwo {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 8px solid #fff;
+    position: absolute;
+    top: 3px;
+    left: -4px;
+}
+
+.orderDetailsQuantity {
+    margin-top: 21px;
+    font-size: 16px;
+}
+
+.orderDetailsQuantityInput .ivu-input-number {
+    margin: 0 0 8px 8px
+}
+
+.interceptOrderBut .iconfont {
+    font-size: 14px;
+    line-height: 14px
+}
+
+.orderDetailsBase span {
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.saveIntercept {
+    display: block;
+    margin: 3px
+}
+
+.mih_right span {
+    cursor: pointer;
+    font-size: 12px
+}
+
+.addRemarkItem {
+    margin: 5px 13px 0 13px
+}
+
+.remarkAdd {
+    margin-top: 5px
+}
+
+.mih_right span.remarkDel {
+    margin-left: 5px;
+    color: #f00
+}
+
+.orderDetailsToolTip {
+    position: absolute;
+    left: -34px;
+    top: 35px;
+    transform-origin: center top 0px;
+    width: 128px
+}
+
+.odttArrow {
+    left: 50%;
+    margin-left: -5px;
+    top: -5px;
+    position: absolute;
+}
+
+.odttArrow:after {
+    width: 0;
+    height: 0;
+    border-top: 0;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #eae9e9;
+    border-left: 7px solid transparent;
+    content: ' ';
+    position: absolute;
+    top: -2px;
+}
+
+.odttArrow:before {
+    content: ' ';
+    width: 0;
+    height: 0;
+    border-top: 0;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #fff;
+    border-left: 5px solid transparent;
+    position: absolute;
+    top: 0px;
+    z-index: 2;
+    left: 2px;
+}
+
+.odttContent {
+    max-width: 250px;
+    min-height: 34px;
+    padding: 8px 12px;
+    color: #666;
+    text-align: left;
+    text-decoration: none;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+    white-space: nowrap;
+    text-align: center;
+    white-space: normal;
+    word-warp: break-word
+}
+
+.interceptReason {
+    margin-left: -22px;
+    z-index: 9999
+}
+
+.orderDetailsBaseFr {
+    float: right;
+    margin-right: 15px;
+    justify-content: flex-end;
+}
+
+.productRemind {
+    cursor: pointer;
+    color: #e5cf95
+}
+
+.combineDetails .orderTagsContainer {
+    // margin-left: -390px
+}
+
+.hideDetails {
+    margin: 20px 17px;
+    height: 30px;
+    border-bottom: 1px solid #e0e4e9
+}
+
+.hideDetails div {
+    cursor: pointer;
+    padding-top: 5px
+}
+
+.combineOrderDeliveryMes {
+    padding: 0 28px
+}
+
+.combineOrderDeliveryTo {
+    color: #ff3300;
+    position: relative;
+    top: 0;
+    left: -9px
+}
+
+.combineOrderDeliveryToUserId {
+    color: #3399ff
+}
+
+.toUserDetails {
+    margin-top: 3px
+}
+
+.combineOrderDeliveryToContent div {
+    margin-bottom: 6px
+}
+
+.combineTable,
+.uncombineTable {
+    position: relative;
+    margin-top: 10px
+}
+
+.shutOutHeader {
+    position: absolute;
+    top: 0;
+    background: #f8f8f9;
+    height: 41px;
+    border: 1px solid #e9eaec;
+    width: 100%;
+    text-indent: 12px;
+    line-height: 41px;
+}
+
+.combineButton {
+    float: right;
+    margin-right: 30px;
+    padding-bottom: 30px
+}
+
+.combiePackageCode {
+    float: left;
+    color: #3399ff;
+    line-height: 24px
+}
+
+.combineShipping {
+    float: left;
+    margin-left: 10px;
+    ;
+    line-height: 24px
+}
+
+.printTime {
+    float: left;
+    margin-left: 10px;
+    color: #34a5e0;
+    font-size: 24px !important;
+    line-height: 16px
+}
+
+.combineHasMes {
+    margin-left: 10px;
+    color: #f00
+}
+
+.buyerIdName {
+    color: #ff3300;
+    position: relative;
+    top: 0;
+    left: -10px
+}
+
+/* --------------   matchTheLogistic Styles [[ --------------  */
+.matchLogisticSetting {
+    padding: 5px;
+    border-bottom: 1px solid @border-color;
+}
+
+.matchLogisticSetting h6 {
+    font-weight: normal;
+    color: #666;
+    font-size: 14px
+}
+
+.orderTagsContainer {
+    position: absolute;
+    left: -111px;
+    width: 120px;
+    top: 0;
+}
+
+.orderTags .ivu-tag {
+    float: right;
+}
+
+/* -------------  new combineOrder --------------------------*/
+.unCombinePackageCode {
+    color: #3399ff
+}
+
+.lableIcon {
+    display: inline;
+    padding: 5px;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+/* --------------------- orderDetails ------------------- */
+.orderDetailsStatus {
+    margin-bottom: 10px
+}
+
+.odsOne {
+    justify-content: flex-start
+}
+
+.odsOne span {
+    margin-right: 15px
+}
+
+.remainingTime,
+.stopOrder {
+    line-height: 18px
+}
+
+.remainingTime i,
+.stopOrder i {
+    margin-right: 5px
+}
+
+.stopOrder em {
+    padding: 0 5px;
+    color: #0054a6;
+    font-style: normal
+}
+
+.modalItemHeader,
+.packageHeader {
+    justify-content: space-between
+}
+
+.addPackage {
+    margin: 6px 10px
+}
+
+.packageHeader {
+    border-bottom: 1px solid #e1e1e1
+}
+
+.package-box {
+    padding: 10px;
+    border-bottom: 1px solid #DCDEE2
+}
+
+.packageHeader .phPackageCode {
+    font-size: 14px;
+}
+
+.orderProcess {
+    margin-top: 3px;
+    min-height: 95px;
+    padding: 0 60px;
+}
+
+.mcShippingMethod {
+    margin: 10px 5px 0;
+    justify-content: flex-end
+}
+
+.mcShippingMethod a {
+    margin-right: 10px
+}
+
+.mcShippingMethod a:hover {
+    text-decoration: underline
+}
+
+.packageDetails {
+    margin: 10px
+}
+
+.packageDetailsSquare {
+    border-right: 1px solid #e1e1e1
+}
+
+.packageDetailsAddressForm {
+    width: 230px
+}
+
+.buyerAddressSave {
+    margin-right: 5px
+}
+
+.platformAddress i {
+    font-style: normal
+}
+
+.platformAddressSelect a {
+    display: block;
+    color: #666
+}
+
+.platformAddressSelect a:hover {
+    background-color: #f6f6f6
+}
+
+.noInPack {
+    font-size: 9px
+}
+
+.saveShppingModal {
+    justify-content: center
+}
+
+.csUserContent {
+    color: #fff;
+}
+
+.packagedetailsContent div.packageAddressItem {
+    white-space: normal;
+    word-wrap: break-word;
+    width: 96%;
+    overflow: hidden;
+}
+
+.combinePath img {
+    width: 100%
+}
+
+.buyerContent p {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow: hidden;
+    width: 600px;
+}
+
+.chioseGoods {
+    border: 1px solid #e8e8e8;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+}
+
+.thumb-image {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #d7dde4;
+    padding: 4px;
+    margin-right: 8px;
+    margin-top: 6px;
+}
+
+.chioseGoodsList {
+    display: inline-block;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.packageDetailsSquare .warehorseList {
+    padding: @normal-padding @normal-padding @normal-padding 0;
+}
+
+/* 订单详情弹框样式宽度更改 */
+.slider-model {
+    .ivu-sliderModal-wrap {
+        left: @leftWidth;
+        min-width: 700px;
+        overflow: visible;
+    }
+
+    // &.slider-order-details {}
+    .ivu-sliderModal-wrap{
+        .ivu-sliderModal-content{
+            padding: 0;
+        }
+    }
+    .ivu-sliderModal-body{
+        height: 100vh;
+        font-size: 13px;
+        .ivu-sliderModal-bodyWrap{
+            margin: 0;
+            height: 100%;
+            .orderDetails{
+                height: 100%;
+                padding: 0 15px 20px 15px;
+                overflow: auto;
+            }
+        }
+    }
+    .ivu-sliderModal-rightButton {
+        display: none;
+    }
+}
+
+.hidden-slider-mune {
+    .slider-model {
+        .ivu-sliderModal-wrap {
+            left: 10px;
+        }
+    }
+}
+
+.slider-model .ivu-sliderModal-wrap .ivu-sliderModal-content {
+    width: 100%;
+    min-width: 700px;
+    background-color: #fff;
+    padding-left: 14px;
+}
+
+.slider-model .ivu-sliderModal-rightButton {
+    left: 0px;
+}
+
+.slider-model .ivu-sliderModal-body {
+    // background-color: #fff;
+}
+
+.slider-model .ivu-sliderModal-bodyWrap {
+    overflow-x: auto;
+}

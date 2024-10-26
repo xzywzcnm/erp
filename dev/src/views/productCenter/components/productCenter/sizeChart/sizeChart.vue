@@ -1,0 +1,2941 @@
+<template>
+  <div>
+    <Modal v-model="modelVisible" width="90%" :title="title" :mask-closable="false" class="sizecharts">
+      <div class="fmb0 sizeContent"  :class="{'woman-shoe-plan': [4].includes(planType)}">
+        <Form :model="formItem" :label-width="100">
+          <div class="img-top-txt" v-if="[4].includes(planType)">Product Attributes</div>
+          <div class="flex-sty size-form" v-if="defaultLanguage">
+            <div class="flex-form" v-if="!$common.isEmpty(landataItem) && [1].includes(planType)">
+              <div class="mb15">
+                <FormItem
+                  :label="`${landataItem&&!$common.isEmpty(landataItem.labellist[0])?landataItem.labellist[0].label:''}:`"
+                  class="form-border--bot"
+                  :label-width="80"
+                >
+                  <div class="lan-inputs flex-center">
+                    <div v-for="(item,key) in language" :key="key+'lan'">
+                      <div v-if="!item.hidden && validLanguage.includes(item.type)" class="input-items flex-center">
+                        <span class="input-item-l">{{item.label}}:</span>
+                        <dyt-input v-model="language[key].fabric" class="input-item-c" />
+                      </div>
+                    </div>
+                  </div>
+                </FormItem>
+                <FormItem
+                  :label="`${landataItem&&!$common.isEmpty(landataItem.labellist[1])?landataItem.labellist[1].label:''}:`"
+                  class="form-border--bot"
+                  :label-width="80"
+                >
+                  <div class="tag-item-content">
+                    <div class="tag-item-text-content">
+                      <span
+                        class="tag-item-lable"
+                        v-for="(text, index) in colorlistTxt"
+                        :key="`tag_${index}`"
+                        :style="`${!text.old && toopropSecect.color ? 'color: #f20;':''}`"
+                      >
+                        <span
+                          class="tag-item-txt"
+                          contenteditable
+                          @input="inputTagItem(text, $event, 'color')"
+                          @focus="focusInput"
+                          @blur="blurInput"
+                        >{{text.text}}</span>
+                      </span>
+                    </div>
+                    <Icon
+                      type="ios-create-outline"
+                      :style="`line-height: 32px;font-size: 20px;cursor: pointer; visibility:${toopropSecect.color?'hidden':'visible'};`"
+                      @click="isVisibleToopropSecect('color', true)"
+                    />
+                    <div class="tooprop-secect-content" v-if="toopropSecect.color" style="z-index: 12;">
+                      <dyt-select
+                        v-model="checkColorVal"
+                        multiple
+                        :max-tag-count="1"
+                        :transfer="false"
+                        :allow-create="true"
+                        @on-create="createColorHandle"
+                        placeholder="请选择颜色或自由输入后新增"
+                      >
+                        <Option
+                          v-for="(item, index) in colorDataList"
+                          :value='item.colorId'
+                          :disabled="oldColorVal.includes(item.colorId)"
+                          :key="`status-${index}`"
+                        >{{`${item.color}(${item.colorEn})`}}</Option>
+                      </dyt-select>
+                      <Icon type="md-checkmark-circle-outline" style="color: #2d8cf0;" @click="toopropSecectConfirm('color')" title="确认" />
+                      <Icon type="ios-close-circle-outline" style="color: #f20;" @click="isVisibleToopropSecect('color', false)" title="取消" />
+                    </div>
+                  </div>
+                </FormItem>
+                <template v-if="totalColumns[0]&&totalColumns[0].children.length">
+                  <FormItem
+                    :label="`${landataItem&&!$common.isEmpty(landataItem.labellist[2])?landataItem.labellist[2].label:''}:`"
+                    class="form-border--bot"
+                    :label-width="80"
+                  >
+                  <!-- <FormItem :label="`${!$common.isEmpty(landataItem.labellist)?landataItem.labellist[2].label:''}:`" class="form-border--bot" :label-width="80"> -->
+                    <div class="tag-item-content">
+                      <div class="tag-item-text-content">
+                        <span
+                          class="tag-item-lable"
+                          v-for="(text, index) in addMulfun"
+                          :key="`tag_${index}`"
+                          :style="`${!text.old && toopropSecect.tag ? 'color: #f20;':''}`"
+                        >
+                          <span
+                            class="tag-item-txt"
+                            contenteditable
+                            @input="inputTagItem(text, $event, 'size')"
+                            @focus="focusInput"
+                            @blur="blurInput"
+                          >{{text.text}}</span>
+                        </span>
+                      </div>
+
+                      <Icon
+                        type="ios-create-outline"
+                        :style="`line-height: 32px;font-size: 20px;cursor: pointer; visibility:${toopropSecect.tag?'hidden':'visible'};`"
+                        @click="isVisibleToopropSecect('tag', true)"
+                      />
+                      <div class="tooprop-secect-content" v-if="toopropSecect.tag">
+                        <Cascader
+                          :data="cascaderSecectData"
+                          v-model="checkTagVal.first"
+                          style="width: calc(50% - 25px);"
+                          :disabled="isDisabledCascader"
+                          :filterable="true"
+                          @on-change="cascaderChange"
+                          v-show="false"
+                        />
+                        <dyt-select
+                          v-model="checkTagVal.second"
+                          multiple
+                          :max-tag-count="1"
+                          :transfer="false"
+                          :allow-create="true"
+                          @on-create="createTagHandle"
+                          style="width: calc(100% - 40px);"
+                          placeholder="请选择尺码或自由输入后新增"
+                        >
+                          <Option
+                            v-for="(item, index) in allProductSizData"
+                            :value='item.sizeId'
+                            :key="`sizetype-${index}`"
+                            :disabled="oldSize.includes(item.sizeId)"
+                          >{{item.size}}</Option>
+                        </dyt-select>
+                        <Icon type="md-checkmark-circle-outline" style="color: #2d8cf0;" @click="toopropSecectConfirm('tag')" title="确认" />
+                        <Icon type="ios-close-circle-outline" style="color: #f20;" @click="isVisibleToopropSecect('tag', false)" title="取消" />
+                      </div>
+                  </div>
+                  </FormItem>
+                </template>
+              </div>
+
+              <div v-for="(item,index) in landataItem.attrLists" :key="index+'attr'">
+                <FormItem :label="item.attr+':'">
+                  <Button
+                    v-for="(citem,cindex) in item.value"
+                    class="mr10 btn-mb"
+                    :class="{'active-btn':(item.attrValue==citem.attributeValueId)}"
+                    @click="attrBtnclick(citem,index,cindex)"
+                    :key="cindex+'attrvalue'"
+                  >{{citem.name}}</Button>
+                </FormItem>
+              </div>
+            </div>
+            <div class="picture-content ml20" v-if="partImgList[defaultLanguage]">
+              <Checkbox
+                v-model="partImgList[defaultLanguage].isChecked"
+                :disabled="!(goodsPicJson[defaultLanguage] && goodsPicJson[defaultLanguage].isChecked)"
+                v-if="[1].includes(planType)"
+                @on-change="picCheckChange($event, 'partImgList')"
+                style="height: 30px;"
+              />
+              <div class="img-father mr5">
+                <img :src="partImgList[defaultLanguage].pictureUrl" alt="">
+              </div>
+              <Dropdown style="margin-top: 270px;" trigger="click" @on-click="chosePicture($event, 'partImgList')" transfer v-if="[1].includes(planType)">
+                <Icon type="ios-create-outline" title="更换图片" />
+                <DropdownMenu slot="list">
+                  <DropdownItem name="allPartPicList">选择尺寸图片</DropdownItem>
+                  <DropdownItem name="goodsAllPic">选择图库图片</DropdownItem>
+                  <DropdownItem name="local">选择本地图片</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </div>
+            <div class="picture-content ml20" v-if="goodsPicJson[defaultLanguage] && [1].includes(planType)">
+              <Checkbox v-model="goodsPicJson[defaultLanguage].isChecked" @on-change="picCheckChange($event, 'goodsPicJson')" />
+              <div class="img-father mr5">
+                <img :src="goodsPicJson[defaultLanguage].pictureUrl" alt="">
+              </div>
+              <Dropdown style="margin-top: 270px;" trigger="click" @on-click="chosePicture($event, 'goodsPicJson')" transfer>
+                <Icon type="ios-create-outline" title="更换图片" />
+                <DropdownMenu slot="list">
+                  <DropdownItem name="allPartPicList">选择尺寸图片</DropdownItem>
+                  <DropdownItem name="goodsAllPic">选择图库图片</DropdownItem>
+                  <DropdownItem name="local">选择本地图片</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </div>
+          </div>
+          <div class="table-color-set mt15" v-if="[1].includes(planType)">
+            <div class="color-set-row">
+              <div>
+                表头底色
+                <ColorPicker
+                  v-model="tableConfig.headBackground" @on-change="colorChange($event, 'headBackground')"
+                  :transfer="true"
+                  :recommend="true"
+                  transfer-class-name="table-color-picker"
+                />
+              </div>
+              <div class="ml15">
+                表头边框
+                <ColorPicker
+                  v-model="tableConfig.headBorderColor" @on-change="colorChange($event, 'headBorderColor')"
+                  :transfer="true"
+                  :recommend="true"
+                  transfer-class-name="table-color-picker"
+                />
+              </div>
+              <div class="ml15">
+                表头字体颜色
+                <ColorPicker
+                  v-model="tableConfig.headFontColor" @on-change="colorChange($event, 'headFontColor')"
+                  :transfer="true"
+                  :recommend="true"
+                  transfer-class-name="table-color-picker"
+                />
+              </div>
+            </div>
+            <div class="color-set-row mt10">
+              <div>
+                表格底色
+                <ColorPicker
+                  v-model="tableConfig.tableBackground" @on-change="colorChange($event, 'tableBackground')"
+                  :transfer="true"
+                  :recommend="true"
+                  transfer-class-name="table-color-picker"
+                />
+              </div>
+              <div class="ml15">
+                表格边框
+                <ColorPicker
+                  v-model="tableConfig.tableBorderColor" @on-change="colorChange($event, 'tableBorderColor')"
+                  :transfer="true"
+                  :recommend="true"
+                  transfer-class-name="table-color-picker"
+                />
+              </div>
+              <div class="ml15">
+                表格字体颜色
+                <ColorPicker
+                  v-model="tableConfig.tableFontColor" @on-change="colorChange($event, 'tableFontColor')"
+                  :transfer="true"
+                  :recommend="true"
+                  transfer-class-name="table-color-picker"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="mt10" v-if="defaultLanguage" :class="{'not-select-self-size': !selectSelfSize}">
+            <Table :columns="totalColumns" :data="tableData" border id="sizechart-table">
+              <template slot-scope="{row,index,column}" slot="nameValue">
+                <dyt-input
+                  v-model="tableData[index].size"
+                  @on-focus="inputFocus(row, index, column, $event)"
+                  @on-blur="inputBlur"
+                  @on-keyup="inputKeyUp"
+                  @input="sizeChangeHand($event, row, index)"
+                  :ref="`${index}-${column.slot}`"
+                />
+              </template>
+              <template slot-scope="{row,index,column}" slot="anValue">
+                <dyt-input
+                  v-model="tableData[index].anValue"
+                  @on-focus="inputFocus(row, index, column, $event)"
+                  @on-blur="inputBlur"
+                  @on-keyup="inputKeyUp"
+                  :ref="`${index}-${column.slot}`"
+                />
+              </template>
+              <template slot-scope="{row,index,column}" slot="enValue">
+                <dyt-input
+                  v-model="tableData[index].enValue"
+                  @on-focus="inputFocus(row, index, column, $event)"
+                  @on-blur="inputBlur"
+                  @on-keyup="inputKeyUp"
+                  :ref="`${index}-${column.slot}`"
+                />
+              </template>
+              <template slot-scope="{row,index,column}" slot="gerValue">
+                <dyt-input
+                  v-model="tableData[index].gerValue"
+                  @on-focus="inputFocus(row, index, column, $event)"
+                  @on-blur="inputBlur"
+                  @on-keyup="inputKeyUp"
+                  :ref="`${index}-${column.slot}`"
+                />
+              </template>
+              <template slot-scope="{row,index,column}" slot="fraValue">
+                <dyt-input
+                  v-model="tableData[index].fraValue"
+                  @on-focus="inputFocus(row, index, column, $event)"
+                  @on-blur="inputBlur"
+                  @on-keyup="inputKeyUp"
+                  :ref="`${index}-${column.slot}`"
+                />
+              </template>
+              <template slot-scope="{row,index,column}" slot="spnValue">
+                <dyt-input
+                  v-model="tableData[index].spnValue"
+                  @on-focus="inputFocus(row, index, column, $event)"
+                  @on-blur="inputBlur"
+                  @on-keyup="inputKeyUp"
+                  :ref="`${index}-${column.slot}`"
+                />
+              </template>
+              <template slot-scope="{row,index,column}" slot="itValue">
+                <dyt-input
+                  v-model="tableData[index].itValue"
+                  @on-focus="inputFocus(row, index, column, $event)"
+                  @on-blur="inputBlur"
+                  @on-keyup="inputKeyUp"
+                  :ref="`${index}-${column.slot}`"
+                />
+              </template>
+              <template slot-scope="{row,index,column}" slot="porValue">
+                <dyt-input
+                  v-model="tableData[index].porValue"
+                  @on-focus="inputFocus(row, index, column, $event)"
+                  @on-blur="inputBlur"
+                  @on-keyup="inputKeyUp"
+                  :ref="`${index}-${column.slot}`"
+                />
+              </template>
+              <template slot-scope="{row,index,column}" slot="polValue">
+                <dyt-input
+                  v-model="tableData[index].polValue"
+                  @on-focus="inputFocus(row, index, column, $event)"
+                  @on-blur="inputBlur"
+                  @on-keyup="inputKeyUp"
+                  :ref="`${index}-${column.slot}`"
+                />
+              </template>
+              <template slot-scope="{row,index,column}" slot="cnValue">
+                <dyt-input
+                  v-model="tableData[index].cnValue"
+                  @on-focus="inputFocus(row, index, column, $event)"
+                  @on-blur="inputBlur"
+                  @on-keyup="inputKeyUp"
+                  :ref="`${index}-${column.slot}`"
+                />
+              </template>
+              <template slot-scope="{row,index,column}" slot="cmInputs">
+                <dyt-input
+                  v-model="tableData[index][column.attr+'cm']"
+                  @on-keyup="cmInputFocus(row,index,column, $event, true)"
+                  @on-focus="inputFocus(row, index, column, $event)"
+                  @on-blur="inputBlur"
+                  :ref="`${index}-${column.attr}_${column.slot}`"
+                />
+              </template>
+              <template slot-scope="{row,index,column}" slot="inchInputs">
+                <dyt-input
+                  v-model="tableData[index][column.attr+'inch']"
+                  @on-focus="inputFocus(row, index, column, $event)"
+                  @on-blur="inputBlur"
+                  @on-keyup="inputKeyUp"
+                  :ref="`${index}-${column.attr}_${column.slot}`"
+                />
+              </template>
+            </Table>
+          </div>
+        </Form>
+        <Spin fix v-if="createPicLoading">生成尺码图中,请勿中断操作...</Spin>
+        <Spin fix v-if="pageLoading">加载数据中...</Spin>
+      </div>
+      <div slot="footer">
+        <div class="footers">
+          <div class="footers__left">
+            <span class="mr10">选择生成的尺码图语言:</span>
+            <CheckboxGroup v-model="formItem.language" @on-change="lanChecked">
+              <template v-for="(oItem, oIndex) in otherCheck">
+                <Checkbox :label="oItem.value" class="mr15" :key="`oIndex-${oIndex}`" v-if="!oItem.hidden">{{oItem.label}}</Checkbox>
+              </template>
+              <template v-for="(item, index) in language">
+                <Checkbox :label="item.type" class="mr15" :key="`index-${index}`" v-if="!item.hidden">{{item.label}}</Checkbox>
+              </template>
+            </CheckboxGroup>
+          </div>
+          <div class="footers__right">
+            <div></div>
+            <div>
+              <Checkbox v-model="syncInformation" style="margin-right: 100px;">同步生成文本资料尺码图表格</Checkbox>
+              <Button @click="modelVisible = false">取消</Button>
+              <Button type="primary" :loading="pageLoading || createPicLoading" @click="confirm">确定</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Modal>
+    <!-- 选择图片弹窗 -->
+    <Modal v-model="modelPicVisible" width="800" title="选择图片" :mask-closable="false" class="size-charts-modal">
+      <div class="pic-list-content">
+        <template v-for="(pic, pIndex) in chosePicData">
+          <Checkbox
+            v-model="pic.isModalChecked"
+            :key="`pic-${pIndex}`"
+            v-if="pic.pictureUrl"
+            @on-change="modalCheckedChange($event, pIndex)"
+          >
+            <div class="pic-item">
+              <img :src="pic.pictureUrl">
+            </div>
+          </Checkbox>
+        </template>
+      </div>
+      <div slot="footer">
+        <div class="footers__right">
+          <div></div>
+          <div>
+            <Button @click="closePicModal">取消</Button>
+            <Button type="primary" @click="confirmChosePic">确定</Button>
+          </div>
+          </div>
+      </div>
+    </Modal>
+    <input id="temporaryFile" type="file" accept="image/*" @input="onFileChange" />
+  </div>
+</template>
+
+<script>
+import api from '@/api/api';
+import { selfAttrList, selfLabelList, selfTitlist, tableLangInfo } from './sizeConfig';
+export default {
+  name: 'sizeChart',
+  components: {},
+  props: {
+    chartModalVisible: { // 弹框
+      type: Boolean,
+      default: false
+    },
+    // 尺码类型
+    planType: {
+      type: [Number, String],
+      default: 1
+    },
+    productData: { // 订单详情
+      type: Object,
+      default () { return {} }
+    },
+    commodiAttr: { // 商品属性
+      type: Object,
+      default () { return {} }
+    },
+    productCategoryListData: { // requiredetail.vue 组件传过来的商品分类列表
+      type: Array,
+      default () {
+        return [];
+      }
+    },
+    productInfo: {
+      type: Object,
+      default () { return {} }
+    },
+    sizeTypeFar: {
+      type: Number,
+      default: null
+    },
+    sizeList: {
+      type: Array,
+      default () { return [] }
+    },
+    colorList: {
+      type: Array,
+      default () { return [] }
+    },
+    skuPropertyList: {
+      type: Array,
+      default () { return [] }
+    }
+  },
+  watch: {
+    sizeList: {
+      deep: true,
+      immediate: true,
+      handler (val) {
+        this.pageSizeList = this.$common.copy(val);
+      }
+    },
+    chartModalVisible: {
+      handler (val) {
+        if (val) {
+          this.modelVisible = val;
+          this.openDia();
+          // this.getLanColorlist();
+        }
+      }
+    },
+    modelVisible: {
+      handler (val) {
+        this.$emit('update:chartModalVisible', val);
+        if (!val) {
+          this.pageLoading = false;
+          this.removeIframe();
+          this.syncInformation = false;
+        }
+      }
+    },
+    sizeType: {
+      deep: true,
+      immediate: true,
+      handler (newVal) {
+        if (!(newVal || newVal === 0)) return;
+        let result = this.sizeTypeList.filter(k => {
+          return k.sizeTypeId === this.sizeType;
+        })
+        this.title = result[0] && result[0].typeName;
+      }
+    },
+    addInputVal: {
+      deep: true,
+      handler (newVal) {
+        if (this.focusTagSizeInput) return;
+        this.addMulfun = newVal;
+      }
+    },
+    colorInputChange: {
+      deep: true,
+      handler (newVal) {
+        if (this.focusTagSizeInput) return;
+        this.colorlistTxt = newVal;
+      }
+    }
+  },
+  data () {
+    return {
+      isPrintAll: false,
+      otherCheck: [{ label: '生产尺码图', value: 'selfUseSize' }],
+      oldSizeVal: [],
+      sizeRes: [],
+      colorDataList: [],
+      title: '生成尺码图',
+      syncInformation: false,
+      focusTagSizeInput: false,
+      addMulfun: [],
+      colorlistTxt: [],
+      checkColorVal: [],
+      allProductSizData: [],
+      productSizeTypeData: [],
+      cascaderList: [],
+      cascaderSecectData: [],
+      sizeGroup: { 1: { name: '尺码组1' }, 2: { name: '尺码组2' } },
+      sizeStand: { 1: { name: '现货款' }, 2: { name: '打版款' } },
+      checkTagVal: { first: [], second: [] },
+      oldTableList: [],
+      isDisabledCascader: false,
+      pageLoading: false,
+      createPicLoading: false,
+      modelVisible: false,
+      toopropSecect: {
+        color: false, tag: false
+      },
+      measurementJson: {
+        method: '测量方法',
+        tableTitle: 'Size-Details',
+        partName: 'Tag Size'
+      },
+      sizeType: '', // 尺码类型id
+      // 跳码数据
+      subsectionData: {
+        enabled: false,
+        listData: [],
+      },
+      // 对应列的跳码数据
+      colSubsectionList: {},
+      sizGroupDataJson: {},
+      sizeTypeList: [], // 尺码类型
+      formItem: {
+        fabric: '',
+        language: []
+      }, // 表单信息
+      otherCol: [
+        { name: 'auName', value: 'auValue' }
+      ],
+      language: [
+        { label: 'Tag Size', name: 'name', value: 'size', type: 'name', hidden: true, otherLabel: 'Tag Size' },
+        { label: '美语', name: 'anName', value: 'anValue', type: 'an', hidden: true, otherLabel: 'US' },
+        { label: '英语', name: 'enName', value: 'enValue', type: 'en', fabric: '', otherLabel: 'UK-AU' },
+        { label: '德语', name: 'gerName', value: 'gerValue', type: 'ger', fabric: '', otherLabel: 'EU-DE' },
+        { label: '法语', name: 'fraName', value: 'fraValue', type: 'fra', fabric: '', otherLabel: 'FR' },
+        { label: '西班牙语', name: 'spnName', value: 'spnValue', type: 'spn', fabric: '', otherLabel: 'ESP' },
+        { label: '意大利语', name: 'itName', value: 'itValue', type: 'it', fabric: '', otherLabel: 'IT' },
+        { label: '葡萄牙语', name: 'porName', value: 'porValue', type: 'por', fabric: '', otherLabel: 'POR' },
+        { label: '波兰语', name: 'polName', value: 'polValue', type: 'pol', fabric: '', otherLabel: 'PL' },
+        { label: '中文', name: 'cnName', value: 'cnValue', type: 'cn', fabric: '', otherLabel: 'CHN' }
+      ], // 语言列表
+      defaultLanguage: '', // 默认显示的语言
+      sizePartlist: {}, // 尺码部位列表
+      sizeGroupNo: '', // 尺码组
+      tableData: [], // 表格默认数据
+      languageList: ['en', 'ger', 'fra', 'spn', 'it', 'por', 'pol', 'cn', 'an'], // 语言区分 以此为标准
+      categoryResult: {}, // 分类信息
+      sizeTemList: {}, // 存放尺码模板（以语言为key区分）
+      sizeLanlist: [], // 尺码模板列表
+      attrLists: [], // 多属性列表
+      attrallColorlist: {}, // 属性语言颜色列表
+      attrallSizelist: {}, // 属性语言尺码列表
+      sizeTemplateList: {}, // 全部语言表头columns
+      defaultColumns: ['name'], // 表格要固定美英德
+      selfTitlist: selfTitlist, // 自定义文字
+      allAttrLists: selfAttrList, // 全部语言属性列表
+      selfLabelList: selfLabelList, // 自定义语言label头
+      allList: {}, // 全部语言数据
+      landataItem: {}, // 某语言下的数据
+      pageSizeTpye: null,
+      isGetInit: false,
+      oldAllColorlist: {
+        data: {},
+        isInit: true
+      },
+      isFocus: false,
+      nowRow: {},
+      allPic: [], // 所有图片(包含自用尺码图)
+      iframeId: `iframe-${Math.random().toString(36).substring(2)}`,
+      addSizeData: [],
+      langeList: {
+        en: 'colorAmerican',
+        ger: 'colorGerman',
+        fra: 'colorFrance',
+        spn: 'colorSpanish',
+        it: 'colorIt',
+        por: 'colorPor',
+        pol: 'colorPoland',
+        cn: 'color',
+        an: 'colorAn'
+      },
+      partImgList: {}, // 对应语言部位默认图片
+      allPartPicList: {}, // 对应语言所有部位图片
+      goodsPicJson: {}, // 对应语言商品默认图片
+      goodsAllPic: [], // 所有商品图片
+      modelPicVisible: false,
+      chosePicData: [],
+      tableConfig: {}, // 表格颜色设置
+    }
+  },
+  computed: {
+    // 选中的语言(排除指定值)
+    validLanguage () {
+      const notIncludes = this.otherCheck.map(m => m.value);
+      const choseVal = this.$common.copy(this.formItem.language || []);
+      let newVal = [];
+      if (choseVal.includes('en') && !choseVal.includes('an')) {
+        choseVal.forEach(item => {
+          if (item == 'en') {
+            newVal.push('an');
+          }
+          newVal.push(item);
+        });
+      } else {
+        newVal = choseVal;
+      }
+      newVal = newVal.filter(item => {
+        return !notIncludes.includes(item)
+      });
+      return newVal;
+    },
+    // 是否已存在自用尺码图
+    isSelfUsePic () {
+      return [1, '1'].includes(this.productInfo.haveSelfSizeImg);
+    },
+    colorLangList () {
+      let newList = {};
+      (this.colorDataList || []).forEach(k => {
+        Object.keys(this.langeList).forEach(lan => {
+          !newList[lan] && this.$set(newList, lan, []);
+          newList[lan].push({ ...k, colorName: k[this.langeList[lan]] });
+        })
+      });
+      return newList;
+    },
+    // 是否选中了自用尺码图
+    selectSelfSize () {
+      if (this.$common.isEmpty(this.formItem.language)) return false;
+      return this.formItem.language.includes('selfUseSize');
+    },
+    addInputVal () {
+      const tableId = this.tableData.map(m => m.sizeId);
+      let addId = [];
+      const addListIds = (this.allProductSizData || []).filter(f => this.checkTagVal.second.includes(f.sizeId)).map(m => {
+        if (!tableId.includes(m.sizeId)) {
+          addId.push({ text: m.size, old: false, sizeId: m.sizeId });
+        }
+        return m.sizeId;
+      });
+      const oldSizeId = this.oldTableList.map(m => m.sizeId);
+      let tableList = [];
+      (this.tableData || []).forEach(item => {
+        if (addListIds.includes(item.sizeId)) {
+          tableList.push({ text: item.size, old: false, sizeId: item.sizeId });
+        } else if (oldSizeId.includes(item.sizeId)) {
+          tableList.push({ text: item.size, old: true, sizeId: item.sizeId });
+        }
+      });
+      return [...tableList, ...addId];
+    },
+    pendMulfun () {
+      if (this.$common.isEmpty(this.allProductSizData)) return [];
+      const text = this.allProductSizData.filter(f => this.checkTagVal.second.includes(f.sizeId)).map(m => m.size);
+      return text;
+    },
+    oldSize () {
+      if (this.$common.isEmpty(this.oldTableList)) return '';
+      let list = this.oldTableList.filter(k => {
+        return !this.$common.isEmpty(k['sizeId']);
+      }).map(k => {
+        return k['sizeId'];
+      });
+      return list;
+    },
+    colorInputChange () {
+      if (this.$common.isEmpty(this.colorLangList) || this.$common.isEmpty(this.colorLangList[this.defaultLanguage])) return [];
+      const oldVal = this.colorLangList[this.defaultLanguage].filter(f => this.oldColorVal.includes(f.colorId)).map(item => {
+        return { text: item.colorName, old: true, colorId: item.colorId };
+      });
+      const newVal = this.colorLangList[this.defaultLanguage].filter(f => this.checkColorVal.includes(f.colorId)).map(item => {
+        return { text: item.colorName, old: false, colorId: item.colorId };
+      });
+      return [...oldVal, ...newVal];
+    },
+    oldColorVal () {
+      if (this.$common.isEmpty(this.oldAllColorlist) || this.$common.isEmpty(this.oldAllColorlist.data)) return [];
+      if (this.$common.isEmpty(this.oldAllColorlist.data[this.defaultLanguage])) return [];
+      return this.oldAllColorlist.data[this.defaultLanguage].map(m => m.colorId);
+    },
+    // 表格头部
+    totalColumns () {
+      // 使用表格合并
+      let arr = [
+        {
+          title: this.measurementJson.tableTitle,
+          align: 'center',
+          children: [],
+          renderHeader: (h, params) => {
+            return h('Input', {
+              style: {
+                width: '300px'
+              },
+              props: {
+                type: 'text',
+                value: params.column.title
+              },
+              on: {
+                'on-change': (val) => {
+                  this.$nextTick(() => {
+                    this.$set(this.measurementJson, 'tableTitle', val.target._value);
+                  })
+                }
+              }
+            });
+          }
+        }
+      ];
+      let listitem = this.allList['default'] ? this.allList['default'].columnlist || [] : [];
+      if (!listitem) return [];
+      if (!this.$common.isEmpty(this.defaultLanguage)) {
+        listitem = this.allList[this.defaultLanguage] ? this.allList[this.defaultLanguage].columnlist || [] : [];
+      }
+      const list = listitem.filter(f => !this.$common.isEmpty(f));
+      let [sIndex, eIndex, columnslist] = [null, null, []];
+      const notHasDefault = this.validLanguage.filter(lanType => {
+        return !this.defaultColumns.includes(lanType) && this.defaultLanguage != lanType;
+      });
+      list.forEach((litem, key) => {
+        if (litem.isLanguage) {
+          if (this.$common.isEmpty(sIndex)) {
+            sIndex = key;
+          }
+          eIndex = key;
+        }
+      });
+      notHasDefault.forEach(lanType => {
+        if (!this.$common.isEmpty(this.allList[lanType]) && !this.$common.isEmpty(this.allList[lanType].columnlist)) {
+          this.allList[lanType].columnlist.forEach(item => {
+            if (item.lanType == lanType) {
+              columnslist.push(item);
+            }
+          })
+        }
+      });
+      const startlist = list.slice(0, sIndex);
+      const endlist = list.slice(eIndex, list.length);
+      arr[0].children = [...startlist, ...columnslist, ...endlist];
+      return arr;
+    }
+  },
+  created () {
+    this.getTypelist();
+  },
+  destroyed () {
+    // this.cancelKeydown();
+  },
+  methods: {
+    // 获取尺码类型
+    getTypelist () {
+      return new Promise((resolve) => {
+        this.axios.get(api.queryProductSizeTypeList, { hiddenError: true }).then(res => {
+          if (res.data.code !== 0) return resolve([]);
+          this.sizeTypeList = res.data.datas || [];
+          resolve(res.data.datas || []);
+        }).catch(() => {
+          resolve([]);
+        })
+      })
+    },
+    // 获取尺码组跳码分段
+    getSubsectionInfo (sizeTypeId, sizeGroupNo) {
+      return new Promise((resolve) => {
+        this.subsectionData = {
+          enabled: false,
+          listData: [],
+        };
+        this.axios.get(api.queryHoppingCode, {
+          params: {
+            sizeTypeId: sizeTypeId,
+            sizeGroupNo: sizeGroupNo,
+          }
+        }).then(({ data }) => {
+          if (!data || data.code != 0) return resolve([]);
+          let isEnabled = null;
+          let hoppingList = [];
+          let ids = [];
+          (data.datas || []).forEach((item) => {
+            if (!isEnabled) {
+              isEnabled = item.status;
+            }
+            if (!this.$common.isEmpty(item.sizeIds)) {
+              ids = item.sizeIds.split(',').map(m => Number(m));
+              hoppingList.push({
+                sizeIds: ids,
+                startId: ids[0],
+                endId: ids.slice(-1)[0],
+                hoppingCode: item.hoppingCode,
+                sortNo: item.sortNo
+              });
+            }
+          });
+          hoppingList.sort((min, big) => {
+            return min.sortNo - big.sortNo
+          });
+          this.subsectionData.enabled = this.$common.isEmpty(isEnabled) ? false : isEnabled == 1;
+          this.subsectionData.listData = hoppingList;
+          resolve(data.datas || []);
+        }).catch((err) => {
+          console.error(err);
+          resolve([]);
+        })
+      })
+    },
+    // 重置表单
+    resetForm () {
+      this.formItem.language = ['en', 'ger', 'selfUseSize'];// 默认勾选英德
+      if (this.formItem.language.length > 1) {
+        this.defaultLanguage = this.formItem.language[this.formItem.language.length - 2];
+      } else {
+        this.defaultLanguage = this.formItem.language[0];
+      }
+      this.addSizeData = [];
+      this.allPartPicList = {};
+      this.goodsPicJson = {};
+      this.goodsAllPic = [];
+      const langVal = Object.values(this.langeList);
+      // let newItem = {};
+      this.colorDataList = this.$common.copy(this.colorList).map(item => {
+        langVal.forEach(key => {
+          if (!Object.keys(item).includes(key)) {
+            item[key] = '';
+          }
+        })
+        return item;
+      });
+      this.tableData = [];
+      this.measurementJson = { method: '测量方法', tableTitle: 'Size-Details' };
+      // 属性默认选中第一个
+      let list = this.$common.copy(selfAttrList);
+      Object.keys(list).forEach(k => {
+        list[k].forEach(j => {
+          if (!j.value.length) return;
+          j.attrValue = j.value[0].attributeValueId;
+        })
+      })
+      this.allAttrLists = list;
+      // 清空材质输入框
+      this.language.forEach(k => {
+        'fabric' in k && (k.fabric = '');
+      });
+      this.tableConfig = {
+        headBackground: '#f2f2f2',
+        headFontColor: '#262626',
+        headBorderColor: '#BBBBBB',
+        tableBackground: '#fff',
+        tableFontColor: '#262626',
+        tableBorderColor: '#BBBBBB',
+      }
+      Object.keys(this.tableConfig).forEach(key => {
+        this.colorChange(this.tableConfig[key], key);
+      });
+      if (!this.$common.isEmpty(this.productInfo.productImageList)) {
+        let picUrl = '';
+        this.goodsAllPic = this.productInfo.productImageList.map(pic => {
+          if (this.$common.isEmpty(pic.path) || pic.path.includes('filenode/s/')) {
+            picUrl = pic.path;
+          } else {
+            picUrl = `/product-service/filenode/s${pic.path}`
+          }
+          return { ...pic, pictureUrl: picUrl }
+        });
+        this.languageList.forEach(l => {
+          this.$set(this.goodsPicJson, l, { ...(this.goodsAllPic[0] || {}), isChecked: false });
+        });
+      }
+      Object.keys(this.partImgList).forEach(key => {
+        this.partImgList[key].isChecked = true;
+      });
+    },
+    // 创建截图的 iframe
+    createIframe () {
+      let iframe = document.createElement('iframe');
+      iframe.id = this.iframeId;
+      iframe.src = `/product-service/productCenter.html#/sizePicture`;
+      // iframe.style.display = 'none';
+      iframe.style.position = 'absolute';
+      iframe.style.zIndex = '-10';
+      iframe.style.width = '100vw';
+      iframe.style.height = '100vh';
+      iframe.style.top = '100vh';
+      document.body.appendChild(iframe);
+      window.frames[this.iframeId].contentWindow.iframeId = this.iframeId;
+      // 方法需要放到此次，不可以放到参数传递
+      window.frames[this.iframeId].contentWindow.events = {
+        finishModel: this.finishModel, // 生成尺码图成功时回调
+        getSizePicture: this.getSizePicture // 更新父级图片
+      }
+    },
+    // 移除截图的 iframe
+    removeIframe () {
+      const oldIframe = document.querySelector(`#${this.iframeId}`);
+      if (this.$common.isEmpty(oldIframe)) return;
+      oldIframe.remove();
+    },
+    // 处理商品分类
+    categoryData (productCategoryId) {
+      return new Promise((resolve, reject) => {
+        let productList = this.getProductCategoryTree(this.productCategoryListData, null);
+        let result = null;
+        const hand = (list, id) => {
+          list.forEach(k => {
+            if (id === k.productCategoryId) {
+              if (!this.$common.isEmpty(k.sizeType) || !this.$common.isEmpty(this.checkTagVal.first[0])) {
+                result = k;
+              } else {
+                k.parentId && hand(productList, k.parentId);
+              }
+            } else {
+              if (k.children && k.children.length) {
+                hand(k.children, id);
+              }
+            }
+          });
+        };
+        hand(productList, productCategoryId);
+        this.categoryResult = result || {};
+        resolve(result || {});
+      })
+    },
+    // 组装商品分类树
+    getProductCategoryTree (productCategoryList, parentId) {
+      var tree = [];
+      var children;
+      productCategoryList.forEach((n) => {
+        if (n.parentId === parentId) {
+          n.label = n.cnName;
+          n.value = n.productCategoryId;
+          children = this.getProductCategoryTree(productCategoryList, n.productCategoryId);
+          if (children.length > 0) {
+            n.children = children;
+          }
+          tree.push(n);
+        }
+      });
+      return tree;
+    },
+    // 获取新品详情 -------------------------------------- 获取 sizeType 和 sizeGroupNo 商品中可拿到 所以注释----------------------------------
+    /* getProductDetail () {
+      let { productId } = this.productData;
+      this.axios
+        .get(api.queryLaPaProductInfo, { params: { productId: productId } })
+        .then((res) => {
+          if (res.data.code === 0) {
+            let temp = res.data.datas || {};
+            let laPaProductSizeRelList = temp.laPaProductSizeRelList || [];
+            // 尺码组
+            this.sizeGroupNo = laPaProductSizeRelList[0] && laPaProductSizeRelList[0].sizeGroupNo;
+            // 尺码类型id
+            // let { sizeType } = temp.laPaProductInfo || {};
+            let sizeType = this.sizeTypeFar;
+            if (sizeType || sizeType === 0) {
+              this.sizeType = sizeType;
+              return;
+            }
+            this.sizeType = this.categoryResult.sizeType;
+          } else {
+            this.$Spin.hide();
+          }
+        }).catch(() => {
+          this.$Spin.hide();
+        })
+    }, */
+    // 获取尺码部位列表
+    getSizePartList () {
+      return new Promise((resolve, reject) => {
+        this.axios.get(api.queryAllProductSizePartList).then((res) => {
+          if (res.data.code !== 0) {
+            resolve({});
+            return;
+          }
+          let list = res.data.datas || [];
+          let obj = {};
+          list.forEach(k => { obj[k.partId] = k; });
+          resolve(obj);
+        })
+      })
+    },
+    // 根据尺码类型获取详情
+    getSizeDetail (list) {
+      let { classificationId } = this.categoryResult;
+      if (!classificationId) return;
+      return this.axios.get(api.queryProductSizeClassificationInfo,
+        { params: { classificationId: classificationId } }
+      ).then((res) => {
+        if (res.data.code !== 0 || !res.data.datas) {
+          this.$Spin.hide();
+          return;
+        }
+        let { laPaProductPictureLanguageList, laPaProductSizePartInfoVOList } = res.data.datas;
+        // 区分语言的图片
+        let lan = { EN: 'en', GER: 'ger', FRA: 'fra', SPN: 'spn', IT: 'it', POR: 'por', POL: 'pol', CN: 'cn' };
+        Object.keys(lan).forEach(key => {
+          if (this.$common.isUndefined(this.partImgList[lan[key]])) {
+            this.$set(this.partImgList, lan[key], { isChecked: true, pictureUrl: '' });
+          }
+          if (this.$common.isUndefined(this.allPartPicList[lan[key]])) {
+            this.$set(this.allPartPicList, lan[key], [{ pictureUrl: '' }]);
+          }
+        });
+        laPaProductPictureLanguageList.forEach(k => {
+          if (this.$common.isUndefined(this.partImgList[lan[k.language]])) {
+            this.$set(this.partImgList, lan[k.language], { isChecked: true, pictureUrl: '' });
+          }
+          if (this.$common.isUndefined(this.allPartPicList[lan[k.language]])) {
+            this.$set(this.allPartPicList, lan[k.language], [{ pictureUrl: '' }]);
+          }
+          if (this.$common.isEmpty(this.partImgList[lan[k.language]]) || this.$common.isEmpty(this.partImgList[lan[k.language]].pictureId)) {
+            this.partImgList[lan[k.language]] = { ...k, isChecked: true };
+            this.allPartPicList[lan[k.language]] = [k];
+          } else {
+            this.allPartPicList[lan[k.language]].push(k);
+          }
+        });
+        // 根据挂钩的部位id找到对应的区分语言的部位
+        let obj = {};
+        (laPaProductSizePartInfoVOList || []).forEach(k => {
+          if (!this.$common.isEmpty(k.partId)) {
+            this.$set(this.colSubsectionList, k.partId, this.$common.copy(this.subsectionData.listData));
+          }
+          let temp = list[k.partId];
+          if (!temp) return;
+          const tempKeys = Object.keys(temp);
+          let NewPushItem = {};
+          tempKeys.forEach(key => {
+            if (!key.includes('Name')) {
+              NewPushItem[key] = temp[key];
+            }
+          });
+          tempKeys.forEach(key => {
+            let oname = key.replace('Name', '');
+            if (this.languageList.includes(oname)) {
+              if (!obj[oname]) obj[oname] = [];
+              obj[oname].push({
+                ...NewPushItem,
+                [oname + 'Name']: temp[key]
+              })
+            }
+          });
+        });
+        this.sizePartlist = this.$common.copy(obj);
+      })
+    },
+    // 获取尺码模板
+    async getSizeTemplate () {
+      return new Promise((resolve) => {
+        let params = {};
+        params.sizeTypeId = this.sizeType;
+        params.sizeGroupNo = this.sizeGroupNo;
+        params.templateType = 0; // 模板类型,0:常规款尺码模版,1:下装尺码模版
+        // this.axios.post(api.queryProductSizeTemplateToSizePicture, params).then((res) => {
+        this.axios.post(api.sizeManageApiConfig.sizeTypeManage.queryProductSizeTemplate, params).then((res) => {
+          let temp = {};
+          let list = res.data.datas || [];
+          let addList = [];
+          const fChildItem = list[0];
+          let optionsObj = {};
+          // 额外插入的尺码, 需要添加到模板中
+          if (!this.$common.isEmpty(fChildItem)) {
+            this.addSizeData.forEach(item => {
+              if (this.checkTagVal.second.includes(item.sizeId)) {
+                let obj = this.$common.copy(fChildItem);
+                Object.keys(fChildItem).forEach(key => {
+                  if (!['sizeId', 'templateType', 'templateId', 'sizeTypeId', 'name'].includes(key) && !key.includes('Name')) {
+                    obj[key] = item.name || null;
+                  }
+                });
+                obj.size = item.size;
+                obj.sizeId = item.sizeId;
+                addList.push(obj);
+              }
+            })
+          }
+          const checkedId = [...addList, ...list].map(m => m.sizeId);
+          let otherObj = {};
+          const otherGroup = (this.allProductSizData.filter(f => !checkedId.includes(f.sizeId))).map(item => {
+            otherObj = this.$common.copy(fChildItem);
+            Object.keys(fChildItem).forEach(key => {
+              if (!['sizeId', 'templateType', 'templateId', 'sizeTypeId', 'name'].includes(key) && !key.includes('Name')) {
+                otherObj[key] = item.name || null;
+              }
+            });
+            otherObj.size = item.size;
+            otherObj.sizeId = item.sizeId;
+            return otherObj;
+          });
+          list = [...addList.reverse(), ...otherGroup.reverse(), ...list];
+          this.allProductSizData.forEach(item => {
+            optionsObj[item.sizeId] = item;
+          });
+          list.forEach(k => {
+            if (!this.$common.isEmpty(optionsObj[k.sizeId]) && optionsObj[k.sizeId].size != k.size) {
+              k.size = optionsObj[k.sizeId].size;
+            }
+            Object.keys(k).forEach(ck => {
+              let oname = ck.replace('Name', '');
+              if (this.languageList.includes(oname)) {
+                if (!temp[oname]) temp[oname] = [];
+                temp[oname].push({
+                  [oname + 'Name']: k[oname + 'Name'],
+                  [oname + 'Value']: k[oname + 'Value'],
+                  sizeId: k.sizeId
+                })
+              }
+              // 多了一个size列
+              if (ck === 'name') {
+                if (!temp[ck]) temp[ck] = [];
+                temp[ck].push({
+                  [ck]: k[ck],
+                  size: k.size,
+                  sizeId: k.sizeId
+                })
+              }
+            })
+          });
+          this.sizeLanlist = list;
+          this.sizeTemList = temp;
+          resolve(temp)
+        }).catch(() => {
+          resolve({})
+        })
+      })
+    },
+    // 处理商品属性
+    async laPaProductInfo () {
+      await this.getSizeTemplate();
+      let [colorlist, sizelist] = [{}, {}];
+      let fun = {
+        // 属性信息(旧)
+        attrFun: (data = {}) => {
+          let temp = {};
+          let list = data.attributeClassifyVOList || [];// 多属性
+          let lan = { en: 'en', de: 'ger', fr: 'fra', es: 'spn', it: 'it', pt: 'por', pl: 'pol', cn: 'cn' };
+          let arr = Object.keys(lan) || [];
+          list.forEach(k => {
+            let attributeClassifyId = k.attributeClassifyId;
+            let attributeValueList = k.attributeValueList || [];
+            Object.keys(k).forEach(ck => {
+              let oname = ck.replace('Name', '');
+              if (arr.includes(oname)) {
+                let obj = {};
+                obj.attributeClassifyId = attributeClassifyId;
+                obj.attr = k[ck];
+                obj.value = [];
+
+                obj.attrValue = data.attrlist; // 挂钩选择的属性
+                attributeValueList.forEach(vk => {
+                  let attributeValueId = vk.attributeValueId;
+                  Object.keys(vk).forEach(cvk => {
+                    if (oname === cvk.replace('Value', '')) {
+                      obj.value.push({ name: vk[cvk], attributeValueId })
+                    }
+                  })
+                })
+                if (!temp[lan[oname]]) {
+                  temp[lan[oname]] = [];
+                }
+                obj.value.length && temp[lan[oname]].push(obj);
+              }
+            })
+          })
+          this.allAttrLists = temp;
+          this.attrLists = temp[this.defaultLanguage] || [];
+        },
+        // 尺码信息
+        partFun: () => {
+          return new Promise((resolve, reject) => {
+            let colorArr = [];
+            let sizeArr = [];
+            this.skuPropertyList.forEach(k => {
+              if (k.name == 'Color' && k.values.length != 0) {
+                colorArr = [...k.values]
+              } else if (k.name != 'Color' && k.values.length != 0) {
+                sizeArr = [...k.values]
+              }
+            });
+            colorArr.forEach(k => {
+              this.colorDataList.forEach(j => {
+                if (j.color == k) {
+                  colorlist[j.colorId] = {
+                    color: j.color,
+                    colorId: j.colorId
+                  }
+                }
+              })
+            });
+            if ((this.$common.isEmpty(this.sizeLanlist) && !this.isGetInit) || this.isGetInit) {
+              sizeArr = [];
+              this.isGetInit = true;
+            }
+            ([...sizeArr, ...(this.pendMulfun.filter(f => !this.$common.isEmpty(f)))]).forEach(k => {
+              this.pageSizeList.forEach(j => {
+                j.children.forEach(m => {
+                  if (m.size == k) {
+                    sizelist[m.sizeId] = {
+                      size: m.size,
+                      sizeId: m.sizeId
+                    }
+                  }
+                })
+              })
+            });
+            // 额外手动添加的尺码
+            this.addSizeData.forEach(item => {
+              sizelist[item.sizeId] = {
+                size: item.name,
+                sizeId: item.sizeId
+              }
+            })
+            resolve();
+          })
+        },
+        // 获取颜色的多语言列表
+        getLanColorlist: () => {
+          let [temp] = [{}];
+          const colorIds = Object.keys(colorlist).map(k => { return Number(k) });
+          Object.keys(this.colorLangList).forEach(lan => {
+            temp[lan] = this.colorLangList[lan].filter(f => colorIds.includes(f.colorId));
+          });
+          this.attrallColorlist = temp;
+          if (this.oldAllColorlist.isInit) {
+            this.$set(this.oldAllColorlist, 'isInit', false);
+            this.$set(this.oldAllColorlist, 'data', this.$common.copy(temp));
+          }
+        },
+        // 获取对应尺码的多语言列表
+        getLanPartlist: () => {
+          return new Promise(resolve => {
+            let list = this.sizeTemList;
+            let [temp, sizeArr] = [{}, []];
+            Object.keys(sizelist).forEach(k => {
+              sizeArr.push(Number(sizelist[k].sizeId));
+            });
+            Object.keys(list).forEach(k => {
+              list[k].forEach(item => {
+                if (!sizeArr.includes(item.sizeId)) return;
+                if (!temp[k]) temp[k] = [];
+                temp[k].push(item);
+              })
+            })
+            this.attrallSizelist = temp;
+            resolve();
+          })
+        }
+      }
+      await fun.partFun();
+      fun.getLanColorlist();
+      await fun.getLanPartlist();
+    },
+    // 确定生成图片
+    confirm () {
+      if (this.pageLoading || this.createPicLoading) return;
+      if (this.$common.isEmpty(this.formItem.language)) {
+        this.$Message.error('请勾选要生成尺码图的语言!');
+        return;
+      }
+      let lanFlag = false;
+      this.language.forEach(k => {
+        if (!k.hidden && this.validLanguage.includes(k.type) && !k.fabric) lanFlag = true;
+      })
+      if (!this.$common.isEmpty(this.validLanguage) && lanFlag && ![4].includes(this.planType)) {
+        this.$Message.error(`请填写${this.landataItem.labellist.length ? this.landataItem.labellist[0].label + '下对应的' : ''}语言！`);
+        return;
+      }
+      if (this.isSelfUsePic && this.selectSelfSize) {
+        this.$Modal.confirm({
+          title: '操作提醒',
+          content: `<div style="font-size: 16px;">该次生成的“自用尺码图”会覆盖之前生成的“自用尺码图”，是否继续？</div>`,
+          onOk: () => {
+            this.startCreatePic();
+          },
+          onCancel: () => {}
+        });
+        return;
+      }
+      this.startCreatePic();
+    },
+    startCreatePic () {
+      let colList = this.$common.copy(this.allList);
+      let anLang = [];
+      if (!this.$common.isEmpty(colList['an'])) {
+        anLang = colList['an'].columnlist || [];
+      }
+      anLang = anLang.find(item => item.lanType == 'an') || {};
+      Object.keys(colList).forEach(key => {
+        if (!this.$common.isEmpty(colList[key])) {
+          if (key == 'en' && !this.$common.isEmpty(anLang)) {
+            colList[key].columnlist.forEach((item, index) => {
+              if (item.lanType == 'an') {
+                colList[key].columnlist[index] = anLang;
+              }
+            });
+          }
+          Object.keys(colList[key]).forEach(cKey => {
+            if (cKey == 'columnlist' && !this.$common.isEmpty(colList[key][cKey])) {
+              this.removeColRender(colList[key][cKey]);
+            }
+          })
+        }
+      });
+      this.createPicLoading = true;
+      this.$bus.emit(this.iframeId, {
+        detailInfo: {
+          allList: colList,
+          tableData: this.tableData,
+          language: this.language,
+          formItem: this.formItem,
+          measurementJson: this.measurementJson,
+          productInfo: this.productInfo
+        },
+        isPrintAll: this.isPrintAll,
+        planType: this.planType,
+        otherCheck: this.otherCheck,
+        checkLanguage: this.$common.arrRemoveRepeat([...this.validLanguage, ...this.formItem.language]),
+        tableConfig: this.tableConfig,
+        partImgList: this.partImgList,
+        goodsPicJson: this.goodsPicJson,
+      });
+      this.syncInformation && this.handSynccontent(colList);
+    },
+    // 处理对应语言，并且填充到复杂描述里面
+    handSynccontent (colList) {
+      let heandCol = this.$common.copy(colList);
+      let addCol = {};
+      Object.keys(heandCol).forEach(key => {
+        if (key != 'selfUseSize' && this.formItem.language.includes(key)) {
+          if (!this.$common.isEmpty(heandCol[key])) {
+            if (!this.$common.isEmpty(heandCol[key].columnlist)) {
+              heandCol[key].allColToal = 0;
+              heandCol[key].html = '';
+              heandCol[key].columnlist.forEach((col, index) => {
+                if (!this.$common.isEmpty(col.children)) {
+                  if (!this.$common.isEmpty(col.lanType)) {
+                    col.colspan = 1;
+                    col.rowspan = 2;
+                    heandCol[key].allColToal += 1;
+                    if (col.isLanguage) {
+                      col.rowKey = col.children[0].slot;
+                    } else if (col.children[0].slot == 'nameValue') {
+                      col.rowKey = 'size';
+                    }
+                    delete col.children;
+                  } else {
+                    col.colspan = 2;
+                    col.rowspan = 1;
+                    heandCol[key].allColToal += 2;
+                    col.children.forEach((child) => {
+                      if (!this.$common.isEmpty(child.children)) {
+                        child.colspan = 1;
+                        child.rowspan = 1;
+                      }
+                    });
+                  }
+                }
+              });
+            }
+            addCol[key] = heandCol[key];
+          }
+        }
+      });
+      let thHtml = '';
+      let tdHtml = '';
+      let tableInfo = tableLangInfo.default;
+      let tableId = '';
+      Object.keys(addCol).forEach(key => {
+        tableId = `size-chart-${key}`;
+        if (!this.$common.isEmpty(tableLangInfo[key])) {
+          tableInfo = tableLangInfo[key];
+        }
+        addCol[key].html = `<table border="1" id="${tableId}" style="text-align:center"><tbody>`;
+        addCol[key].html += `<tr style="background:#ffc035;">
+          <td colspan="${addCol[key].allColToal}" rowspan="1" style="border:1px solid black;">
+            <p>${tableInfo.headTitle || tableLangInfo.default.headTitle}</p>
+          </td>
+        </tr>`;
+        // 表头配置
+        addCol[key].html += `<tr style="background:#ffc035;">`;
+        thHtml = '';
+        addCol[key].columnlist.forEach((item, index) => {
+          addCol[key].html += `<td colspan="${item.colspan}" rowspan="${item.rowspan}" style="border:1px solid black;">
+            <p>${this.$common.isEmpty(item.title) ? '' : item.title}</p>
+          </td>`;
+          if (!this.$common.isEmpty(item.children)) {
+            item.children.forEach(td => {
+              thHtml += `<td colspan="${td.colspan}" rowspan="${td.rowspan}" style="border:1px solid black;">
+                <p>${this.$common.isEmpty(td.title) ? '' : td.title}</p>
+              </td>`;
+            });
+            if (index + 1 == addCol[key].columnlist.length) {
+              addCol[key].html += `<tr style="background:#ffc035;">${thHtml}</tr>`;
+            }
+          }
+        });
+        addCol[key].html += `</tr>`;
+        // 表格数据配置
+        this.tableData.forEach(row => {
+          tdHtml = '';
+          addCol[key].columnlist.forEach(item => {
+            if (this.$common.isEmpty(item.children)) {
+              tdHtml += `<td colspan="1" rowspan="1" style="border:1px solid black;">
+                <p>${this.$common.isEmpty(row[item.rowKey]) ? '' : row[item.rowKey]}</p>
+              </td>`;
+            } else {
+              item.children.forEach(td => {
+                if (!this.$common.isEmpty(`${td.attr}${td.title}`)) {
+                  tdHtml += `<td colspan="1" rowspan="1" style="border:1px solid black;">
+                    <p>${this.$common.isEmpty(row[`${td.attr}${td.title}`]) ? '' : row[`${td.attr}${td.title}`]}</p>
+                  </td>`;
+                }
+              });
+            }
+          });
+          addCol[key].html += `<tr style="background:#fff;">${tdHtml}</tr>`;
+        });
+        addCol[key].html += `</tbody></table>`;
+        this.$emit('insetDescription', {
+          html: addCol[key].html,
+          tabName: key.toLocaleUpperCase(),
+          lang: key,
+          tableId: tableId
+        });
+      });
+    },
+    // 移除列表自定义头方法
+    removeColRender (colList) {
+      colList.forEach((cItem, index) => {
+        if (this.$common.isEmpty(cItem)) return;
+        if (!this.$common.isEmpty(cItem.selfChildren) && !this.$common.isEmpty(cItem.children) && !this.$common.isEmpty(cItem.children[0].children)) {
+          cItem.children = cItem.children[0].children;
+        }
+        Object.keys(cItem).forEach(key => {
+          if (this.$common.isFunction(cItem[key])) {
+            delete cItem[key];
+          }
+        });
+        if (!this.$common.isEmpty(cItem.children)) {
+          if (!this.$common.isEmpty(cItem.children[0].isAllChange) && !this.$common.isEmpty(cItem.children[0].children)) {
+            cItem.children = cItem.children[0].children;
+          }
+          if (!!cItem.children[0].notChart && !this.$common.isEmpty(cItem.children[0].children)) {
+            cItem.children = cItem.children[0].children;
+          }
+          this.removeColRender(cItem.children);
+        }
+        if (!this.$common.isEmpty(cItem.selfChildren)) {
+          this.removeColRender(cItem.selfChildren);
+        }
+      })
+    },
+    // 生成尺码图成功
+    finishModel (type) {
+      this.createPicLoading = false;
+      if (type) {
+        this.$nextTick(() => {
+          this.modelVisible = false;
+        })
+      }
+    },
+    // inch值根据cm填写而变化
+    cmInputFocus (row, index, column, $event, isChange) {
+      let rate = 0.3937;
+      const colKey = `${column.attr}cm`;
+      const changeKey = `${column.attr}inch`;
+      let cmValue = (this.$common.isEmpty(row[colKey]) ? '' : row[colKey]).trim();
+      !this.$common.isEmpty($event) && this.inputKeyUp($event);
+      if (this.$common.isEmpty(cmValue)) return this.$set(this.tableData[index], changeKey, '');
+      cmValue = Number(cmValue);
+      if (this.$common.isEmpty(cmValue)) return this.$set(this.tableData[index], changeKey, '');
+      const inchValue = (Number((cmValue * rate).toFixed(2))).toString();
+      this.$set(this.tableData[index], changeKey, inchValue);
+
+      // 以下为手动修改时执行
+      if (!isChange) return;
+      // 未开启或非
+      if (!this.subsectionData.enabled || ![1].includes(this.planType)) return;
+      if (this.$common.isEmpty(this.colSubsectionList[column.attr])) return;
+      let colSubList = this.$common.copy(this.colSubsectionList[column.attr]);
+      const changeSizeId = this.tableData[index].sizeId;
+      let subInfo = colSubList.find(f => f.startId == changeSizeId);
+      let startSubIndex = null;
+      if (this.$common.isEmpty(subInfo)) {
+        let startIndex = null;
+        colSubList.forEach((f, fIndex) => {
+          if (f.sizeIds.includes(changeSizeId) && this.$common.isEmpty(startSubIndex)) {
+            startSubIndex = fIndex;
+            subInfo = f;
+          }
+        });
+        if (this.$common.isEmpty(subInfo)) return;
+        subInfo.sizeIds.forEach((sId, sIndex) => {
+          if (sId == changeSizeId && this.$common.isEmpty(startIndex)) {
+            startIndex = sIndex;
+          }
+        });
+        if (!this.$common.isEmpty(startIndex)) {
+          subInfo.sizeIds = subInfo.sizeIds.slice(startIndex);
+        }
+      } else {
+        colSubList.forEach((f, fIndex) => {
+          if (f.startId == changeSizeId && this.$common.isEmpty(startSubIndex)) {
+            startSubIndex = fIndex;
+            subInfo = f;
+          }
+        });
+      }
+      if (!this.$common.isEmpty(startSubIndex)) {
+        colSubList = colSubList.slice(startSubIndex);
+      }
+      colSubList.forEach((cItem) => {
+        this.changTableColData(cItem, column);
+      });
+    },
+    // 取某语言下的数据
+    preTemplate (type = false, fillSize = false) {
+      return new Promise(resolve => {
+        let defaultLanguage = this.defaultLanguage;
+        let sizePartlist = this.sizePartlist[defaultLanguage] || [];
+        // 根据选中的多属性筛选出语言模板数据
+        let sizelist = this.allList['name'] ? this.allList['name'].sizelist : [];
+        sizelist = sizelist.map(k => { return k.sizeId });
+        const newSizes = this.allProductSizData.filter((item, index) => {
+          return !sizelist.includes(item.sizeId) && this.checkTagVal.second.includes(item.sizeId);
+        }).map(m => {
+          return m.sizeId;
+        });
+        let list = this.sizeLanlist.filter(k => {
+          return [...sizelist, ...newSizes].includes(k.sizeId);
+        });
+        let tablelist = this.$common.copy(this.tableData.reverse());
+        let rowInfo = {};
+        let notNullCol = [];
+        let getData = list.map((k, index) => {
+          let [obj, arr] = [{}, []];
+          rowInfo = tablelist.find(item => item.sizeId == k.sizeId);
+          Object.keys(k).forEach(itemKey => {
+            if (!this.$common.isEmpty(rowInfo) && !this.$common.isUndefined(rowInfo[itemKey])) {
+              obj[itemKey] = rowInfo[itemKey];
+            } else if (itemKey.includes('Value') && this.$common.isString(k[itemKey]) && k[itemKey].includes('=')) {
+              obj[itemKey] = k[itemKey].substr(k[itemKey].lastIndexOf('=')).match(/(\d*)[^0-9]*$/)[1];
+            }
+          })
+          sizePartlist.forEach(item => {
+            obj[item.partId + 'cm'] = rowInfo && rowInfo[item.partId + 'cm'] ? rowInfo[item.partId + 'cm'] : '';
+            obj[item.partId + 'inch'] = rowInfo && rowInfo[item.partId + 'inch'] ? rowInfo[item.partId + 'inch'] : '';
+            if (!notNullCol.includes(item.partId) && !this.$common.isEmpty(obj[item.partId + 'cm'])) {
+              notNullCol.push(item.partId);
+            }
+            arr.push(item.partId);
+          });
+          if (this.$common.isEmpty(obj.sizeId) && this.$common.isEmpty(k.sizeId)) {
+            obj['sizeId'] = `defualt-${index}`;
+          }
+          return { ...k, ...obj, partIdList: arr };
+        });
+
+        const newd = this.$common.copy(getData.reverse());
+        this.tableData = newd;
+        !type && (this.oldTableList = newd);
+        this.landataItem = this.allList[defaultLanguage];
+        this.$nextTick(() => {
+          if (fillSize && this.subsectionData.enabled && [1].includes(this.planType)) {
+            let nullIndexJson = {};
+            notNullCol.forEach(key => {
+              this.tableData.find((row, rIndex) => {
+                if (this.$common.isEmpty(row[`${key}cm`])) {
+                  nullIndexJson[key] = rIndex - 1;
+                  return true;
+                }
+              });
+              if (!this.$common.isEmpty(nullIndexJson[key]) && nullIndexJson[key] >= 0 && (nullIndexJson[key] + 2) < this.tableData.length) {
+                this.cmInputFocus(this.tableData[nullIndexJson[key]], nullIndexJson[key], { attr: key }, {}, true);
+              }
+            });
+          }
+        });
+        resolve();
+      })
+    },
+    // 获取尺码类型ID
+    getSizeTypeId () {
+      let sizeType = null;
+      const hand = (arr) => {
+        arr.forEach(item => {
+          if (item.productCategoryId === this.productInfo.productCategoryId && !this.$common.isEmpty(item.sizeType)) {
+            sizeType = item.sizeType;
+          }
+          !this.$common.isEmpty(item.children) && Array.isArray(item.children) && hand(item.children);
+        })
+      };
+      hand(this.productCategoryListData);
+      return sizeType;
+    },
+    // 配置表格
+    setTemColumns (lan) {
+      let item = this.sizeTemList[lan.type] || [];
+      let titleName = item[0] ? item[0][lan.name] : ''; // 第二行表头
+      let headChild = [{
+        title: titleName,
+        align: 'center',
+        minWidth: 100,
+        className: 'measurement-value',
+        slot: lan.type + 'Value'
+      }];
+      if (this.subsectionData.enabled && [1].includes(this.planType)) {
+        headChild = [{
+          title: lan.type === 'name' ? '跳码' : ' ',
+          align: 'center',
+          minWidth: 100,
+          className: 'hopping-method',
+          notChart: true,
+          notRenderHand: true,
+          children: headChild
+        }]
+      }
+      return {
+        title: lan.otherLabel,
+        align: 'center',
+        minWidth: 100,
+        isLanguage: lan.type === 'name' ? null : true, // 用于尺码图片语言分离标识
+        lanType: lan.type,
+        className: 'measurement-tag-size',
+        children: [{
+          title: lan.type != 'name' ? ' ' : this.measurementJson.method,
+          align: 'center',
+          minWidth: 100,
+          className: 'measurement-method',
+          notRenderHand: lan.type != 'name',
+          isAllChange: lan.type == 'name',
+          // 测量方法的名称改变时，所有语言的都同时改变
+          valueChange: (val) => {
+            this.$set(this.measurementJson, 'method', val);
+            Object.keys(this.allList).forEach((key) => {
+              (this.allList[key].columnlist || []).forEach((item, fIndex) => {
+                if (!this.$common.isEmpty(item) && !this.$common.isEmpty(item.children)) {
+                  item.children.forEach((sRow, sIndex) => {
+                    if (sRow.isAllChange) {
+                      this.$set(this.allList[key].columnlist[fIndex].children[sIndex], 'title', val);
+                    }
+                  })
+                }
+              })
+            })
+          },
+          children: headChild
+        }],
+        valueChange: (val) => {
+          if (this.defaultLanguage == 'cn') {
+            this.$set(this.measurementJson, 'partName', val);
+          }
+        }
+      }
+    },
+    // 全部语言信息
+    allLanguageInfo () {
+      return new Promise(resolve => {
+        let language = this.language;
+        let defaultColumns = this.defaultColumns;
+        let [detemColumns, lanTemplateList, partTemplateList, allList] = [[], {}, {}, {}];
+        let mLang = {};
+        let fun = {
+          // 模板
+          getTemColumns: () => {
+            // 固定列
+            language.forEach(lan => {
+              mLang[lan.type] = lan;
+              if (!defaultColumns.includes(lan.type)) return;
+              let columns = this.setTemColumns(lan);
+              detemColumns.push(columns);
+            });
+            language.forEach(lan => {
+              if (!lanTemplateList[lan.type]) lanTemplateList[lan.type] = [];
+              // 过滤固定列
+              if (defaultColumns.includes(lan.type)) {
+                lanTemplateList[lan.type] = this.$common.copy(detemColumns);
+                return;
+              }
+              let lantemColumns = [];
+              let columns = this.setTemColumns(lan);
+              if (lan.type == 'en') {
+                lantemColumns.push(...detemColumns, this.setTemColumns(mLang['an']));
+                lantemColumns.push(columns);
+              } else {
+                lantemColumns.push(...detemColumns, columns);
+              }
+              // lantemColumns.push(...detemColumns, columns);
+              lanTemplateList[lan.type] = this.$common.copy(lantemColumns);
+            })
+          },
+          // 尺码部位
+          setParts: () => {
+            let headChild = [];
+            Object.keys(this.sizePartlist).forEach(size => {
+              let sizelist = this.sizePartlist[size] || [];
+              let sizeColumns = [];
+              sizelist.forEach((sl, index) => {
+                headChild = [
+                  {
+                    attr: sl.partId,
+                    title: 'cm',
+                    align: 'center',
+                    minWidth: 100,
+                    slot: 'cmInputs',
+                    valueChange: (val) => {
+                      const partId = this.sizePartlist[size][index].partId;
+                      Object.keys(this.allList).forEach((key) => {
+                        (this.allList[key].columnlist || []).forEach((item, fIndex) => {
+                          if (!this.$common.isEmpty(item) && !this.$common.isEmpty(item.selfChildren)) {
+                            item.selfChildren.forEach((sRow, sIndex) => {
+                              if (partId == sRow.partId) {
+                                this.$set(this.allList[key].columnlist[fIndex].selfChildren[sIndex].children[0], 'title', val);
+                              }
+                            })
+                          }
+                        })
+                      })
+                    }
+                  },
+                  {
+                    attr: sl.partId,
+                    title: 'inch',
+                    align: 'center',
+                    minWidth: 100,
+                    slot: 'inchInputs',
+                    valueChange: (val) => {
+                      const partId = this.sizePartlist[size][index].partId;
+                      Object.keys(this.allList).forEach((key) => {
+                        (this.allList[key].columnlist || []).forEach((item, fIndex) => {
+                          if (!this.$common.isEmpty(item) && !this.$common.isEmpty(item.selfChildren)) {
+                            item.selfChildren.forEach((sRow, sIndex) => {
+                              if (partId == sRow.partId) {
+                                this.$set(this.allList[key].columnlist[fIndex].selfChildren[sIndex].children[1], 'title', val);
+                              }
+                            })
+                          }
+                        })
+                      })
+                    }
+                  }
+                ];
+                if (this.subsectionData.enabled && [1].includes(this.planType)) {
+                  headChild = [{
+                    title: ' ',
+                    className: 'hopping-method',
+                    align: 'center',
+                    minWidth: 200,
+                    notChart: true,
+                    partId: sl.partId,
+                    renderHeader: (h, params) => {
+                      if (this.$common.isEmpty(this.colSubsectionList[sl.partId])) return h('div', {}, '');
+                      let startInfo = {};
+                      let endInfo = {};
+                      const headItem = this.colSubsectionList[sl.partId].map((m, sIndex) => {
+                        startInfo = this.sizGroupDataJson[m.startId];
+                        endInfo = this.sizGroupDataJson[m.endId];
+                        return h('div', {
+                          class: 'subsection-head',
+                        }, [
+                          h('span', {
+                            class: 'subsection-label',
+                          }, `${startInfo ? startInfo.size : ''} - ${endInfo ? endInfo.size : ''}`),
+                          h('Input', {
+                            style: {},
+                            props: {
+                              type: 'text',
+                              value: this.colSubsectionList[sl.partId][sIndex].hoppingCode
+                            },
+                            on: {
+                              'on-change': (val) => {
+                                this.$nextTick(() => {
+                                  if (this.$common.isEmpty(val.target._value)) return;
+                                  const hoppingCode = Number(val.target._value);
+                                  const decimals = hoppingCode.toString().split('.');
+                                  if (this.$common.isEmpty(hoppingCode) || hoppingCode <= 0 || (decimals.length > 1 && decimals[1].length > 1)) {
+                                    return this.$Message.error('输入值不符合大于0最多一位小数，不进行跳码计算操作');
+                                  }
+                                  this.$set(this.colSubsectionList[sl.partId][sIndex], 'hoppingCode', hoppingCode);
+                                  this.colSubsectionList[sl.partId].forEach((sItem, cIndex) => {
+                                    if (cIndex >= sIndex && !this.$common.isEmpty(params.column) && !this.$common.isEmpty(params.column.children)) {
+                                      this.changTableColData(this.$common.copy(sItem), params.column.children[0]);
+                                    }
+                                  });
+                                })
+                              }
+                            }
+                          })
+                        ])
+                      });
+                      return h('div', {}, headItem);
+                    },
+                    children: headChild
+                  }]
+                }
+                let obj = {
+                  title: sl[size + 'Name'],
+                  align: 'center',
+                  minWidth: 200,
+                  selfChildren: [{
+                    ...sl,
+                    align: 'center',
+                    title: sl.measurementDescription,
+                    children: [
+                      {
+                        attr: sl.partId,
+                        title: 'cm',
+                        align: 'center',
+                        slot: 'cmInputs'
+                      }
+                    ]
+                  }],
+                  children: [
+                    {
+                      title: sl.measurementDescription,
+                      className: 'measurement-method',
+                      align: 'center',
+                      minWidth: 200,
+                      partId: sl.partId,
+                      inputType: 'textarea',
+                      // 无论在哪个语言下修改测量方法，全部语言下的测量方法文本都改变，
+                      valueChange: (val) => {
+                        this.$set(this.sizePartlist[size][index], 'measurementDescription', val);
+                        const partId = this.sizePartlist[size][index].partId;
+                        Object.keys(this.allList).forEach((key) => {
+                          (this.allList[key].columnlist || []).forEach((item, fIndex) => {
+                            if (!this.$common.isEmpty(item) && !this.$common.isEmpty(item.selfChildren)) {
+                              item.selfChildren.forEach((sRow, sIndex) => {
+                                if (partId == sRow.partId) {
+                                  this.$set(this.allList[key].columnlist[fIndex].selfChildren[sIndex], 'measurementDescription', val);
+                                  this.$set(this.allList[key].columnlist[fIndex].selfChildren[sIndex], 'title', val);
+                                }
+                              })
+                              item.children.forEach((sRow, sIndex) => {
+                                if (partId == sRow.partId) {
+                                  this.$set(this.allList[key].columnlist[fIndex].children[sIndex], 'measurementDescription', val);
+                                  this.$set(this.allList[key].columnlist[fIndex].children[sIndex], 'title', val);
+                                }
+                              })
+                            }
+                          })
+                        })
+                      },
+                      children: headChild
+                    },
+                  ]
+                }
+                sizeColumns.push(obj);
+              });
+              partTemplateList[size] = this.$common.copy(sizeColumns);
+            })
+          },
+          // 整合全部语言数据
+          getAllList: () => {
+            language.forEach(lan => {
+              if (!allList[lan.type]) allList[lan.type] = {};
+              let obj = {};
+              obj.language = lan.type && lan.type.toUpperCase();
+              obj.attrLists = this.allAttrLists[lan.type] || []; // 对应语言的属性列表
+              obj.colorlist = this.attrallColorlist[lan.type] || []; // 对应语言的颜色列表
+              obj.sizelist = this.attrallSizelist[lan.type] || []; // 对应语言的尺码列表
+              obj.labellist = this.selfLabelList[lan.type] || []; // 对应语言的label列表
+              obj.titlelist = this.selfTitlist[lan.type] || []; // 对应语言的label列表
+              obj.piclist = this.allPartPicList[lan.type] || []; // 对应语言的图片列表
+              obj.columnlist = [].concat(lanTemplateList[lan.type], (partTemplateList[lan.type] || [])); // 表头
+              allList[lan.type] = obj;
+            })
+            allList['default'] = allList[this.defaultLanguage];
+          }
+        }
+        fun.getTemColumns();
+        fun.setParts();
+        fun.getAllList();
+        this.allList = allList;
+        // 设置列头可以编辑
+        Object.keys(allList).forEach(key => {
+          if (!this.$common.isEmpty(allList[key])) {
+            Object.keys(allList[key]).forEach(cKey => {
+              if (cKey == 'columnlist' && !this.$common.isEmpty(allList[key][cKey])) {
+                this.setColInput(allList[key][cKey], this.allList[key][cKey]);
+              }
+            })
+          }
+        });
+        resolve();
+      })
+    },
+    // 跳码改变时，更新表格数据
+    changTableColData (hoppingInfo, column) {
+      if (!this.subsectionData.enabled || ![1].includes(this.planType)) return;
+      if (this.$common.isEmpty(hoppingInfo.sizeIds) || this.$common.isEmpty(column)) return;
+      const startId = hoppingInfo.sizeIds[0];
+      const colKey = column.attr;
+      const baseRow = this.tableData.find(row => row.sizeId == startId);
+      if (this.$common.isEmpty(baseRow) || this.$common.isEmpty(baseRow[`${colKey}cm`])) return;
+      const baseVal = Number(baseRow[`${colKey}cm`]);
+      let scale = 1;
+      let jumpHz = 0;
+      let preSzieIndex = null;
+      let nowSizeIndex = null;
+      this.tableData.forEach((row, index) => {
+        if (hoppingInfo.sizeIds.includes(row.sizeId) && row.sizeId != startId) {
+          jumpHz = 0;
+          if (index > 0) {
+            preSzieIndex = hoppingInfo.sizeIds.indexOf(this.tableData[index - 1].sizeId);
+            nowSizeIndex = hoppingInfo.sizeIds.indexOf(row.sizeId);
+            if (preSzieIndex > -1 && nowSizeIndex > -1) {
+              jumpHz = (nowSizeIndex - preSzieIndex - 1);
+            }
+          }
+          this.$set(this.tableData[index], `${colKey}cm`, (Number(((hoppingInfo.hoppingCode * (scale + jumpHz)) + baseVal).toFixed(2))).toString());
+          scale++;
+          this.cmInputFocus(row, index, column, {}, false);
+        }
+      });
+    },
+    // 设置输入框
+    setColInput (colList, change) {
+      colList.forEach((cItem, index) => {
+        if (this.$common.isEmpty(cItem)) return;
+        if (this.$common.isEmpty(cItem.renderHeader) && !cItem.notRenderHand) {
+          cItem.renderHeader = (h, params) => {
+            return h('Input', {
+              style: {},
+              props: {
+                type: this.$common.isEmpty(cItem.inputType) ? 'text' : cItem.inputType,
+                value: params.column.title
+              },
+              on: {
+                'on-change': (val) => {
+                  this.$nextTick(() => {
+                    this.$set(change[index], 'title', val.target._value);
+                    this.$set(change[index], 'isValueChange', true);
+                    if (this.$common.isFunction(cItem.valueChange)) {
+                      cItem.valueChange(val.target._value);
+                    }
+                  })
+                }
+              }
+            });
+          }
+        }
+        if (!this.$common.isEmpty(cItem.children)) {
+          this.setColInput(cItem.children, change[index].children);
+        }
+      })
+    },
+    // 新增 color 选项
+    createColorHandle (val) {
+      const allId = this.colorDataList.map(m => {
+        return Number(m.colorId)
+      }).filter(item => !this.$common.isEmpty(item));
+      if (allId.includes(val)) return;
+      const langeData = this.$common.arrRemoveRepeat([
+        ...Object.keys(this.colorList[0] || {}),
+        ...Object.values(this.langeList).filter(lag => !this.$common.isEmpty(lag)),
+        ...['colorId', 'colorName']
+      ]);
+      let obj = {};
+      langeData.forEach(key => {
+        obj[key] = ['colorId'].includes(key) ? Math.max(...allId) + 1 : val;
+      });
+      this.checkColorVal.forEach(item => {
+        if (Number(item) == obj.colorId) {
+          item = obj.colorId
+        }
+      });
+      if (!this.checkColorVal.includes(obj.colorId)) {
+        this.checkColorVal.push(obj.colorId);
+      }
+      this.colorDataList.splice(0, 0, obj);
+    },
+    // 新增 tag 选项
+    createTagHandle (val) {
+      const addTag = this.addSizeData.map(m => m.name);
+      if (addTag.includes(val)) return;
+      const obj = {
+        merchantId: null,
+        size: val,
+        sizeCode: val,
+        sizeId: Math.max(...([...this.allProductSizData, ...this.sizeRes]).map(m => m.sizeId)) + 1,
+        sortNo: 1
+      }
+      if (!this.$common.isEmpty(this.checkTagVal.first)) {
+        // 插入数据
+        this.cascaderSecectData.forEach(item => {
+          if (item.value == this.checkTagVal.first[0]) {
+            item.children.forEach(sItem => {
+              if (sItem.value == this.checkTagVal.first[1]) {
+                sItem.sizeList.push(obj);
+              }
+            })
+          }
+        });
+      } else {
+        this.allProductSizData.push(obj);
+      }
+      this.addSizeData.push({
+        name: obj.size,
+        value: obj.size,
+        sizeId: obj.sizeId
+      });
+      this.$nextTick(() => {
+        setTimeout(() => {
+          const newVal = this.checkTagVal.second.filter(f => f != val);
+          newVal.push(obj.sizeId);
+          this.checkTagVal.second = newVal;
+        }, 300)
+      });
+    },
+    // 按钮点击(更新每个语言下的attrValue)
+    attrBtnclick (citem, index, cindex) {
+      if (!this.landataItem.attrLists[index]) return;
+      this.landataItem.attrLists[index].attrValue = citem.attributeValueId;
+      Object.keys(this.allList).forEach(k => {
+        let list = this.allList[k].attrLists || [];
+        list.forEach((item, key) => {
+          if (index === key) {
+            item.attrValue = item.value[cindex] && item.value[cindex].attributeValueId;
+          }
+        })
+      })
+    },
+    // 语言切换
+    lanChecked (val) {
+      this.$nextTick(() => {
+        if (!this.$common.isEmpty(val)) {
+          if (this.$common.isEmpty(this.validLanguage)) {
+            this.defaultLanguage = 'cn';
+          } else {
+            this.defaultLanguage = this.validLanguage.slice(-1);
+          }
+        } else {
+          this.defaultLanguage = '';
+        }
+        this.preTemplate(true);
+      })
+    },
+    // 聚焦
+    inputFocus (row, index, column, event) {
+      this.isFocus = true;
+      this.nowRow = { row: row, index: index, col: column };
+    },
+    // 失去焦点
+    inputBlur () {
+      this.isFocus = false;
+      setTimeout(() => {
+        !this.isFocus && (this.nowRow = {});
+      }, 500)
+    },
+    // 键盘事件-表格光标移动
+    inputKeyUp (e) {
+      const hand = {
+        getColIndex: (colKey) => {
+          const colArr = this.totalColumns[0].children.map(item => {
+            return item.children.map(m => ['inchInputs', 'cmInputs'].includes(m.slot) ? `${m.attr}_${m.slot}` : m.slot)
+          }).flat();
+          return { colArr: colArr, index: colArr.indexOf(colKey) };
+        },
+        // 左
+        '37': (num) => {
+          const colKey = this.nowRow.col.attr ? `${this.nowRow.col.attr}_${this.nowRow.col.slot}` : this.nowRow.col.slot;
+          const cloArrInfo = hand.getColIndex(colKey);
+          const colIndex = cloArrInfo.index;
+          if (colIndex == -1) return;
+          const colInfo = cloArrInfo.colArr[colIndex + (num || -1)];
+          if (!colInfo) return;
+          const dome = this.$refs[`${this.nowRow.index}-${colInfo}`];
+          dome && dome.focus({ cursor: 'all' });
+        },
+        // 上
+        '38': (num) => {
+          const colKey = this.nowRow.col.attr ? `${this.nowRow.col.attr}_${this.nowRow.col.slot}` : this.nowRow.col.slot;
+          const dome = this.$refs[`${this.nowRow.index + (num || -1)}-${colKey}`];
+          dome && dome.focus({ cursor: 'all' });
+        },
+        // 右
+        '39': () => {
+          hand['37'](1);
+        },
+        // 下
+        '40': () => {
+          hand['38'](1);
+        }
+      }
+      hand[e.keyCode] && hand[e.keyCode]();
+    },
+    // 尺寸改变时
+    sizeChangeHand (val, row, index) {
+      this.$nextTick(() => {
+        // 手动修改显示值时
+        if (!this.$common.isEmpty(this.checkTagVal.first)) {
+          this.cascaderSecectData.forEach(item => {
+            (item.children || []).forEach(sItem => {
+              (sItem.sizeList || []).forEach(tItem => {
+                if (tItem.sizeId == row.sizeId) {
+                  tItem.size = val;
+                }
+              })
+            })
+          })
+        } else {
+          this.allProductSizData.forEach(item => {
+            if (item.sizeId == row.sizeId) {
+              item.size = val;
+            }
+          });
+        }
+        this.addSizeData = this.addSizeData.map(item => {
+          if (row.sizeId == item.sizeId) {
+            item.name = val;
+            item.value = val;
+            item.size = val;
+          }
+          return item;
+        })
+      })
+    },
+    // 获取所有尺码数据
+    getAllProductSize () {
+      return new Promise((resolve) => {
+        this.axios.get(api.queryProductSizeList).then(res => {
+          if (!res.data || res.data.code !== 0) return resolve([]);
+          return resolve(res.data.datas || []);
+        }).catch(() => {
+          resolve([]);
+        })
+      })
+    },
+    // 获取尺码类型关联
+    getProductSizeTypeRel (id) {
+      return new Promise((resolve) => {
+        this.getSizeHistory({ erpProductId: id }).then(resObj => {
+          this.axios.get(api.getSizeList).then(res => {
+            if (!res.data || res.data.code !== 0) return resolve([]);
+            let listData = [];
+            (res.data.datas || []).forEach(item => {
+              if (resObj[`${item.sizeTypeId}-${item.sizeGroupNo}`]) {
+                listData.push(resObj[`${item.sizeTypeId}-${item.sizeGroupNo}`]);
+              } else {
+                listData.push(item);
+              }
+            });
+            this.productSizeTypeData = listData;
+            this.pageSizeList = this.productSizeTypeData.map((item, index) => {
+              return {
+                value: 'arr' + (index + 1),
+                label: '尺码组' + (index + 1),
+                children: (() => {
+                  return item.sizeList.map(m => {
+                    return { ...m, value: m.size, label: m.size }
+                  })
+                })()
+              }
+            });
+            return resolve(res.data.datas || []);
+          }).catch(() => {
+            resolve([]);
+          })
+        });
+      })
+    },
+    // 获取历史尺码信息
+    getSizeHistory (params) {
+      return new Promise((resolve) => {
+        this.axios.get(api.getSizeHistory, { params: params }).then(res => {
+          if (!res || !res.data || res.data.code != 0) return resolve({});
+          let obj = {};
+          (res.data.datas || []).forEach(item => {
+            obj[`${item.sizeTypeId}-${item.sizeGroupNo}`] = item;
+          });
+          resolve(obj);
+        }).catch(() => {
+          resolve({});
+        })
+      })
+    },
+    // 获取所有尺码数据
+    getAllSizeData () {
+      return new Promise((resolve) => {
+        this.sizeRes = [];
+        this.axios.get(api.queryProductSizeList).then((res) => {
+          if (!res || !res.data || !res.data.datas || res.data.code != 0) return resolve([]);
+          this.sizeRes = res.data.datas;
+          resolve(res.data.datas);
+        }).catch((err) => {
+          console.error(err);
+          resolve([]);
+        })
+      });
+    },
+    cascaderChange (cValue, selectedData) {
+      const value = [cValue[0], (cValue[1] ? cValue[1].split('_')[1] : null)];
+      this.checkTagVal.second = [];
+      // this.allProductSizData = this.$common.isEmpty(selectedData[1]) ? [] : selectedData[1].sizeList || [];
+      this.sizeType = this.$common.isEmpty(value[0]) ? null : value[0];
+      this.sizeGroupNo = this.$common.isEmpty(value[1]) ? null : value[1];
+    },
+    handSizeTypeRelData () {
+      let sizeTypeJson = {};
+      this.productSizeTypeData.forEach(item => {
+        this.$common.isEmpty(sizeTypeJson[item.sizeTypeId]) ? (sizeTypeJson[item.sizeTypeId] = [item]) : sizeTypeJson[item.sizeTypeId].push(item);
+      });
+      this.cascaderList = this.sizeTypeList.filter(f => !this.$common.isEmpty(sizeTypeJson[f.sizeTypeId])).map(m => {
+        return {
+          ...m,
+          value: m.sizeTypeId,
+          label: m.typeName,
+          children: this.$common.isEmpty(sizeTypeJson[m.sizeTypeId]) ? [] : sizeTypeJson[m.sizeTypeId].map(cm => {
+            return {
+              ...cm,
+              value: `${m.sizeTypeId}_${cm.sizeGroupNo}`,
+              label: (() => {
+                if ([0, '0', 1, '1', '01'].includes(m.sizeTypeId) && this.sizeStand[cm.sizeGroupNo] && this.sizeStand[cm.sizeGroupNo].name) {
+                  return this.sizeStand[cm.sizeGroupNo].name;
+                }
+                if (this.sizeGroup[cm.sizeGroupNo] && this.sizeGroup[cm.sizeGroupNo].name) {
+                  return this.sizeGroup[cm.sizeGroupNo].name;
+                }
+                return '尺码组';
+              })()
+            }
+          })
+        }
+      });
+      this.cascaderSecectData = this.cascaderList;
+      if (!this.$common.isEmpty(this.pageSizeTpye)) {
+        const defaultType = this.cascaderList.filter(f => f.sizeTypeId === Number(this.pageSizeTpye));
+        if (!this.$common.isEmpty(defaultType[0])) {
+          if (!this.$common.isEmpty(this.sizeGroupNo)) {
+            this.isDisabledCascader = true;
+            this.$set(this.checkTagVal, 'first', [defaultType[0].sizeTypeId, `${defaultType[0].sizeTypeId}_${this.sizeGroupNo}`]);
+          } else {
+            this.cascaderSecectData = defaultType;
+          }
+        }
+        let goodsSize = [];
+        let binSize = [];
+        let gorudId = [];
+        if (!this.$common.isEmpty(this.checkTagVal.first) && !this.$common.isEmpty(this.checkTagVal.first[0])) {
+          this.cascaderSecectData.forEach(item => {
+            if (item.value == this.checkTagVal.first[0] && !this.$common.isEmpty(item.children) && !this.$common.isEmpty(this.checkTagVal.first[1])) {
+              item.children.forEach(cItem => {
+                if (cItem.value == this.checkTagVal.first[1]) {
+                  binSize = cItem.sizeList || [];
+                  binSize.sort((min, big) => {
+                    return min.sortNo - big.sortNo
+                  });
+                } else {
+                  goodsSize = cItem.sizeList || [];
+                  goodsSize.sort((min, big) => {
+                    return min.sortNo - big.sortNo
+                  });
+                }
+              })
+            }
+          })
+        }
+        const binId = binSize.map(m => m.sizeId);
+        goodsSize.forEach(gItem => {
+          if (!binId.includes(gItem.sizeId)) {
+            gorudId.push(gItem.sizeId);
+            binSize.push(gItem);
+          }
+        });
+        (this.sizeRes || []).forEach((sItem) => {
+          if (!binId.includes(sItem.sizeId) && !gorudId.includes(sItem.sizeId)) {
+            binSize.push(sItem);
+          }
+        });
+        binSize.forEach(sItem => {
+          this.$set(this.sizGroupDataJson, sItem.sizeId, sItem);
+        });
+        this.allProductSizData = binSize;
+        if (this.$common.isEmpty(this.sizeGroupNo)) {
+          this.isPrintAll = true;
+        }
+      } else {
+        let binSize = [];
+        let includeKeys = [];
+        (this.sizeRes || []).forEach((sItem) => {
+          if (!includeKeys.includes(sItem.sizeId)) {
+            includeKeys.push(sItem.sizeId);
+            binSize.push(sItem);
+          }
+        });
+        this.allProductSizData = binSize;
+      }
+    },
+    openDia () {
+      this.createIframe();
+      this.resetForm();
+      this.oldTableList = [];
+      this.checkColorVal = [];
+      this.checkTagVal = { first: [], second: [] };
+      this.toopropSecect.color = false;
+      this.toopropSecect.tag = false;
+      this.isDisabledCascader = false;
+      this.createPicLoading = false;
+      this.pageLoading = true;
+      this.allList = {};
+      this.sizePartlist = {};
+      this.isGetInit = false;
+      this.sizeGroupNo = this.$common.isEmpty(this.productInfo.sizeGroupNo) ? 1 : this.productInfo.sizeGroupNo;
+      let goodTypeId = this.productInfo.productCategoryId;
+      let productId = this.productInfo.productId;
+      this.$common.allSettled([
+        () => {
+          return this.getAllSizeData()
+        },
+        () => {
+          return this.getTypelist()
+        },
+        () => {
+          return this.getProductSizeTypeRel(productId)
+        },
+        () => {
+          return this.categoryData(goodTypeId); // 获取挂载分类的分类信息
+        }
+      ]).then(() => {
+        this.sizeType = this.categoryResult.sizeType;
+        this.pageSizeTpye = this.getSizeTypeId();
+        this.handSizeTypeRelData();
+        this.$common.promiseAll([
+          () => {
+            return this.getSubsectionInfo(this.sizeType, this.sizeGroupNo); // 获取商品绑定尺码组对应的跳码信息
+          },
+        ]).then(async (arrRes) => {
+          try {
+            if (this.$common.isEmpty(this.sizePartlist)) {
+              let res = await this.getSizePartList();// 获取尺码部位
+              await this.getSizeDetail(res);// 根据尺码类型获取详情
+            }
+            await this.laPaProductInfo();
+            await this.allLanguageInfo();
+            await this.preTemplate();
+            this.$nextTick(() => {
+              if ([4].includes(this.planType)) {
+                const thList = [...(document.querySelectorAll('.measurement-tag-size') || [])];
+                thList.forEach(rowTh => {
+                  rowTh.setAttribute('rowspan', 2)
+                })
+              }
+            });
+          } catch (err) {
+            console.error(err);
+          }
+          this.pageLoading = false;
+        });
+      }).catch((err) => {
+        console.error(err);
+        this.pageLoading = false;
+      })
+    },
+    // 隐藏选项
+    isVisibleToopropSecect (key, visible) {
+      this.toopropSecect[key] = visible;
+      !visible && this[`${key}SecectHand`](true);
+    },
+    // 确认选项
+    toopropSecectConfirm (key) {
+      this[`${key}SecectHand`]().then(() => {
+        this.isVisibleToopropSecect(key, false);
+      })
+    },
+    // 颜色选择处理
+    colorSecectHand (type) {
+      return new Promise((resolve) => {
+        if (type) {
+          this.checkColorVal = (this.landataItem.colorlist || []).filter(f => !this.oldColorVal.includes(f.colorId)).map(m => m.colorId);
+          return resolve();
+        }
+        let remove = [];
+        let colorIds = [];
+        (this.landataItem.colorlist || []).forEach(item => {
+          if (!this.checkColorVal.includes(item.colorId)) {
+            remove.push(item.colorId);
+          }
+          colorIds.push(this.$common.isEmpty(Number(item.colorId)) ? item.colorId : Number(item.colorId));
+        })
+        const checkItem = this.colorDataList.filter(f => this.checkColorVal.includes(f.colorId));
+        Object.keys(this.langeList).forEach(lan => {
+          this.attrallColorlist[lan] = (this.attrallColorlist[lan] || []).filter(item => {
+            return !remove.includes(item.colorId);
+          })
+        });
+        checkItem.forEach(k => {
+          if (colorIds.includes(k.colorId)) return;
+          Object.keys(this.langeList).forEach(lan => {
+            if (!this.attrallColorlist[lan]) this.attrallColorlist[lan] = [];
+            if (this.attrallColorlist[lan].map(m => m.colorId).includes(k.colorId)) return;
+            this.attrallColorlist[lan].push({ colorName: k[this.langeList[lan]] || '', colorId: k.colorId, skcCode: k.skcCode });
+          })
+        });
+        this.landataItem.colorlist = this.attrallColorlist[this.defaultLanguage];
+        this.$nextTick(() => { resolve() });
+      })
+    },
+    // 类型选择处理
+    tagSecectHand (type) {
+      return new Promise(async (resolve) => {
+        if (type) {
+          this.checkTagVal.second = this.$common.copy(this.oldSizeVal);
+        } else {
+          this.oldSizeVal = this.$common.copy(this.checkTagVal.second);
+        }
+        this.categoryResult = await this.categoryData(this.productInfo.productCategoryId); // 获取挂载分类的分类信息
+        if (this.$common.isEmpty(this.sizePartlist)) {
+          let res = await this.getSizePartList();// 获取尺码部位
+          await this.getSizeDetail(res);// 根据尺码类型获取详情
+        }
+        await this.laPaProductInfo();
+        await this.allLanguageInfo();
+        await this.preTemplate(true, true);
+        resolve();
+      })
+    },
+    // 输入
+    inputTagItem (tag, event, type) {
+      if (this.$common.isEmpty(tag) || !event || !event.target) return;
+      const val = (event.target.innerText).trim();
+      if (type == 'size') {
+        this.sizeChangeHand(val, tag);
+        this.tableData = this.tableData.map(row => {
+          return row.sizeId == tag.sizeId ? { ...row, size: val } : row;
+        })
+        return;
+      }
+      if (type == 'color') {
+        let langColorKey = this.langeList[this.defaultLanguage];
+        this.colorDataList = this.colorDataList.map(item => {
+          return item.colorId == tag.colorId ? { ...item, [langColorKey]: val } : item;
+        })
+      }
+    },
+    // 聚焦时
+    focusInput () {
+      this.focusTagSizeInput = true;
+    },
+    // 失去焦点
+    blurInput () {
+      this.focusTagSizeInput = false;
+    },
+    getSizePicture (data) {
+      this.$emit('getSizePicture', data)
+    },
+    // 勾选(取消)商品图片
+    picCheckChange (val, key) {
+      if (key == 'goodsPicJson') {
+        this.languageList.forEach(item => {
+          if (!this.$common.isEmpty(this.goodsPicJson[item]) && this.goodsPicJson[item].isChecked != val) {
+            this.$set(this.goodsPicJson[item], 'isChecked', val);
+          }
+          if (!val && !this.$common.isEmpty(this.partImgList[item]) && !this.partImgList[item].isChecked) {
+            this.$set(this.partImgList[item], 'isChecked', true);
+          }
+        });
+        return;
+      }
+      this.languageList.forEach(item => {
+        if (this.$common.isEmpty(this.partImgList[item]) || this.partImgList[item].isChecked == val) return;
+        this.$set(this.partImgList[item], 'isChecked', val);
+      });
+    },
+    // 选择图片
+    chosePicture (event, key) {
+      if (!['allPartPicList', 'goodsAllPic', 'local'].includes(event)) return;
+      if (event == 'allPartPicList') {
+        Object.keys(this[event]).forEach(lang => {
+          this[key][lang].pictureUrl = this[event][lang][0].pictureUrl;
+        });
+        return;
+      }
+      if (event == 'goodsAllPic') {
+        this.chosePicData = this.$common.copy(this[event]);
+        this.changPicKey = key;
+        this.$nextTick(() => {
+          this.modelPicVisible = true;
+        });
+        return;
+      }
+      if (event == 'local') {
+        const fileInput = document.querySelector('#temporaryFile');
+        if (!fileInput) return;
+        this.changPicKey = key;
+        fileInput.click();
+      }
+    },
+    // 弹窗勾选(取消)图片
+    modalCheckedChange (val, index, valKey) {
+      if (!val) return;
+      this.chosePicData.forEach((item, fIndex) => {
+        if (fIndex != index) {
+          item.isModalChecked = false;
+        }
+      });
+    },
+    // 关闭选图片弹窗
+    closePicModal () {
+      this.chosePicData = [];
+      this.modelPicVisible = false;
+    },
+    // 确认选择图片
+    confirmChosePic () {
+      const chosePic = this.chosePicData.find(item => item.isModalChecked);
+      if (this.$common.isEmpty(chosePic)) {
+        return this.$Message.error('请选择图片');
+      }
+      let newImg = this.$common.copy(this[this.changPicKey]);
+      Object.keys(newImg).forEach(key => {
+        newImg[key].pictureUrl = chosePic.pictureUrl;
+      });
+      this[this.changPicKey] = newImg;
+      this.closePicModal();
+    },
+    // 文件改变
+    onFileChange (val) {
+      const newFile = val.target.files[0];
+      if (!newFile || newFile.size == 0) return;
+      this.$common.fileToBase64(newFile).then(res => {
+        let newImg = this.$common.copy(this[this.changPicKey]);
+        Object.keys(newImg).forEach(key => {
+          newImg[key].pictureUrl = res;
+        });
+        this[this.changPicKey] = newImg;
+        this.$nextTick(() => {
+          const fileInput = document.querySelector('#temporaryFile');
+          if (!fileInput) return;
+          fileInput.value = null;
+        })
+      });
+    },
+    // 颜色值改变时修改 CSS 变量
+    colorChange (color, key) {
+      let root = document.documentElement;
+      if (!root) return;
+      // 修改 CSS 变量的值
+      root.style.setProperty(`--size-chart-${key}`, color);
+    }
+  }
+}
+</script>
+<style lang="less" scoped>
+.tooprop-secect-content{
+  position: absolute;
+  display: flex;
+  width: 300px;
+  padding: 0 10px 0 0;
+  left: 100%;
+  top: 0;
+  border-radius: 5px;
+  background: #fff;
+  z-index: 10;
+  box-shadow: 0 0 5px 0px #000;
+  :deep(.dyt-select-demo){
+    .ivu-select-selection{
+      border: none;
+      outline: none;
+    }
+  }
+  .ivu-icon-md-checkmark-circle-outline,
+  .ivu-icon-ios-close-circle-outline{
+    margin-left: 10px;
+    font-size: 20px;
+    line-height: 32px;
+    cursor: pointer;
+  }
+}
+.not-select-self-size{
+  :deep(.measurement-method){
+    display: none;
+  }
+}
+.tag-item-content{
+  position: relative;
+  display: flex;
+  // width:calc(100% - 200px);
+  // min-width: 400px;
+  .tag-item-text-content{
+    display: flex;
+    flex: 100;
+    padding-right: 15px;
+    flex-wrap: wrap;
+  }
+  .tag-item-lable{
+    margin-left: 5px;
+    &:first-child{
+      margin-left: 0;
+    }
+    .tag-item-txt{
+      display: inline-block;
+      min-width: 20px;
+      padding: 0 3px;
+      line-height: 24px;
+      border: 1px solid #DCDFE6;
+      border-radius: 3px;
+      &:focus-visible{
+        outline: none;
+      }
+    }
+  }
+}
+.woman-shoe-plan{
+  &.sizeContent {
+    :deep(.ivu-form) {
+      .ivu-table-header{
+        thead tr {
+          &:nth-child(1), &:nth-child(3) {
+            display: none;
+          }
+          &:nth-child(4) {
+            th {
+              &.measurement-value {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+      .flex-sty {
+        display: block;
+        min-width: initial;
+        min-height: auto;
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+      }
+      .img-top-txt{
+        padding-bottom: 10px;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+      }
+      .img-father{
+        position: relative;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        border-radius: 0;
+        margin-left: 0;
+        justify-content: center;
+        img{
+          width: auto;
+          height: auto;
+          max-width: 90%;
+          max-height: 300px;
+        }
+      }
+    }
+  }
+}
+.size-charts-modal{
+  position: relative;
+}
+.pic-list-content{
+  :deep(.ivu-checkbox-wrapper){
+    position: relative;
+    vertical-align: top;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px #aaa;
+    &:last-child{
+      margin-right: 0;
+    }
+    .ivu-checkbox{
+      position: absolute;
+      top: 0;
+      left: 0;
+      .ivu-checkbox-inner{
+        width: 20px;
+        height: 20px;
+        &:after {
+          width: 8px;
+          height: 15px;
+          top: -1px;
+          left: 5px;
+        }
+      }
+    }
+    .pic-item{
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      display: flex;
+      // align-items: center;
+      img{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+  }
+}
+.table-color-set{
+  position: relative;
+  .color-set-row{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 80px;
+  }
+}
+.ivu-icon-ios-create-outline{
+  line-height: 32px;
+  font-size: 20px;
+  cursor: pointer;
+  visibility: visible;
+}
+</style>
+<style lang="less">
+.sizecharts .ivu-modal {
+  min-width: 1300px;
+}
+.sizeContent {
+  overflow: hidden;
+  .size-form {
+    padding-left: 20px;
+  }
+  .ivu-table th.is-leaf,
+  .ivu-table-border th{
+    border-color: var(--size-chart-headBorderColor);
+    font-weight: bold;
+  }
+  .ivu-table td,
+  .ivu-table-border td,
+  .ivu-table-wrapper-with-border {
+    border-color: var(--size-chart-tableBorderColor);
+    font-weight: bold;
+  }
+  .ivu-table:before{
+    background-color: var(--size-chart-tableBorderColor);
+  }
+  .ivu-table-border {
+    &:after {
+      background-color: var(--size-chart-tableBorderColor);
+    }
+    .ivu-table-header{
+      position: relative;
+      &:after {
+        background-color: var(--size-chart-headBorderColor);
+        z-index: 10;
+      }
+    }
+  }
+  .ivu-table {
+    th {
+      color: var(--size-chart-headFontColor);
+      background: var(--size-chart-headBackground);
+      .ivu-input{
+        color: var(--size-chart-headFontColor);
+        background: var(--size-chart-headBackground);
+        border-color: var(--size-chart-headBorderColor);
+      }
+      .dyt-custom-input-box .dyt-custom-input .ivu-input-icon{
+        color: var(--size-chart-headFontColor);
+        background: var(--size-chart-headBackground);
+      }
+    }
+    td {
+      color: var(--size-chart-tableFontColor);
+      background: var(--size-chart-tableBackground);
+      .ivu-input{
+        color: var(--size-chart-tableFontColor);
+        background: var(--size-chart-tableBackground);
+        border-color: var(--size-chart-tableBorderColor);
+      }
+      .dyt-custom-input-box .dyt-custom-input .ivu-input-icon{
+        color: var(--size-chart-tableFontColor);
+        background: var(--size-chart-tableBackground);
+      }
+    }
+  }
+  .flex-sty {
+    display: flex;
+    min-width: 800px;
+    min-height: 300px;
+    position: relative;
+    justify-content: center;
+    .flex-form{
+      width: 500px;
+      display: inline-block;
+    }
+    .ivu-form-item-label,
+    .ivu-form-item,
+    .ivu-btn,
+    .ivu-table,
+    .ivu-input {
+      color: #262626;
+    }
+    .form-border--bot {
+      border-bottom: 1px solid #ccc;
+      .ivu-form-item-label {
+        text-align: left;
+      }
+    }
+    .ivu-btn {
+      padding: 0 10px;
+      border-radius: 0;
+      &:hover,
+      &:active {
+        border-color: #dcdee2;
+      }
+    }
+    .active-btn {
+      background-color: #ccc;
+      border-color: #ccc;
+      color: #292929;
+    }
+    .btn-mb {
+      margin-bottom: 10px;
+    }
+  }
+  .flex-center {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .input-items {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    .input-item-c {
+      width: 100px;
+    }
+    .input-item-l {
+      padding-right: 4px;
+      width: 70px;
+      text-align: right;
+    }
+  }
+  .picture-content{
+    position: relative;
+    display: flex;
+    height: 300px;
+  }
+  .img-father {
+    position: relative;
+    width: 300px;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+  .fmb0 {
+    .ivu-form-item {
+      margin-bottom: 0px;
+    }
+  }
+  #sizechart-table {
+    height: auto !important;
+  }
+}
+.sizecharts {
+  .ivu-modal-body {
+    height: 600px;
+    overflow: scroll;
+  }
+  .ivu-form-item {
+    margin-bottom: 0;
+    zoom: 1.1;
+  }
+}
+.footers,
+.footers__left {
+  display: flex;
+  align-items: center;
+}
+.footers__right{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footers {
+  justify-content: space-between;
+}
+.table-color-picker{
+  width: 300px;
+}
+.subsection-head{
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+  &:last-child{
+    margin-bottom: 0;
+  }
+  .subsection-label{
+    padding-right: 5px;
+    flex: 100;
+    text-align: right;
+    font-size: 12px;
+    font-weight: initial;
+  }
+  .ivu-input-wrapper{
+    width: 80px;
+  }
+}
+</style>

@@ -1,0 +1,101 @@
+.login{
+  min-height:456px;
+  margin:60px auto;
+  background: #101021;
+
+  border:1px solid #dddee1;
+  border-left:none;
+  border-right:none;
+  box-shadow: 0 10px 10px rgba(204, 204, 204, 1);
+  -webkit-box-shadow: 0 10px 10px rgba(204, 204, 204, 1);
+  -moz-box-shadow: 0 10px 10px rgba(204, 204, 204, 1);
+  /* background-image:-webkit-linear-gradient(to top, #fff,#d3e5fc ); background-image:linear-gradient(to top, #fff,#d3e5fc);*/
+  border-bottom:none;
+  position:relative;
+}
+.login .panel{
+  color: #333;
+  font-size: 16px;
+  width: 60%;
+  height: 60%;
+  min-width: 200px;
+  max-width: 400px;
+  padding: 40px;
+  margin:0 auto;
+  background:#fff;
+  position:relative;
+}
+.panel label{
+  display:block;
+  line-height:48px;
+  text-align:left;
+
+}
+.pRow{
+  margin:20px 0;
+}
+h1{
+  font-size:24px;
+  text-align:center;
+  margin-top:60px;
+  letter-spacing: .1rem;
+}
+.loginBtn{
+  margin-top:60px;
+  text-align:center;
+}
+.footerLink{
+  position:absolute;
+  bottom:-70px;
+  right:0;
+}
+.footerLink a{
+  font-size:14px;
+  padding:0 20px;
+  border-right: 1px solid rgba(255,255,255,.2);
+  color:#999;
+}
+.footerLink a:last-child{
+  padding-right:0;
+  border-right:none;
+}
+.footerLink a:hover{
+  color:#fff;
+}
+/*注册*/
+.loginPanel .ivu-form-item-label{
+  font-size:16px;
+}
+.loginPanel .ivu-form-item-required .ivu-form-item-label:before{
+  display:none;
+}
+.register .panelStep_2 .ivu-checkbox {
+  margin-right:5px;
+}
+.register .ivu-form-item-label{
+  display:inline-block;
+  width:90px;
+  text-align:right;
+  margin-right:15px;
+  font-size:14px;
+}
+
+
+.register .ivu-form-item-error-tip{
+  left: 88%;
+  top: 5px;
+  width: 100%;
+  text-align: left;
+}
+.register .panelStep_2 .ivu-form-item-label{
+  width:auto;
+  text-align:left;
+  margin-right:0;
+}
+.register .panelStep_2 .label_3 .ivu-form-item-label{
+  display:block;
+  width:100%;
+}
+.register .panelStep_2 .label_3 .ivu-form-item-label, .register .panelStep_2 .label_4 .ivu-form-item-label{
+  font-weight:bold;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+    <div>已进入回调页面</div>
+  </div>
+</body>
+<script type="text/javascript">
+  let href = window.location.href;
+  let code = href.split('?')[1];
+  let yandexobj = null;
+  let shopPlatformType = JSON.parse(localStorage.getItem('shopPlatformType'));
+  if (shopPlatformType === 'yandex') {
+    yandexobj = href.split('#')[1];
+  }
+  if (shopPlatformType === 'factorymarket') {
+    window.location.href = '/setting-service/factorymarketAccount/getToken?code=' + code + '&' + JSON.parse(localStorage.getItem('fmParams'));
+  } else if (shopPlatformType === 'yandex') {
+    window.location.href = '/setting-service/yandexAccount/getToken?' + yandexobj;
+  } else if (shopPlatformType === 'wish') {
+    window.location.href = '/setting-service/wishAccount/getToken?accountId=' + JSON.parse(localStorage.getItem('accountId')) + '&' + code + '&' + JSON.parse(localStorage.getItem('wishParams'));
+  } else if (shopPlatformType === 'joom') {
+    window.location.href = '/setting-service/joomAccount/getToken?accountId=' + JSON.parse(localStorage.getItem('accountId')) + '&' + code + '&' + JSON.parse(localStorage.getItem('joomParams'));
+  } else if (shopPlatformType === 'dhgate') {
+    window.location.href = '/setting-service/dhgateAccount/getToken?' + code + '&' + JSON.parse(localStorage.getItem('dhgateParams'));
+  } else if (shopPlatformType === 'alibabagj') {
+    window.location.href = '/setting-service/alibabagjAccount/getToken?accountId=' + JSON.parse(localStorage.getItem('accountId')) + '&' + code;
+  } else if (shopPlatformType === 'allegro') {
+    window.location.href = '/setting-service/allegroAccount/getToken?accountId=' + JSON.parse(localStorage.getItem('accountId')) + '&' + code + '&' + JSON.parse(localStorage.getItem('allegroParams'));
+  }
+</script>
+</html>

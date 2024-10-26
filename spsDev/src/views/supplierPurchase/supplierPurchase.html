@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head >
+  <meta charset="UTF-8" >
+  <meta name="google" content="notranslate">
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
+  <title >LAPA-采购管理系统</title >
+  <!-- <link href="http://www.tongtool.com/images/favicon.ico" rel="shortcut icon" type="image/x-icon" > -->
+  <link href="<%= BASE_URL %>favicon.ico" rel="shortcut icon" type="image/x-icon" >
+  <link rel="dns-prefetch" href="//at.alicdn.com?tipsTime=<%= BASE_URL %>" />
+  <!-- <link rel="stylesheet" href="./static/css/iviewxx.css">
+  <link rel="stylesheet" href="./static/css/global.css">
+  <link rel="stylesheet" href="./static/css/font_285525_8ah18d9b4b4/iconfont.css"> -->
+</head>
+<body>
+<!-- APP 为template挂载节点 -->
+<div id="app">
+  <!-- router-view 是vue-router自定义组件，简单理解为挂载的详细内容 -->
+  <router-view ></router-view>
+</div>
+<!-- <script src="http://10.0.6.185:20881/rap.plugin.js?projectId=1"></script>-->
+<script>
+  const loadRes = [
+    {type: 'link', url: './static/css/iviewxx.css'},
+    {type: 'link', url: './static/css/global.css'},
+    {type: 'link', url: './static/css/font_285525_8ah18d9b4b4/iconfont.css'}
+  ];
+  const tips = new Date().getTime();
+  let bodyFrag = document.createDocumentFragment();
+  let headFrag = document.createDocumentFragment();
+  loadRes.forEach(item => {
+    let newElement = document.createElement(item.type);
+    if (item.type === 'link') {
+      newElement.setAttribute('rel', 'stylesheet');
+      newElement.setAttribute('type', 'text/css');
+      newElement.setAttribute('href', item.url +'?tipsTime='+tips);
+      headFrag.appendChild(newElement);
+    } else if (item.type === 'script') {
+      newElement.setAttribute('type', 'text/javascript');
+      newElement.setAttribute('src', item.url +'?tipsTime='+tips);
+      bodyFrag.appendChild(newElement);
+    }
+  })
+  document.querySelector('head').appendChild(headFrag);
+  document.querySelector('body').appendChild(bodyFrag);
+</script>
+</body>
+</html>

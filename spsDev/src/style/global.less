@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+:root {
+  --list-form-item-width: 280px;
+}
+.subLayer {
+  .topper {
+    position: relative;
+    background: #f9fafb;
+    height: 60px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(204, 204, 204, 1);
+    -webkit-box-shadow: 0 1px 1px rgba(204, 204, 204, 1);
+    -moz-box-shadow: 0 1px 1px rgba(204, 204, 204, 1);
+    border-bottom-color: #fff;
+  }
+  // &.infoDetails{
+  //   .topper {
+  //     position: sticky;
+  //     top: 0;
+  //     z-index: 99;
+  //   }
+  // }
+}
+.fixwidthForm,
+.platformParamsSelect {
+
+  .dyt-select-demo,
+  .ivu-form-item-content {
+    width: var(--list-form-item-width);
+  }
+
+  .ivu-date-picker {
+    width: 100%;
+  }
+
+  .notplatformParamsSelect {
+    margin-bottom: 10px;
+
+    &.ivu-form-item {
+      margin-bottom: 10px;
+    }
+
+    .ivu-form-item-content,
+    .dyt-select-demo,
+    .ivu-date-picker {
+      width: auto;
+    }
+  }
+
+  .form-item-label {
+    .ivu-form-item-label {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .ivu-form-item-label {
+    .dyt-select-demo {
+      width: auto;
+    }
+  }
+}
+
+// vue-treeselect 组件样式修改 start
+.vue-treeselect {
+  .vue-treeselect__control {
+    height: 32px;
+    line-height: normal;
+
+    .vue-treeselect__multi-value-item {
+      .vue-treeselect__value-remove {
+        border-left: 0px solid #fff;
+      }
+    }
+
+    .vue-treeselect__placeholder,
+    .vue-treeselect__single-value {
+      line-height: 30px;
+    }
+  }
+}
+
+.form-item-required {
+  .ivu-form-item-label {
+    &:before {
+      content: '*';
+      display: inline-block;
+      margin-right: 4px;
+      line-height: 1;
+      font-family: SimSun;
+      font-size: 14px;
+      color: #ed4014;
+    }
+  }
+}
+
+.table-col-required {
+  position: relative;
+
+  &:before {
+    content: '*';
+    display: inline-block;
+    margin-right: 4px;
+    line-height: 1;
+    font-family: SimSun;
+    font-size: 14px;
+    font-weight: 100;
+    color: #ed4014;
+  }
+}
+
+.alignItemCenter {
+  align-items: center;
+}

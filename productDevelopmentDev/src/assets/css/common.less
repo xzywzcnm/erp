@@ -1,0 +1,1020 @@
+@import '~@/assets/my-theme/variable.less';
+@import '~@/assets/css/normalize.less';
+// 全局样式设置
+:root {
+  --size-chart-headBackground: #f2f2f2;
+  --size-chart-headFontColor: #262626;
+  --size-chart-headBorderColor: #BBBBBB;
+  --size-chart-tableBackground: #fff;
+  --size-chart-tableFontColor: #262626;
+  --size-chart-tableBorderColor: #BBBBBB;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  width: 100%;
+  min-width: 1200px;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/*文字排版、颜色*/
+.f12 {
+  font-size: 12px;
+}
+
+.f13 {
+  font-size: 13px;
+}
+
+.f14 {
+  font-size: 14px;
+}
+
+.f16 {
+  font-size: 16px;
+}
+
+.f20 {
+  font-size: 20px;
+}
+
+.fb {
+  font-weight: bold;
+}
+
+.fn {
+  font-weight: normal;
+}
+
+.t2 {
+  text-indent: 2em;
+}
+
+.red,
+a.red {
+  color: #cc0031;
+}
+
+.darkblue,
+a.darkblue {
+  color: #039;
+}
+
+.gray,
+a.gray {
+  color: #878787;
+}
+
+.lh150 {
+  line-height: 150%;
+}
+
+.lh180 {
+  line-height: 180%;
+}
+
+.lh200 {
+  line-height: 200%;
+}
+
+.unl {
+  text-decoration: underline;
+}
+
+.no_unl {
+  text-decoration: none;
+}
+
+/*定位*/
+.tl {
+  text-align: left;
+}
+
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.fl {
+  float: left;
+  display: inline;
+}
+
+.fr {
+  float: right;
+  display: inline;
+}
+
+.cb {
+  clear: both;
+}
+
+.cl {
+  clear: left;
+}
+
+.cr {
+  clear: right;
+}
+
+.vm {
+  vertical-align: middle;
+}
+
+.pr {
+  position: relative;
+}
+
+.pa {
+  position: absolute;
+}
+
+.abs-right {
+  position: absolute;
+  right: 0;
+}
+
+.zoom {
+  zoom: 1;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.none {
+  display: none;
+}
+
+.color-fff {
+  color: #ffffff;
+}
+
+/*长度高度*/
+.w10 {
+  width: 10px;
+}
+
+.w20 {
+  width: 20px;
+}
+
+.w50 {
+  width: 50px;
+}
+
+.w90 {
+  width: 90px;
+}
+
+.w100 {
+  width: 100px;
+}
+
+.w200 {
+  width: 200px;
+}
+
+.w250 {
+  width: 250px;
+}
+
+.w500 {
+  width: 500px;
+}
+
+.w800 {
+  width: 800px;
+}
+
+.w {
+  width: 100%;
+}
+
+.h50 {
+  height: 50px;
+}
+
+.h80 {
+  height: 80px;
+}
+
+.h100 {
+  height: 100px;
+}
+
+.h200 {
+  height: 200px;
+}
+
+.h {
+  height: 100%;
+}
+
+/*边距*/
+.m10 {
+  margin: 10px;
+}
+
+.m15 {
+  margin: 15px;
+}
+
+.m30 {
+  margin: 30px;
+}
+
+.mt5 {
+  margin-top: 5px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mt15 {
+  margin-top: 15px;
+}
+
+.mt50 {
+  margin-top: 50px;
+}
+
+.mt100 {
+  margin-top: 100px;
+}
+
+.mb5 {
+  margin-bottom: 5px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb15 {
+  margin-bottom: 15px;
+}
+
+.mb100 {
+  margin-bottom: 100px;
+}
+
+.ml5 {
+  margin-left: 5px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.ml15 {
+  margin-left: 15px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.ml30 {
+  margin-left: 30px;
+}
+
+.ml50 {
+  margin-left: 50px;
+}
+
+.ml100 {
+  margin-left: 100px;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr15 {
+  margin-right: 15px;
+}
+
+.mr50 {
+  margin-right: 50px;
+}
+
+.mr100 {
+  margin-right: 100px;
+}
+
+.p10 {
+  padding: 10px;
+}
+
+.p15 {
+  padding: 15px;
+}
+
+.p30 {
+  padding: 30px;
+}
+
+.pt5 {
+  padding-top: 5px;
+}
+
+.pt10 {
+  padding-top: 10px;
+}
+
+.pt15 {
+  padding-top: 15px;
+}
+
+.pt20 {
+  padding-top: 20px;
+}
+
+.pt30 {
+  padding-top: 30px;
+}
+
+.pt50 {
+  padding-top: 50px;
+}
+
+.pb5 {
+  padding-bottom: 5px;
+}
+
+.pb25 {
+  padding-bottom: 25px;
+}
+
+.pb100 {
+  padding-bottom: 100px;
+}
+
+.pl5 {
+  padding-left: 5px;
+}
+
+.pl10 {
+  padding-left: 10px;
+}
+
+.pl50 {
+  padding-left: 50px;
+}
+
+.pl100 {
+  padding-left: 100px;
+}
+
+.pr5 {
+  padding-right: 5px;
+}
+
+.pr10 {
+  padding-right: 10px;
+}
+
+.pr15 {
+  padding-right: 15px;
+}
+
+.pr100 {
+  padding-right: 100px;
+}
+
+.border1px {
+  border: 1px solid #ddd;
+}
+
+.border-l {
+  border-left: 1px solid #ddd;
+}
+
+.redBor {
+  border: 1px solid #ed3f14;
+}
+
+/***********通用基本类2************/
+/*滚动条*/
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+::-webkit-scrollbar-track-piece {
+  background: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bbbec4;
+}
+
+/* 左侧导航栏数量 */
+.ivu-menu-light.ivu-menu-vertical .ivu-menu-item span.numMark {
+  float: right;
+  top: -10px;
+  right: 0;
+  height: 20px;
+  border-radius: 4px;
+  min-width: 20px;
+  background: #f8ac59;
+  border: 1px solid transparent;
+  color: #fff;
+  line-height: 18px;
+  text-align: center;
+  padding: 0 3px 0 2px;
+  font-size: 12px;
+  white-space: nowrap;
+  -webkit-transform-origin: -10% center;
+  transform-origin: -10% center;
+  z-index: 10;
+  -webkit-box-shadow: 0 0 0 1px #fff;
+  box-shadow: 0 0 0 1px #fff;
+  margin-left: 4px;
+}
+
+/* Copyright 2008 TSXMLOVE. All Rights Reserved. 不知道这个是用来干啥的 */
+.btn:hover {
+  -webkit-transition: color 0.2s linear, background-color 0.2s linear,
+    border 0.2s linear, -webkit-box-shadow 0.2s linear;
+  transition: color 0.2s linear, background-color 0.2s linear,
+    border 0.2s linear, -webkit-box-shadow 0.2s linear;
+  transition: color 0.2s linear, background-color 0.2s linear,
+    border 0.2s linear, box-shadow 0.2s linear;
+  transition: color 0.2s linear, background-color 0.2s linear,
+    border 0.2s linear, box-shadow 0.2s linear, -webkit-box-shadow 0.2s linear;
+}
+
+/* 鼠标变手指 */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+
+/* 清除浮动 */
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+/* 超出隐藏显示省略号 */
+.line2 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
+/* 不晓得哪里用到的  begin*/
+.platformParamsSelect .ivu-dropdown .ivu-select-dropdown {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.ivu-modal-fullscreen {
+  width: 100% !important;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+}
+
+.ivu-modal-fullscreen .ivu-modal-body {
+  max-height: 100% !important;
+}
+
+.ivu-modal-fullscreen .ivu-modal-content {
+  width: 100%;
+  border-radius: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.ivu-modal-fullscreen .ivu-modal-body {
+  width: 100%;
+  overflow: auto;
+  position: absolute;
+  top: 51px;
+  bottom: 61px;
+}
+
+.ivu-modal-fullscreen-no-header .ivu-modal-body {
+  top: 0;
+}
+
+.ivu-modal-fullscreen-no-footer .ivu-modal-body {
+  bottom: 0;
+}
+
+.ivu-modal-fullscreen .ivu-modal-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.ivu-message {
+  z-index: 9999999 !important;
+}
+
+.rest .ivu-form-item-required .ivu-form-item-label:before {
+  content: "";
+}
+
+.redDot:before {
+  content: "*";
+  display: inline-block;
+  margin-right: 4px;
+  line-height: 1;
+  font-family: SimSun;
+  font-size: 12px;
+  color: #ed3f14;
+}
+
+.ivu-menu-vertical .ivu-menu-item {
+  padding: 6px 24px 6px 43px;
+}
+
+.ivu-btns-default {
+  display: inline-block;
+  line-height: 30px;
+  height: 30px;
+  padding: 0 5px;
+  vertical-align: middle;
+  margin-left: -5px;
+  border-radius: 0 3px 3px 0;
+}
+
+.ivu-btns .arrowDown {
+  margin: auto;
+}
+
+.ivu-modal-body {
+  max-height: 600px;
+  overflow: auto;
+}
+
+.ivu-form .ivu-form-item-label {
+  width: 110px;
+  text-align: right;
+}
+
+.clearMarginAuto .ivu-modal-header {
+  padding: 0;
+  cursor: move;
+}
+
+.clearMarginAuto .ivu-modal-wrap {
+  overflow: hidden;
+}
+
+.clearMarginAuto .moveHead {
+  height: 51px;
+  line-height: 51px;
+  padding: 0 14px;
+}
+
+.resetIvu .ivu-form-item {
+  margin-bottom: 14px;
+}
+
+.resetIvu {
+  position: relative;
+}
+
+.ivu-menu-vertical .ivu-menu-submenu-title {
+  font-size: 14px;
+  padding: 8px 24px;
+}
+
+.ivu-menu-vertical .ivu-menu-item,
+.ivu-menu-vertical .ivu-menu-submenu-title {
+  transition: none;
+}
+
+.layout-header {
+  height: 60px;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.layout-show-text ul.ivu-menu {
+  transition: none;
+}
+
+div.ivu-menu-item-group-title {
+  cursor: text;
+}
+
+
+.mapContainer .ivu-poptip,
+.mapContainer .ivu-poptip-rel {
+  display: block;
+}
+
+.mapContainer .ivu-poptip-body-content {
+  overflow: inherit;
+}
+
+.demo-spin-col {
+  height: 100px;
+  position: relative;
+  border: 1px solid #eee;
+}
+
+/* 不晓得哪里用到的  end*/
+
+
+/**
+ * 修改iview
+**/
+.demo-spin-icon-load {
+  animation: ani-demo-spin 1s linear infinite;
+}
+
+@keyframes ani-demo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 页面的背景颜色 */
+.rowBox {
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+/* 搜索栏 */
+.searchBtns {
+  padding-left: 90px;
+}
+
+/* 高级搜索 */
+.moreFilter {
+  position: absolute;
+  right: 10px;
+  bottom: 48px;
+}
+
+
+/* 搜索 */
+.formSearch .ivu-select,
+.formSearch .ivu-input-wrapper,
+.ivu-date-picker {
+  width: 200px;
+}
+
+.formSearch .ivu-radio-group-button .ivu-radio-wrapper-checked {
+  background-color: @erp-primary-color;
+  color: white;
+}
+
+.formSearch .ivu-radio-group-button .ivu-radio-wrapper-checked:hover {
+  color: white;
+}
+
+.formSearch .search-btn {
+  width: 92px;
+}
+
+/* 表单下边距为0 */
+.fmb0 .ivu-form-item {
+  margin-bottom: 0px;
+}
+
+.fmb16 .ivu-form-item {
+  margin-bottom: 16px;
+}
+
+.fmb10 .ivu-form-item {
+  margin-bottom: 16px;
+}
+
+/* 弹框高度 */
+.modal-main .ivu-modal-body {
+  max-height: 74vh;
+  overflow: auto;
+}
+
+/* 操作下拉框 */
+.drop-main {
+  display: flex;
+  align-items: center;
+}
+
+.drop-main .dorp-button {
+  border-radius: 4px 0 0 4px;
+}
+
+.drop-main .dropdown {
+  line-height: 30px;
+  padding: 0 2px;
+  cursor: pointer;
+  border: 1px solid #dcdee2;
+  border-left: none;
+  background-color: #f6f6f6;
+}
+
+/* flexCenter 居中对齐 */
+.flexCenter {
+  display: flex;
+  align-items: center;
+}
+
+/* 详情蒙版 */
+.bounce-enter-active {
+  animation: bounce-in .4s ease;
+}
+
+.bounce-leave-active {
+  animation: bounce-in .4s reverse ease;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-16px);
+    opacity: 1;
+  }
+}
+
+/* --------------   切换子层动画 --------------  */
+.subLayer {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 46px;
+  bottom: 10px;
+  z-index: 998;
+  box-sizing: border-box;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+  background: #fff;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.subLayer .topper {
+  background: #f9fafb;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 1px 1px rgba(204, 204, 204, 1);
+  -webkit-box-shadow: 0 1px 1px rgba(204, 204, 204, 1);
+  -moz-box-shadow: 0 1px 1px rgba(204, 204, 204, 1);
+  border-bottom-color: #fff;
+  padding: 10px;
+}
+
+.subLayer .topper--flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subLayer .topper--flex .title {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.subLayer .topper .small-title {
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.subLayer .mainContent {
+  padding: 20px;
+  box-sizing: border-box;
+  flex: 1;
+
+  /*修改滚动条样式*/
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgb(239, 239, 239);
+    border-radius: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #bfbfbf;
+    border-radius: 10px;
+  }
+}
+
+.subLayer .arrowLeft {
+  font-size: 16px;
+  color: #333;
+  display: inline-block;
+  cursor: pointer;
+  line-height: 20px;
+}
+
+.subLayer .arrowLeft .IconBack {
+  font-size: 22px;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-top: -2px;
+}
+
+.subLayer .footer {
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 -1px 1px rgba(204, 204, 204, 1);
+  padding: 10px;
+  text-align: right;
+}
+
+.bounce-enter-active {
+  animation: bounce-in .4s ease;
+}
+
+.bounce-leave-active {
+  animation: bounce-in .4s reverse ease;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.action-btns {
+  display: flex;
+  align-items: center;
+}
+
+.action-btns .abtn-right {
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  border-left: none;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+.action-btns .abtn-left {
+  border-radius: 4px 0 0 4px !important;
+}
+
+/* 限制表单宽度 */
+.form-contain .ivu-input-wrapper,
+.form-contain .ivu-select,
+.form-contain .ivu-cascader {
+  max-width: 400px;
+}
+
+.form-contain-disabled .ivu-input[disabled],
+fieldset[disabled] .ivu-input,
+.form-contain-disabled .ivu-select-disabled .ivu-select-selection,
+.form-contain-disabled .ivu-select-input[disabled] {
+  color: #666;
+  -webkit-text-fill-color: #666;
+}
+
+.form-contain-disabled .ivu-checkbox-disabled.ivu-checkbox-checked .ivu-checkbox-inner:after {
+  border-color: #666;
+}
+
+.form-line-flex {
+  display: flex;
+  align-items: center;
+  .ivu-input-wrapper,
+  .ivu-select{
+    width: 200px;
+  }
+  &.full-item{
+    .ivu-select{
+      width: 100%
+    }
+  }
+}
+
+
+
+
+/* 详情面板 */
+.paneMain .ivu-card-body {
+  position: relative;
+}
+
+/* 下拉选择 */
+.ivu-select {
+  position: relative;
+
+  .ivu-select-dropdown {
+    max-width: 100%;
+  }
+
+  .ivu-select-item {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+// 上传图片样式
+.upload-imgsty {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px dashed #dcdee2;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.ivu-btn,
+.ivu-checkbox-wrapper,
+.ivu-form .ivu-form-item-label,
+.ivu-input,
+.ivu-modal-confirm-body,
+.ivu-select-input,
+.ivu-table {
+  font-size: 12px;
+}
+
+// 表单搜索不受宽度影响
+.self-width {
+
+  .ivu-select,
+  .ivu-input-wrapper,
+  .ivu-date-picker {
+    width: 100%;
+  }
+}
+.ivu-select-dropdown {
+  .ivu-picker-panel-sidebar {
+    margin-left: -105px;
+    width: 105px;
+  }
+}
+
+.ivu-form-item-error{
+  .dyt-input-tag-content{
+    border: 1px solid #ed4014;
+  }
+}
+.ivu-table-tbody,
+.ivu-table-fixed-body{
+  .ivu-table-cell{
+    padding: 4px 6px;
+  }
+}
+.ivu-table-header,
+.ivu-table-fixed-header{
+  .ivu-table-cell{
+    padding: 0px 6px;
+  }
+}

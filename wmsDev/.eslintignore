@@ -1,0 +1,7 @@
+/build/
+/config/
+/dist/
+/*.js
+/public/
+/node_modules/
+/src/components/localComponents/

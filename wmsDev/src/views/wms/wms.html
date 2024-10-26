@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="google" content="notranslate">
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
+  <title >LAPA-WMS仓储管理系统</title >
+  <link rel="dns-prefetch" href="//at.alicdn.com" />
+  <!-- <link rel="manifest" href="./manifest.webmanifest"> -->
+<!--  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js" ></script>-->
+  <link rel="icon" href="./favicon.ico" >
+  <style >
+    .bug-free {
+      background: url('./static/printFont/IDAutomationC128S.eot?#iefix')
+    }
+
+    #printSkuBarCode {
+      background: url('./static/printFont/IDAutomationC128S.eot?#iefix')
+    }
+
+    @font-face {
+      font-family: 'IDAutomationC128S';
+      src: url('./static/printFont/IDAutomationC128S.eot'); /* IE9 Compat Modes */
+      src: url('./static/printFont/IDAutomationC128S.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('./static/printFont/IDAutomationC128S.woff') format('woff'), /* Modern Browsers */ url('./static/printFont/IDAutomationC128S.ttf') format('truetype'), /* Safari, Android, iOS */ url('./static/printFont/IDAutomationC128S.svg#IDAutomationC128S') format('svg'); /* Legacy iOS */
+    }
+    .add-button {
+        position: absolute;
+        top: 1px;
+        left: 1px;
+    }
+  </style >
+</head >
+<body >
+<div id="app" >
+  <router-view ></router-view >
+  <template v-if="isSelectWarehouse" >
+    <Modal
+      v-if="isSelectWarehouse"
+      v-model="isSelectWarehouseModal"
+      title="选择仓库"
+      width="600"
+      @on-ok="selectWarehouse"
+      @on-visible-change="cancelSelectModal"
+    >
+      <div >
+        {{userName}} 你好，欢迎使用仓库管理系统，请选择仓库：
+      </div >
+      <div class="normalTop" >
+        <Radio-group v-model="selectWarehouseId" v-if="warehoseList.length > 0" >
+          <Radio v-for="(item, index) in warehoseList" :label="item.warehouseId" :key="index">
+            <span >{{item.warehouseName}}</span >
+          </Radio >
+        </Radio-group >
+      </div >
+    </Modal >
+  </template >
+   <button class="add-button">Add to home screen</button>
+</div >
+</body >
+<script src="./static/js/app.js"></script>
+<script src="./static/js/jquery.min.js" ></script>
+<script src="./static/js/draggabilly.js" ></script>
+<script src="./static/js/jspdf.js" ></script>
+<script src="./static/js/html2canvas.js" ></script>
+</html >

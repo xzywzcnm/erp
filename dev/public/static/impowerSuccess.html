@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>授权成功</title>
+</head>
+<body>
+	<div>
+		<div>授权成功</div>
+		<div id="text">5秒后将关闭窗口</div>
+		<button onClick="javascript:closeWindow()">关闭</button>
+	</div>
+	<script  type="text/javascript">
+	/*	var n = 5;
+		var t = setInterval(function(){
+			n--;
+			console.log(n)
+			document.getElementById('text').innerHTML = n + '秒后将关闭窗口';
+			if(n == 0){
+
+				clearInterval(t);
+				
+				window.close();  
+				
+				
+			}
+		},1000);*/
+		function closeWindow(){
+				window.close();
+		}
+	</script>
+</body>
+</html>

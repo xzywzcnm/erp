@@ -1,0 +1,181 @@
+.fade-appear,
+.fade-enter-active {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+}
+
+.fade-leave-active {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+}
+
+.fade-appear,
+.fade-enter-active {
+  animation-name: ivuFadeIn;
+  animation-play-state: running;
+}
+
+.fade-leave-active {
+  animation-name: ivuFadeOut;
+  animation-play-state: running;
+}
+
+.fade-appear,
+.fade-enter-active {
+  opacity: 0;
+  animation-timing-function: linear;
+}
+
+.fade-leave-active {
+  animation-timing-function: linear;
+}
+
+@keyframes ivuFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes ivuFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.collapse-transition {
+  transition: 0.2s height ease-in-out, 0.2s padding-top ease-in-out,
+  0.2s padding-bottom ease-in-out;
+}
+
+.ivu-sliderModal-hidden {
+  display: none !important;
+}
+
+.ivu-sliderModal-wrap {
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+
+.ivu-sliderModal-wrap * {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ivu-sliderModal-mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(55, 55, 55, 0.3);
+  height: 100%;
+  z-index: 1000;
+}
+
+.ivu-sliderModal-mask-hidden {
+  display: none;
+}
+
+.ivu-sliderModal-content {
+  position: absolute;
+  background-color: #fff;
+  border: 0;
+  width: 61.8%;
+  height: 100%;
+  background-clip: padding-box;
+  right: 0;
+  box-shadow: 4px 5px 20px 7px #d8d8d8;
+}
+
+.ivu-sliderModal-body {
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.ivu-sliderModal-bodyWrap {
+  margin: 16px;
+  overflow: hidden;
+}
+
+.ivu-sliderModal-rightButton {
+  position: absolute;
+  left: 0;
+  background-color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-left: -15px;
+  margin-top: -15px;
+  color: #b0b8c1;
+  text-align: center;
+  line-height: 32px;
+  cursor: pointer;
+  box-shadow: -3px -1px 5px 0 #d8d8d8;
+  z-index: 9999;
+}
+
+.ivu-sliderModal-rightButton span {
+  font-size: 20px;
+}
+
+.ivu-sliderModal-window {
+  position: absolute;
+  background-color: #f5f5f5;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-active {
+  -ms-transform: translateX(1000px);
+  transform: translateX(1000px);
+  opacity: 0;
+}
+
+@font-face {
+  font-family: iconfont;
+  src: url(//at.alicdn.com/t/font_dnl21ppboz1qyqfr.eot?t=1497410043385);
+  src: url(//at.alicdn.com/t/font_dnl21ppboz1qyqfr.eot?t=1497410043385#iefix) format("embedded-opentype"),
+  url(//at.alicdn.com/t/font_dnl21ppboz1qyqfr.woff?t=1497410043385) format("woff"),
+  url(//at.alicdn.com/t/font_dnl21ppboz1qyqfr.ttf?t=1497410043385) format("truetype"),
+  url(//at.alicdn.com/t/font_dnl21ppboz1qyqfr.svg?t=1497410043385#iconfont) format("svg");
+}
+
+.iconfont {
+  font-family: iconfont !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-right1:before {
+  content: "\e620";
+}

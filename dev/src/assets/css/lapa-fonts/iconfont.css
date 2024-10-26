@@ -1,0 +1,91 @@
+@font-face {
+  font-family: "lapa"; /* Project id 3482823 */
+  src: url('iconfont.woff2?t=1718957746734') format('woff2'),
+       url('iconfont.woff?t=1718957746734') format('woff'),
+       url('iconfont.ttf?t=1718957746734') format('truetype');
+}
+
+.lapa {
+  font-family: "lapa" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lapa-rim-edit:before {
+  content: "\e60c";
+}
+
+.lapa-edit:before {
+  content: "\e64f";
+}
+
+.lapa-kediwenyuntang:before {
+  content: "\e63d";
+}
+
+.lapa-bukeyuntang:before {
+  content: "\e63e";
+}
+
+.lapa-fanzhuanganzao:before {
+  content: "\e63f";
+}
+
+.lapa-bukepiaobai:before {
+  content: "\e63c";
+}
+
+.lapa-jinzhi:before {
+  content: "\e638";
+}
+
+.lapa-tingfang:before {
+  content: "\e639";
+}
+
+.lapa-a-30du:before {
+  content: "\e63a";
+}
+
+.lapa-shouxi:before {
+  content: "\e63b";
+}
+
+.lapa-tuikuanshenqing:before {
+  content: "\e7cf";
+}
+
+.lapa-warning:before {
+  content: "\e751";
+}
+
+.lapa-copy:before {
+  content: "\e685";
+}
+
+.lapa-middle-reputation:before {
+  content: "\e612";
+}
+
+.lapa-good-reputation:before {
+  content: "\e610";
+}
+
+.lapa-bad-reputation:before {
+  content: "\e611";
+}
+
+.lapa-solid-core-mail:before {
+  content: "\e61b";
+}
+
+.lapa-jieliudingdan:before {
+  content: "\e62ee";
+}
+
+.lapa-tuihuo:before {
+  content: "\e6488";
+}
+

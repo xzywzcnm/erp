@@ -1,0 +1,149 @@
+// Prefix
+@css-prefix: tongtool-;
+
+// Base
+@body-background: #fff;
+@font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+@code-family: Consolas, Menlo, Courier, monospace;
+@title-color: #1c2438;
+@text-color: #495060;
+@font-size-base: 14px;
+@font-size-small: 12px;
+@line-height-base: 1.5;
+@line-height-computed: floor((@font-size-base * @line-height-base));
+@border-radius-base: 6px;
+@border-radius-small: 4px;
+@cursor-disabled: not-allowed;
+@input-line-height: 2.5;
+@font-weight-bold: bold;
+
+// layout
+@normal-top: 10px;
+@normal-bottom: 10px;
+@normal-padding: 10px;
+
+// color
+@red: #ff3300;
+@blue: #0054A6;
+@green: #3cb034;
+@gray: #999999;
+@border-color: #e1e1e1;
+@yellow-color: #ff9900;
+
+// icon
+@flags-icon: url('../assets/images/flags.png') no-repeat;
+@map-icon: url('../assets/images/map.png') no-repeat center center;
+@global-icon: url('../assets/images/global.png') no-repeat;
+
+// 认证中心 样式
+.again-login-body{
+  .ivu-modal-mask{
+    background: none;
+  }
+  .ivu-modal-wrap{
+    background-color: rgba(55,55,55,.6);
+    z-index: 2147483646 !important;
+    overflow: hidden;
+  }
+  .ivu-modal-content{
+    top: 100px;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    .ivu-modal-confirm-head,
+    .ivu-modal-confirm-footer{
+      display: none;
+    }
+    .ivu-modal-body{
+      display: inline-block;
+      padding: 0;
+      margin-left: 50%;
+      transform: translate(-50%, 0);
+      .ivu-modal-confirm{
+        padding: 0;
+
+      }
+      .ivu-modal-confirm-body{
+        background: #fff;
+        padding: 0;
+        border-radius: 5px;
+        box-shadow: 0 4px 12px rgba(0,0,0, 0.3);
+        overflow: hidden;
+      }
+    }
+  }
+  .ivu-modal{
+    display: inline-block;
+    top: 0;
+    width: 100% !important;
+    height: 100%;
+  }
+  #app{
+    filter: blur(5px);
+  }
+}
+
+// vue-treeselect 组件样式修改 start
+.vue-treeselect{
+  .vue-treeselect__control{
+    height: 32px;
+    line-height: normal;
+    .vue-treeselect__multi-value-item{
+      .vue-treeselect__value-remove{
+        border-left: 0px solid #fff;
+      }
+    }
+    .vue-treeselect__placeholder,
+    .vue-treeselect__single-value{
+      line-height: 30px;
+    }
+  }
+}
+.form-item-required {
+  .ivu-form-item-label{
+    &:before{
+      content: '*';
+      display: inline-block;
+      margin-right: 4px;
+      line-height: 1;
+      font-family: SimSun;
+      font-size: 14px;
+      color: #ed4014;
+    }
+  }
+}
+.table-col-required{
+  position: relative;
+  &:before{
+    content: '*';
+    display: inline-block;
+    margin-right: 4px;
+    line-height: 1;
+    font-family: SimSun;
+    font-size: 14px;
+    font-weight: 100;
+    color: #ed4014;
+  }
+}
+.subLayer {
+  .topper {
+    position: relative;
+    background: #f9fafb;
+    height: 60px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(204, 204, 204, 1);
+    -webkit-box-shadow: 0 1px 1px rgba(204, 204, 204, 1);
+    -moz-box-shadow: 0 1px 1px rgba(204, 204, 204, 1);
+    border-bottom-color: #fff;
+  }
+  &.infoDetails{
+    .topper {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+  }
+}

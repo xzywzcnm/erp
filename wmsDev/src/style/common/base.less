@@ -1,0 +1,867 @@
+@main-prefix-css: ~"@{css-prefix}base";
+
+.@{main-prefix-css} {
+    &-inputLineHeight {
+        line-height: @input-line-height;
+    }
+}
+
+html,
+body,
+#app {
+    position: relative;
+    min-height: 100%;
+    height: 100%;
+    min-width: 1300px;
+}
+
+/*滚动条*/
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bbbec4;
+
+    &:hover {
+        background-color: #9C9D9E;
+    }
+}
+
+li {
+    list-style: none;
+}
+
+.font-14 {
+    font-size: 14px;
+}
+
+.sort-box {
+    padding: 10px;
+    background-color: #fff;
+    margin: 10px 0;
+}
+
+.max-wid200 {
+    max-width: 200px;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.plr10 {
+    padding: 0 10px;
+}
+
+.pr10 {
+    padding-right: 10px;
+}
+
+.mb5 {
+    margin-bottom: 5px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mb30 {
+    margin-bottom: 30px;
+}
+
+.mt5 {
+    margin-top: 5px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mt30 {
+    margin-top: 30px;
+}
+
+.mt4 {
+    margin-top: 4px;
+}
+
+.mr5 {
+    margin-right: 5px;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.mr15 {
+    margin-right: 15px;
+}
+
+.mr20 {
+    margin-right: 20px;
+}
+
+.ml5 {
+    margin-left: 5px;
+}
+
+.ml10 {
+    margin-left: 10px;
+}
+
+.ml15 {
+    margin-left: 15px;
+}
+
+.ml20 {
+    margin-left: 20px;
+}
+
+.ml30 {
+    margin-left: 30px;
+}
+
+.mr30 {
+    margin-right: 30px;
+}
+
+.error-txt {
+    color: #f20;
+}
+
+.white-space-nowrap {
+    white-space: nowrap;
+}
+
+.flexBox {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.ivu-btn-ghost {
+    color: #666 !important;
+}
+
+.d-flex {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+.d-inline-flex {
+    display: -webkit-inline-box !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important;
+}
+
+@media print {
+    .d-print-none {
+        display: none !important;
+    }
+
+    .d-print-inline {
+        display: inline !important;
+    }
+
+    .d-print-inline-block {
+        display: inline-block !important;
+    }
+
+    .d-print-block {
+        display: block !important;
+    }
+
+    .d-print-table {
+        display: table !important;
+    }
+
+    .d-print-table-row {
+        display: table-row !important;
+    }
+
+    .d-print-table-cell {
+        display: table-cell !important;
+    }
+
+    .d-print-flex {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
+    }
+
+    .d-print-inline-flex {
+        display: -webkit-inline-box !important;
+        display: -ms-inline-flexbox !important;
+        display: inline-flex !important;
+    }
+}
+
+.flex-row {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+    -ms-flex-direction: row !important;
+    flex-direction: row !important;
+}
+
+.flex-column {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+}
+
+.flex-row-reverse {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+    -ms-flex-direction: row-reverse !important;
+    flex-direction: row-reverse !important;
+}
+
+.flex-column-reverse {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+    -ms-flex-direction: column-reverse !important;
+    flex-direction: column-reverse !important;
+}
+
+.flex-wrap {
+    -ms-flex-wrap: wrap !important;
+    flex-wrap: wrap !important;
+}
+
+.flex-nowrap {
+    -ms-flex-wrap: nowrap !important;
+    flex-wrap: nowrap !important;
+}
+
+.flex-wrap-reverse {
+    -ms-flex-wrap: wrap-reverse !important;
+    flex-wrap: wrap-reverse !important;
+}
+
+.flex-fill {
+    -webkit-box-flex: 1 !important;
+    -ms-flex: 1 1 auto !important;
+    flex: 1 1 auto !important;
+}
+
+.justify-content-start {
+    -webkit-box-pack: start !important;
+    -ms-flex-pack: start !important;
+    justify-content: flex-start !important;
+}
+
+.justify-content-end {
+    -webkit-box-pack: end !important;
+    -ms-flex-pack: end !important;
+    justify-content: flex-end !important;
+}
+
+.justify-content-center {
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+}
+
+.justify-content-between {
+    -webkit-box-pack: justify !important;
+    -ms-flex-pack: justify !important;
+    justify-content: space-between !important;
+}
+
+.justify-content-around {
+    -ms-flex-pack: distribute !important;
+    justify-content: space-around !important;
+}
+
+.align-items-start {
+    -webkit-box-align: start !important;
+    -ms-flex-align: start !important;
+    align-items: flex-start !important;
+}
+
+.align-items-end {
+    -webkit-box-align: end !important;
+    -ms-flex-align: end !important;
+    align-items: flex-end !important;
+}
+
+.align-items-center {
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+
+.align-items-baseline {
+    -webkit-box-align: baseline !important;
+    -ms-flex-align: baseline !important;
+    align-items: baseline !important;
+}
+
+.align-items-stretch {
+    -webkit-box-align: stretch !important;
+    -ms-flex-align: stretch !important;
+    align-items: stretch !important;
+}
+
+.align-content-start {
+    -ms-flex-line-pack: start !important;
+    align-content: flex-start !important;
+}
+
+.align-content-end {
+    -ms-flex-line-pack: end !important;
+    align-content: flex-end !important;
+}
+
+.align-content-center {
+    -ms-flex-line-pack: center !important;
+    align-content: center !important;
+}
+
+.align-content-between {
+    -ms-flex-line-pack: justify !important;
+    align-content: space-between !important;
+}
+
+.align-content-around {
+    -ms-flex-line-pack: distribute !important;
+    align-content: space-around !important;
+}
+
+.align-content-stretch {
+    -ms-flex-line-pack: stretch !important;
+    align-content: stretch !important;
+}
+
+.align-self-auto {
+    -ms-flex-item-align: auto !important;
+    align-self: auto !important;
+}
+
+.align-self-start {
+    -ms-flex-item-align: start !important;
+    align-self: flex-start !important;
+}
+
+.align-self-end {
+    -ms-flex-item-align: end !important;
+    align-self: flex-end !important;
+}
+
+.align-self-center {
+    -ms-flex-item-align: center !important;
+    align-self: center !important;
+}
+
+.align-self-baseline {
+    -ms-flex-item-align: baseline !important;
+    align-self: baseline !important;
+}
+
+.align-self-stretch {
+    -ms-flex-item-align: stretch !important;
+    align-self: stretch !important;
+}
+
+.fontBold {
+    font-weight: @font-weight-bold;
+}
+
+.flexEnd {
+    justify-content: flex-end;
+}
+
+.font-16 {
+    font-size: 16px;
+}
+
+.flexStart {
+    justify-content: flex-start;
+}
+
+.flexAlignItemsCenter {
+    align-items: center;
+}
+
+.flexBoxJustContent {
+    justify-content: center;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.none,
+.rowNone {
+    display: none !important;
+}
+
+.clear {
+    *zoom: 1;
+}
+
+.clear:after {
+    display: block;
+    clear: both;
+    content: "\0020";
+    visibility: hidden;
+    height: 0;
+}
+
+.filterItem,
+.ivu-collapse-header,
+.roleItem,
+.addNewInput,
+.productRemind,
+.noSelect {
+    -moz-user-select: none;
+    /*火狐*/
+    -webkit-user-select: none;
+    /*webkit浏览器*/
+    -ms-user-select: none;
+    /*IE10*/
+    -khtml-user-select: none;
+    /*早期浏览器*/
+    user-select: none;
+}
+
+.normalTop {
+    margin-top: @normal-top !important;
+}
+
+.normalTop20 {
+    margin-top: @normal-top * 2 !important;
+}
+
+.normalTop30 {
+    margin-top: @normal-top * 3 !important;
+}
+
+.normalLRMargin {
+    margin: 0 @normal-top;
+}
+
+.normalMargin {
+    margin: @normal-top;
+}
+
+.normalPadding {
+    padding: @normal-top;
+}
+
+.normalRMargin {
+    margin-right: @normal-top;
+}
+
+.normalLMargin {
+    margin-left: @normal-top;
+}
+
+.normalFontSizeOneSize {
+    font-size: @font-size-base !important;
+}
+
+.normalLineHeightOne {
+    line-height: @font-size-base !important;
+}
+
+.normalFontSizeTwoSize {
+    font-size: @font-size-base * 1.3 !important;
+}
+
+.normalLineHeightTwo {
+    line-height: @font-size-base * 1.3 !important;
+}
+
+.normalFontSizeThreeSize {
+    font-size: @font-size-base * 1.5 !important;
+}
+
+.normalLineHeightThree {
+    line-height: @font-size-base * 1.5 !important;
+}
+
+.normalFontSizeFourSize {
+    font-size: @font-size-base * 2 !important;
+}
+
+.normalLineHeightFour {
+    line-height: @font-size-base * 2 !important;
+}
+
+.red {
+    color: @red;
+}
+
+.moreFilter {
+    position: absolute;
+    right: 45px;
+    bottom: 15px;
+}
+
+.platformParamsMoreSection .ivu-form-item {
+    margin-bottom: @normal-bottom;
+}
+
+.platformParamsMoreSection .ivu-form-item:last-child {
+    margin-bottom: 0;
+}
+
+.platformParamsMoreSection .ivu-row {
+    margin-bottom: 0;
+}
+
+.blueColor {
+    color: @blue;
+}
+
+.blueBgColor {
+    background-color: @blue;
+}
+
+.redColor {
+    color: @red;
+}
+
+.redBgColor {
+    background-color: @red;
+}
+
+.greenColor {
+    color: @green;
+}
+
+.greenBgColor {
+    background-color: @green;
+}
+
+.grayColor {
+    color: @gray;
+}
+
+.grayBgColor {
+    background-color: @gray;
+}
+
+.yellowColor {
+    color: @yellow-color;
+}
+
+.yellowBgColor {
+    background-color: @yellow-color;
+}
+
+.fontWeight {
+    font-weight: bold;
+}
+
+.inlineStyle {
+    display: inline;
+}
+
+.inlineBlockStyle {
+    display: inline-block;
+}
+
+.cursor {
+    cursor: pointer;
+
+    &-move {
+        cursor: move;
+    }
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.normalPadding {
+    padding: @normal-padding;
+}
+
+.normalPaddingLeft {
+    padding-left: @normal-padding;
+}
+
+.normalPaddingRight {
+    padding-left: @normal-padding;
+}
+
+.uniformlyspacedPadding {
+    padding: @normal-padding @normal-padding 0 @normal-padding;
+
+    &:last-child {
+        padding: @normal-padding;
+    }
+}
+
+.divider {
+    height: 1px;
+    padding: 0 10px;
+    background-color: #e1e1e1;
+}
+
+.ivu-table-cell .ivu-poptip span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.ivu-table-cell .ivu-poptip-body-content-inner {
+    max-width: 500px;
+    white-space: normal;
+}
+
+.ivu-table-cell .compBtn .ivu-btn:hover {
+    border-color: #f9f9f9;
+}
+
+.stockOutDlt .ivu-tabs-content {
+    margin-top: 15px;
+}
+
+.addProductBar .ivu-modal-footer {
+    display: none;
+}
+
+.ivu-table-cell a {
+    text-decoration: underline;
+    color: #0054a6;
+}
+
+/*浏览器差异*/
+.ivu-cascader-menu {
+    background-color: #fff;
+}
+
+.ivu-icon-ios-close {
+    color: #fff !important;
+}
+
+.ivu-btn {
+    padding: 0 12px !important;
+}
+
+// 表单禁用字体颜色加深
+.disable-color {
+
+    .ivu-input-wrapper-disabled,
+    .ivu-input-disabled,
+    .ivu-select-disabled,
+    .ivu-select-disabled .ivu-select-input {
+        color: #666;
+        -webkit-text-fill-color: #666;
+    }
+}
+
+/* 超出两行用省略号表示 */
+.textOverTwo {
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+/* 超出三行用省略号表示 */
+.textOverThree {
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+/* 表单下边距为0 */
+.fmb0 {
+    .ivu-form-item {
+        margin-bottom: 0 !important;
+    }
+}
+
+.fixwidthForm,
+.platformParamsSelect {
+
+    .dyt-select-demo,
+    .ivu-form-item-content {
+        width: 280px;
+    }
+
+    .ivu-date-picker {
+        width: 100%;
+    }
+
+    .notplatformParamsSelect {
+        margin-bottom: 10px;
+
+        &.ivu-form-item {
+            margin-bottom: 10px;
+        }
+
+        .ivu-form-item-content,
+        .dyt-select-demo,
+        .ivu-date-picker {
+            width: auto;
+        }
+    }
+}
+
+// 展开表格
+.expendTable {
+    .ivu-table-cell-with-expand {
+        display: none;
+    }
+
+    .ivu-table-fixed,
+    .ivu-table-fixed-right {
+        background: #fff;
+    }
+
+    .ivu-table-expanded-cell {
+        padding: 0;
+        height: auto;
+        border: none;
+    }
+
+    .expand-table-info-cell-age {
+        background: #2D8CF0 !important;
+        border-right: 1px solid #2D8CF0;
+    }
+}
+
+// 表格新样式
+.table-split-line {
+
+    .ivu-table-row .ivu-table td,
+    .ivu-table th {
+        height: 60px;
+    }
+}
+
+/*
+* 常用样式
+*/
+// 一行超出显示省略号
+.overEllipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+// 居中
+.flexAlignCenter {
+    display: flex;
+    align-items: center;
+}
+
+// ivu-tooltip-inner 被业务代码设置的样式污染，所以现增加
+.self-tooltip .ivu-tooltip-inner {
+    width: auto !important;
+}
+
+// tag标签
+.dyt-tags {
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    background-color: rgb(242 242 242);
+    white-space: nowrap;
+    display: inline-block;
+    margin: 2px;
+}
+
+.dyt-tags-blue {
+    color: #0073FF;
+}
+
+.dyt-tags-green {
+    color: #008000;
+}
+
+// 时间
+.timeWidth {
+    width: 70px;
+    text-align: left;
+}
+
+// tooltip一行样式
+.line-tooltip {
+    width: 100%;
+
+    .ivu-tooltip,
+    .ivu-tooltip-rel,
+    .overEllipsis {
+        max-width: 100%;
+    }
+}
+
+.line-title {
+    border-left: 4px solid #2d8cf0;
+    padding-left: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pt10 {
+    padding-top: 10px;
+}
+
+.pt20 {
+    padding-top: 20px;
+}
+
+.pb10 {
+    padding-bottom: 10px;
+}
+
+.pb20 {
+    padding-bottom: 20px;
+}
+
+.alert_inlineBlock {
+    display: inline-block;
+    line-height: 20px;
+    padding: 6px 10px;
+    margin: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.hideStepStyles {
+    .ivu-input-number-handler-wrap {
+        display: none;
+    }
+}

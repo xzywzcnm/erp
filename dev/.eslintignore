@@ -1,0 +1,9 @@
+/build/
+/config/
+/dist/
+/*.js
+/public/
+/node_modules/
+/node_modules-*/
+/src/components/localComponents/dyt-previewImg/css/
+/src/assets/css/

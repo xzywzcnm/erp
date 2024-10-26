@@ -1,0 +1,113 @@
+/*
+ * @Author: Jaycee
+ * @Date: 2022-06-08 10:43:30
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2023-03-04 15:30:53
+ * @Descript 列表页面样式
+ */
+.listPage {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* // 搜索模块 */
+.searchMain {
+    padding: 10px 10px 0 10px;
+    background-color: #fff;
+}
+
+.searchMain .ivu-form-item {
+    margin-bottom: 10px;
+}
+
+.searchMain .ivu-form-item-content,
+.searchMain .dyt-select-demo {
+    width: 280px;
+}
+
+.searchMain .ivu-form-item-content .ivu-date-picker,
+.searchMain .dyt-select-demo .ivu-date-picker {
+    width: 100%;
+}
+
+.searchMain .date-picker-datetimerange .ivu-form-item-content {
+    width: 275px;
+}
+
+.searchMain .ignore-width .ivu-form-item-content {
+    width: auto;
+}
+
+.searchMain .ivu-icon.ivu-icon-ios-close {
+    color: #666 !important;
+}
+
+/* // 日期选择范围 */
+.searchMain .ivu-picker-panel-sidebar .ivu-picker-panel-shortcut {
+    padding: 6PX;
+}
+
+/* // 功能模块 */
+.funMain {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #fff;
+}
+
+.funMain .funMain__flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* // 分页模块 */
+.pagesMain {
+    padding: 10px;
+    /* // background-color: #fff; */
+    text-align: right;
+}
+
+/* // 表格模块 */
+.tableMain {
+    padding: 0 10px;
+    flex: 1;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.tableMain .tableBox {
+    height: 100%;
+}
+
+/* // 提示条 */
+.alert-primary {
+    display: inline-block;
+    padding: 2px 4px;
+    border-radius: 2px;
+    border: 1px solid #abdcff;
+    background-color: #f0faff;
+}
+
+/* // 文字带下划线 */
+.linkText {
+    text-decoration: underline;
+    color: #2b85e4;
+    word-break: break-all;
+    display: inline-block;
+}
+
+/* // 文字不带下划线 */
+.unlinkText {
+    color: #2b85e4;
+    word-break: break-all;
+    display: inline-block;
+}
+
+.cursorClick {
+    cursor: pointer;
+}
+
+.unlineErrorText {
+    color: red;
+}

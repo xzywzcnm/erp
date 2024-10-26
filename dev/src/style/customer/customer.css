@@ -1,0 +1,49 @@
+.tongtool-customer-automaticSendingMessageRulesOfStation {
+  margin: 0 10px 10px;
+  background-color: #FFFFFF;
+}
+.tongtool-customer-automaticSendingMessageRulesOfStation .rightLaybel {
+  background-color: #f6f6f6;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  margin: 10px;
+  flex-shrink: 2;
+}
+.tongtool-customer-automaticSendingMessageRulesOfStation .rightLaybel .rightLabelTitle {
+  line-height: 2.5;
+}
+.tongtool-customer-automaticSendingMessageRulesOfStation .rightLaybel .addNewRules {
+  margin: 10px;
+}
+.tongtool-customer-automaticSendingMessageRulesOfStation .rightLaybel .searchForm .ivu-form-item {
+  margin-bottom: 0;
+}
+.tongtool-customer-automaticSendingMessageRulesOfStation .tableContainer {
+  margin: 10px;
+}
+.tongtool-customer-automaticSendingMessageRulesOfStation .demo-split-pane .leftTitle {
+  cursor: pointer;
+}
+.tongtool-customer-automaticSendingMessageRulesOfStation .demo-split-pane .leftItem {
+  cursor: pointer;
+  padding-left: 20px;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.12);
+}
+.tongtool-customer-automaticSendingMessageRulesOfStation .demo-split-pane .leftItem:hover {
+  background-color: #4fc3f7;
+  color: #FFFFFF;
+}
+.tongtool-customer-automaticSendingMessageRulesOfStation .demo-split-pane .leftGrayBg {
+  background-color: #f6f6f6;
+}
+.tongtool-customer-automaticSendingMesRules .activeTitle {
+  padding: 0 6px;
+}
+.tongtool-customer-automaticSendingMesRules .ivu-input-disabled,
+.tongtool-customer-automaticSendingMesRules .ivu-select-disabled .ivu-select-selection,
+.tongtool-customer-automaticSendingMesRules .ivu-input-number-disabled .ivu-input-number-input {
+  color: #1c2438;
+}
+.ivu-tag i.ivu-icon {
+  color: #1c2438 !important;
+}
+/*# sourceMappingURL=customer.css.map */

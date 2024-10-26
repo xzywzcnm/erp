@@ -1,0 +1,92 @@
+/*
+	****  Users Settings Style
+	****
+	**** Created By Dean
+*/
+@charset "utf-8";
+
+
+
+.ivu-checkbox-wrapper{display: block;}
+.usersFilter,.addBinding,.shopTable,.normalPadding{padding:0 12px;}
+
+.shopTable{margin-top: 10px}
+.roleEdit{font-size: 22px; line-height: 12px;position: relative;top: 0px;color: #3399ff; padding:0 1px;top:2px }
+.roleDel{font-size: 14px; line-height: 14px;position: relative;top: 0px;color: #cf2a28;padding:0 }
+.manageRole{color: #3399ff; cursor: pointer;height: 24px;line-height: 24px;position: relative;top: 3px}
+.manageOperate span{font-size: 12px}
+.addRole{color: #3399ff; cursor: pointer;}
+.returnRole{color:#d13131; cursor: pointer;}
+
+.addEmpolyeeData{width: 402px; margin:16px 0 10px 16px;}
+.addNewBindingData{  margin:10px 0 10px 10px;}
+.addNewBindingData > .ivu-form > .ivu-form-item {margin-bottom:0}
+.addEmpolyeeData .ivu-form-item{margin-bottom: 10px}
+
+.shopRole{border-bottom: 1px solid #e9e9e9;padding-bottom:6px;margin-bottom:6px;}
+.roleData{width: 712px; margin:1px 0 10px 16px;}
+.shopRole .ivu-checkbox-wrapper{float: right;margin-top: 7px}
+.shopRole span.partnerLogo{ background-size: 70%; height: 26px; width: 107px; float: left;}
+.shopRole span.amazon{background-position:0 -55px}
+.shopRole span.alixpress{background-position:0 -85px}
+.shopRole span.wish_api{background-position:0 -115px; }
+.shopRole span.ebay{background-position:0 -28px}
+
+
+
+.enterRoleName{width: 288px}
+.modalModule{width: 150px; margin: 0 12px 12px}
+.modalName{width: 557px ;margin:0; min-height: 333px; max-height: 500px; overflow: auto;}
+.modalItemcontent ul li{border-bottom:1px solid #e7eaec; height: 36px; position: relative;}
+.modalItemcontent ul li .ivu-checkbox-wrapper{position: absolute; right: 0; top: 9px}
+.modalItemcontent ul li a{color: #4c5662; padding:12px; display: block}
+.modalItemcontent ul li a:hover,.modalItemcontent ul li.menuCur a{color: #3399ff}
+.modalItemcontent ul li:last-child{border-bottom: 0}
+.modalSubMenu{float: left; margin:17px}
+.modalItemHeader{position: relative;}
+.modalItemHeader .ivu-checkbox-wrapper,.modalNameContainer>.ivu-checkbox-wrapper{position: absolute;right: 7px; top: 6px}
+.roleContainer{margin:0 19px 15px 0;}
+.ivu-collapse-header .ivu-checkbox-wrapper{top: 0}
+.modalNameItem{margin-top: -11px}
+.roleItem{width: 92px;  height:30px; border:1px solid #d7dde4; border-radius: 4px; background-color: #f7f7f7 ; margin-left:14px; display: inline-block;margin-top: 11px;text-overflow: ellipsis;
+ white-space: nowrap; word-wrap: break-word; overflow: hidden;}
+.roleItemTwo{width: 110px}
+.roleItem .ivu-checkbox-group-item{margin:6px; width: 100%}
+.roleItemSelect{border:1px solid #3399ff; background-color: #fff}
+.modalNameContainer{position: relative;}
+.ivu-collapse > .modalNameContainer > .ivu-collapse-item > .ivu-collapse-header{height: 38px;line-height: 38px;padding-left: 32px;color: #666; cursor: pointer;position: relative;}
+.platformSelect{text-align: center}
+.platformItem{width: 107px; height: 42px ; border:1px solid #3399ff; border-radius: 4px; display: inline-block; margin-right: 6px;position: relative; cursor: pointer;}
+.platformItem span{background:url('../images/partner.png') no-repeat; width: 107px; height: 42px ; display: block; background-position: 0 -42px }
+.platformItem i{position:absolute;bottom: 0;right: 0; background:url('../images/selected.gif') no-repeat; z-index: 66; width: 19px; height: 19px; display: none}
+.platformSelected i{display: block}
+.platformItem span.amazon{background-position:0 -42px}
+.platformItem span.ali{background-position:0 -84px}
+.platformItem span.wish{background-position:0 -126px; }
+.modalItemHeader .payPalHelp{margin-left: 10px}
+.modalItemHeader .addNewInput{position: absolute;right: 11px;top: 7px; color: #3399ff; cursor: pointer;}
+.addNewBindingData > .ivu-form{width: 528px}
+.addNewBindingData > .ivu-form > .ivu-form-item{margin:0 20px 10px 0}
+.addEmpolyeeData .ivu-form-item-error{margin-bottom:24px}
+.stopStatus{color:#de2910}
+.openStatus{color: #3cb034}
+.manageOperate .iconfont{font-size: 14px}
+.paypalAuthGuide{display: inline-block;margin-top: 6px}
+.pseudoButton{position: relative;float: left;margin-left:-1px;display: inline-block;margin-bottom: 0;font-weight: 400;text-align: center;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;cursor: pointer;background-image: none;border: 1px solid transparent;white-space: nowrap;line-height: 1.5;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;padding: 6px 15px;font-size: 12px;border-radius: 4px;transition: color .2s linear,background-color .2s linear,border .2s linear;color: #495060;background-color: #f7f7f7;border-color: #dddee1;}
+.pseudoButton:not(:first-child):not(:last-child){border-radius: 0}
+.ivu-btn-group:not(.ivu-btn-group-vertical)>.pseudoButton:last-child:not(:first-child){border-bottom-left-radius: 0;
+    border-top-left-radius: 0;}
+/* --------------   SHOP STYLE [[ --------------  */
+.shopTable span.platformLogo{width: 107px; height: 42px; display: block}
+.shopTable span.alixpress{background-position: 0 -126px  }
+.shopTable span.wish{background-position:  0 -168px }
+.shopTable span.amazon{background-position: 0 -84px  }
+.shopTable span.platformLogo{background-position: 0 -42px}
+.shopTable p.hasAuth{color:#3cb034}
+.shopTable p.noAuth{color:#de2910}
+.addNewBindingGotoAuth{text-align: center}
+.addNewBindingGotoAuth .shopAuthor{font-size: 66px; color: #bbb; }
+.addNewBindingGotoAuth .anbgaText{margin-top:-10px }
+.addNewBindingGotoAuth .anbgaAuth{margin-top: 5px}
+.authGreen{color:#3cb034 !important}
+.numTips{white-space: normal; }

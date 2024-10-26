@@ -1,0 +1,151 @@
+.packageDetailsProccessed {
+  padding-bottom: 30px;
+  margin: 10px auto 0 200px;
+  width: 696px;
+}
+
+.packageDetailsProccessed .ivu-steps .ivu-steps-title,
+.packageDetailsProccessed .ivu-steps .ivu-steps-head {
+  background-color: #fff;
+}
+
+.packageDetailsTitle .ivu-col {
+  min-height: 1px;
+}
+
+.packageDetailsTitle .orderBox {
+  font-size: 26px;
+  display: inline-block;
+  line-height: 26px;
+  vertical-align: middle;
+}
+
+.packageDetailsTitle .ivu-poptip-popper {
+  top: 44px;
+  right: -10px;
+}
+
+/* --------------  package Details Styles [[ --------------  */
+.buyerMessageCotainer {
+  padding: 13px 15px;
+  position: relative;
+}
+
+.buyerMessageCotainer span.buyerPic {
+  display: inline-block;
+  width: 53px;
+  height: 53px;
+  background: url('../assets/images/global.png') no-repeat;
+}
+
+.modalItemHeaderRight p.setMark {
+  margin-top: 5px;
+}
+
+.modalItemHeaderRight p.setEdit span {
+  color: #53a8fe;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.modalItemHeaderRight p.setEdit span.orderSave {
+  color: #82c0fd;
+}
+
+.modalItemHeaderRight p.setEdit span.orderCancelSave {
+  color: #aeb5bf;
+  display: inline-block;
+  width: 50px;
+}
+
+.modalItemTwo .modalItemHeaderRight {
+  right: 12px;
+}
+
+.buyerAddressTo {
+  color: #3399ff;
+  position: relative;
+  top: 0;
+  left: -10px;
+}
+
+.buyerIdName {
+  color: #ff3300;
+  position: relative;
+  top: 0;
+  left: -10px;
+}
+
+.addressSelect {
+  position: absolute;
+  right: -50px;
+  top: 0;
+}
+
+.buyerAddress div {
+  margin: 0 0 6px 5px;
+}
+
+.modalItem {
+  margin: 0 0px 15px 0;
+}
+
+.orderDetailsProductList {
+  padding: 3px 11px 11px;
+}
+
+.orderDetailsProductItem {
+  padding-bottom: 9px;
+  margin-top: 8px;
+  border-bottom: 1px dashed #d7dde4;
+}
+
+.orderDetailsProductItemPic img {
+  padding: 4px;
+  border: 1px solid #d7dde4;
+  width: 60px;
+  height: 60px;
+}
+
+.odpidProductID .productID {
+  color: #ff3300;
+  white-space: nowrap;
+}
+
+.odpidProductID span,
+.odpidProductParams span {
+  margin-right: 10px;
+}
+
+.productHaveATitle em,
+.productLogsticService em {
+  font-style: normal;
+  color: #3399ff;
+}
+
+.orderDetailsQuantity {
+  margin-top: 14px;
+  font-size: 16px;
+}
+
+.declareAdd {
+  margin-left: 10px;
+}
+
+.ivu-tabs-bar {
+  margin-bottom: 0 !important;
+}
+
+/* ------------  scanEx [[----------------------------------*/
+.scanEx .ivu-card-head {
+  background-color: #dbebd4;
+}
+
+.selectStore {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 12px;
+  margin-bottom: 10px;
+}
+
+/*# sourceMappingURL=index.css.map */

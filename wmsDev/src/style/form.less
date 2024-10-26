@@ -1,0 +1,231 @@
+/*
+ * @Author: Jaycee
+ * @Date: 2022-06-08 10:22:13
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2023-02-02 15:06:17
+ * @Descript 表单样式
+ */
+.formDetail {
+    .formWidth100 .ivu-form-item-content {
+        width: 100px;
+    }
+
+    .formWidth140 .ivu-form-item-content {
+        width: 140px;
+    }
+
+    .formWidth180 .ivu-form-item-content {
+        width: 180px;
+
+        .ivu-date-picker {
+            width: 100%;
+        }
+    }
+
+    .formWidth100 .ivu-form-item-content {
+        width: 100px;
+
+        .ivu-date-picker {
+            width: 100%;
+        }
+    }
+
+    .formWidth200 .ivu-form-item-content {
+        width: 200px;
+    }
+
+    .formWidth240 .ivu-form-item-content {
+        width: 240px;
+    }
+
+    .formWidth300 .ivu-form-item-content {
+        width: 300px;
+    }
+
+    .formWidth100,
+    .formWidth180,
+    .formWidth200,
+    .formWidth240,
+    .formWidth300 {
+        .ivu-form-item-content .ivu-date-picker {
+            width: 100%;
+        }
+    }
+
+    .detail-width {
+        width: 200px;
+        word-break: break-all;
+    }
+
+    .ivu-form-item-content {
+
+        div,
+        span {
+            word-break: break-all;
+        }
+    }
+
+    .formDesc {
+        .ivu-form-item-label {
+            padding: 4px 12px 4px 0;
+        }
+
+        .ivu-form-item-content {
+            line-height: 20px;
+        }
+    }
+
+    .fmb0 .ivu-form-item {
+        margin-bottom: 0;
+    }
+
+    .fmb8 .ivu-form-item {
+        margin-bottom: 8px;
+    }
+
+    .fmb10 .ivu-form-item {
+        margin-bottom: 10px;
+    }
+
+    .fmb18 .ivu-form-item {
+        margin-bottom: 18px;
+    }
+
+    .flex-style {
+        display: flex;
+        align-items: center;
+    }
+
+    .detail-title {
+        padding-left: 10px;
+        border-left: 5px solid #2d8cf0;
+    }
+
+    .ivu-input[disabled],
+    fieldset[disabled] .ivu-input,
+    .ivu-select-disabled .ivu-select-selection {
+        color: #555;
+        opacity: 0.72;
+    }
+
+    .autoLong .ivu-form-item-content {
+        width: auto;
+    }
+
+    // 行高0
+    .fmlabel0 {
+        .ivu-form-item-label {
+            padding: 0 12px 0 0;
+            line-height: 20px;
+        }
+
+        .ivu-form-item-content {
+            line-height: 20px;
+        }
+    }
+}
+
+// 详情表单
+.detail-form {
+    .ivu-form-item {
+        margin-bottom: 0;
+    }
+
+    .ivu-form-item-content {
+        width: 240px;
+    }
+
+    .stock-block {
+        margin-top: 20px;
+
+        .title {
+            border-left: 3px solid #2d8cf0;
+            padding-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .span-block {
+            display: inline-block;
+            word-break: break-all;
+            // line-height: 20px;
+            // padding-top: 10px;
+        }
+    }
+
+    .ignore-width {
+        .ivu-form-item-content {
+            width: auto;
+        }
+    }
+}
+
+// input 输入框 type = number 时，去掉后面的小三角
+.spinButton {
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+}
+
+// radio 组件高度
+.radio-fontsize0 {
+
+    .ivu-form-item-content,
+    .ivu-radio-group {
+        font-size: 0;
+    }
+}
+
+// 空数据样式
+.empty-style {
+    text-align: center;
+    font-size: 12px;
+    height: 48px;
+    line-height: 48px;
+}
+
+// 灰色提示
+.ashTips {
+    font-size: 12px;
+    color: #999;
+}
+
+.order-item {
+    flex: 1;
+    // margin-left: 10px;
+    overflow: hidden;
+    margin-bottom: -4px;
+    text-align: left;
+    padding: 4px 0;
+
+    .order-li {
+        margin-bottom: 4px;
+    }
+
+    .ivu-tooltip {
+        width: 100%;
+    }
+
+    .order-li--text,
+    .ivu-tooltip-rel {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .order-li--tag {
+        color: #008000;
+    }
+}
+
+// 表格图片内样式
+.picture-width {
+    margin: 0 -10px;
+}

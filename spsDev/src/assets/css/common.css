@@ -1,0 +1,257 @@
+.error500 {
+  position: relative;
+}
+
+.error500-body-con {
+  width: 700px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  top: 272px;
+  transform: translate(-50%, -50%);
+}
+
+.error500-body-con-title {
+  text-align: center;
+  font-size: 240px;
+  font-weight: 700;
+  color: #2d8cf0;
+  height: 260px;
+  line-height: 260px;
+  margin-top: 40px;
+}
+
+.error500-0-span {
+  display: inline-block;
+  position: relative;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 20px solid #ed3f14;
+  color: #ed3f14;
+  margin-right: 10px;
+}
+
+.error500 i {
+  display: inline-block;
+  font-size: 120px;
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+  transform-origin: center bottom;
+  animation: error500animation 3s ease 0s infinite alternate;
+}
+
+.error500-body-con-message {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: #dddde2;
+}
+
+.error500-btn-con {
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 40px;
+}
+
+/* mainBody下的样式 */
+.mainBody {
+  min-width: 1200px;
+  padding: 0 10px;
+}
+
+.mainBody .formSearch {
+  background-color: #fff;
+  padding: 16px 10px 0 10px;
+}
+
+.ivu-table-tbody .ivu-table-cell{
+  padding: 4px 6px;
+}
+.ivu-table-fixed-body .ivu-table-cell{
+  padding: 4px 6px;
+}
+.ivu-table-header .ivu-table-cell{
+  padding: 0px 6px;
+}
+.ivu-table-fixed-header .ivu-table-cell{
+  padding: 0px 6px;
+}
+
+.table-page {
+  margin: 10px 10px 0px 10px;
+}
+
+/* .formSearch .ivu-select,
+.formSearch .ivu-input-wrapper {
+  width: 240px;
+} */
+
+.formSearch .search-btn {
+  width: 92px;
+}
+
+.formSearch .ivu-radio-group-button .ivu-radio-wrapper-checked {
+  background-color: #2d8cf0;
+  color: white;
+}
+
+.formSearch .ivu-radio-group-button .ivu-radio-wrapper-checked:hover {
+  color: white;
+}
+
+.fmb18 .ivu-form-item {
+  margin-bottom: 18px;
+}
+
+.fmb16 .ivu-form-item {
+  margin-bottom: 16px;
+}
+
+.fmb10 .ivu-form-item {
+  margin-bottom: 10px;
+}
+
+.fmb0 .ivu-form-item {
+  margin-bottom: 0px;
+}
+
+.modal-main .ivu-modal-body {
+  max-height: 74vh;
+  overflow: auto;
+}
+
+.drop-main {
+  display: flex;
+  align-items: center;
+}
+
+.drop-main .dorp-button {
+  border-radius: 4px 0 0 4px;
+}
+
+.drop-main .dropdown {
+  line-height: 30px;
+  padding: 0 2px;
+  cursor: pointer;
+  border: 1px solid #dcdee2;
+  border-left: none;
+  background-color: #f6f6f6;
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+}
+.titleLeft {
+  border-left: 3px solid #2d8cf0;
+  padding-left: 10px;
+}
+.titleFont {
+  font-size: 16px;
+  font-weight: bold;
+}
+.textOver {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.textOverTow {
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.btnWarningTips {
+  border: 1px solid #00bfff;
+  background-color: #f0ffff;
+}
+.clickGesture {
+  margin: 5px;
+  cursor: pointer;
+  color: #2d8cf0;
+  text-decoration: underline;
+}
+.red {
+  color: red;
+}
+
+.ml30 {
+  margin-left: 30px;
+}
+.ml25 {
+  margin-left: 25px;
+}
+.ml20 {
+  margin-left: 20px;
+}
+.ml15 {
+  margin-left: 15px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.ml5 {
+  margin-left: 5px;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+.mt25 {
+  margin-top: 25px;
+}
+.mt20 {
+  margin-top: 20px;
+}
+.mt15 {
+  margin-top: 15px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mt5 {
+  margin-top: 5px;
+}
+
+.mr30 {
+  margin-right: 30px;
+}
+.mr25 {
+  margin-right: 25px;
+}
+.mr20 {
+  margin-right: 20px;
+}
+.mr15 {
+  margin-right: 15px;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.mr5 {
+  margin-right: 5px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+.mb25 {
+  margin-bottom: 25px;
+}
+.mb20 {
+  margin-bottom: 20px;
+}
+.mb15 {
+  margin-bottom: 15px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+.mb5 {
+  margin-bottom: 5px;
+}

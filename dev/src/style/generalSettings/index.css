@@ -1,0 +1,720 @@
+/* .ivu-checkbox-wrapper {
+  display: block;
+} */
+.shopTable {
+  margin-top: 10px;
+}
+
+.shopTable table td .ivu-table-cell {
+  display: flex;
+  justify-content: center;
+}
+.roleEdit {
+  font-size: 22px;
+  line-height: 12px;
+  position: relative;
+  top: 0px;
+  color: #3399ff;
+  padding: 0 1px;
+  top: 2px;
+}
+
+.roleDel {
+  font-size: 14px;
+  line-height: 14px;
+  position: relative;
+  top: 0px;
+  color: #cf2a28;
+  padding: 0;
+}
+
+.manageRole {
+  color: #3399ff;
+  cursor: pointer;
+  height: 24px;
+  line-height: 24px;
+  position: relative;
+  top: 3px;
+}
+
+.manageOperate span {
+  font-size: 12px;
+}
+
+.addRole {
+  color: #3399ff;
+  cursor: pointer;
+}
+
+.returnRole {
+  color: #d13131;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.addEmpolyeeData {
+  width: 402px;
+  margin: 16px 0 10px 16px;
+}
+
+.addNewBindingData {
+  margin: 10px 0 10px 10px;
+}
+
+.shopRole {
+  border-bottom: 1px solid #e9e9e9;
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+}
+
+.roleData {
+  width: 712px;
+  margin: 1px 0 10px 16px;
+}
+
+.shopRole .ivu-checkbox-wrapper {
+  float: right;
+  margin-top: 7px;
+}
+
+.shopRole span.partnerLogo {
+  background-size: 70%;
+  height: 26px;
+  width: 107px;
+  float: left;
+}
+
+.shopRole span.amazon {
+  background-position: 0 -73px !important;
+}
+
+.shopRole span.aliexpress {
+  background-position: 0 -120px !important;
+}
+
+.shopRole span.wish {
+  background-position: 0 -162px !important;
+}
+
+.shopRole span.alibabagj {
+  background-position: 0 -996px !important;
+}
+
+.shopRole span.ebay {
+  background-position: 0 -38px !important;
+}
+
+.shopRole span.shopify {
+  background-position: 0 -273px !important;
+}
+
+.shopRole span.vova {
+  background-position: 0px -1066px !important;
+}
+
+.shopRole span.lazada {
+  background-position: 0 -198px !important;
+}
+
+.shopRole span.joom {
+  background-position: 0 -336px !important;
+}
+
+.shopRole span.tophatter {
+  background-position: 0 -1030px !important;
+}
+
+.shopRole span.cdiscount {
+  background-position: 0 -857px !important;
+}
+
+.shopRole span.newegg {
+  background-position: 0 -916px !important;
+}
+
+.shopRole span.priceminister {
+  background-position: 0 -369px !important;
+}
+
+.shopRole span.walmart {
+  background-position: 0 -418px !important;
+}
+
+.shopRole span.dhgate {
+  background-position: 0px -465px !important;
+}
+
+.shopRole span.alibaba {
+  background-position: 0 -508px !important;
+}
+
+.shopRole span.yandex {
+  background-position: 0 -765px !important;
+}
+
+.shopRole span.mycom {
+  background-position: 0 -665px !important;
+}
+
+.shopRole span.shopee {
+  background-position: 0px -559px !important;
+}
+
+.shopRole span.mercadolibre {
+  background-position: 0 -612px !important;
+}
+
+.shopRole span.factorymarket {
+  background-position: 0 -707px !important;
+}
+
+.modalModule {
+  width: 261px;
+  margin: 0 12px 12px 0;
+}
+
+.modalName {
+  width: 657px;
+  margin: 0;
+  min-height: 333px;
+  max-height: 565px;
+  overflow: auto;
+}
+
+.modalItemcontent ul li {
+  border-bottom: 1px solid #e7eaec;
+  min-height: 36px;
+  position: relative;
+}
+
+.modalItemcontent ul li .ivu-checkbox-wrapper {
+  position: absolute;
+  right: 0;
+  top: 9px;
+}
+
+.modalItemcontent ul li a {
+  color: #4c5662;
+  padding: 12px;
+  display: block;
+}
+
+.modalItemcontent ul li a:hover,
+.modalItemcontent ul li.menuCur a {
+  color: #3399ff;
+}
+
+.modalItemcontent ul li:last-child {
+  border-bottom: 0;
+}
+
+.modalSubMenu {
+  float: left;
+  margin: 17px;
+}
+
+.modalItemHeader {
+  position: relative;
+}
+
+.modalItemHeader .ivu-checkbox-wrapper,
+.modalNameContainer>.ivu-checkbox-wrapper {
+  position: absolute;
+  right: 7px;
+  top: 6px;
+}
+
+.roleContainer {
+  margin: 0 19px 0px 0;
+}
+
+.ivu-collapse-header .ivu-checkbox-wrapper {
+  top: 0;
+}
+
+.modalNameItem {
+  margin-top: -11px;
+}
+
+.roleItem {
+  width: 90px;
+  /*height: 30px;*/
+  border: 1px solid #d7dde4;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+  margin-left: 14px;
+  display: inline-block;
+  margin-top: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.roleItemTwo {
+  width: 136px;
+  position: relative;
+}
+
+.roleItemSelect {
+  border: 1px solid #3399ff;
+  background-color: #fff;
+}
+
+.modalNameContainer {
+  position: relative;
+}
+
+.ivu-collapse>.modalNameContainer>.ivu-collapse-item>.ivu-collapse-header {
+  height: 38px;
+  line-height: 38px;
+  padding-left: 32px;
+  color: #666;
+  cursor: pointer;
+  position: relative;
+}
+
+.platformSelect {
+  text-align: center;
+}
+
+.platformItem {
+  width: 107px;
+  height: 42px;
+  border: 1px solid #3399ff;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 6px;
+  position: relative;
+  cursor: pointer;
+}
+
+.platformItem span {
+  background: url('../assets/images/partner.png') no-repeat;
+  width: 107px;
+  height: 42px;
+  display: inline-block;
+  background-position: 0 -42px;
+}
+
+.platformItem i {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: url('../assets/images/partner.png') no-repeat;
+  z-index: 66;
+  width: 19px;
+  height: 19px;
+  display: none;
+}
+
+.platformSelected i {
+  display: block;
+}
+
+.platformItem span.amazon {
+  background-position: 0px -84px;
+}
+
+.platformItem span.aliexpress {
+  background-position: 0 -118px;
+}
+
+.platformItem span.wish {
+  background-position: 0 -160px;
+}
+
+.platformItem span.alibabagj {
+  background-position: 0 -980px;
+}
+
+.platformItem span.shopify {
+  background-position: 0 -270px;
+}
+
+.platformItem span.lazada {
+  background-position: 0 -196px;
+}
+
+.platformItem span.ebay {
+  background-position: 0 -32px;
+}
+
+.platformItem span.joom {
+  background-position: 0 -330px;
+}
+
+.platformItem span.tophatter {
+  background-position: 0 -302px;
+}
+
+.platformItem span.cdiscount {
+  background-position: 0 -854px;
+}
+
+.platformItem span.newegg {
+  background-position: 0 -906px;
+}
+
+.platformItem span.priceminister {
+  background-position: 0 -365px;
+}
+
+.platformItem span.walmart {
+  background-position: 0 -415px;
+}
+
+.platformItem span.dhgate {
+  background-position: 0 -455px;
+}
+
+.platformItem span.alibaba {
+  background-position: 0 -500px;
+}
+
+.platformItem span.yandex {
+  background-position: 0 -750px;
+}
+
+.platformItem span.mycom {
+  background-position: 0 -660px;
+}
+
+.platformItem span.shopee {
+  background-position: 0 -550px;
+}
+
+.platformItem span.mercadolibre {
+  background-position: 0 -600px;
+}
+
+.platformItem span.factorymarket {
+  background-position: 0 -705px;
+}
+
+.platformItem span.vova {
+  width: 107px;
+  height: 38px;
+  bottom: 4px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: url('../assets/images/vova.png') no-repeat;
+  background-size: 75%;
+  background-position: 0 -10px;
+}
+
+.vova {
+  width: 107px;
+  height: 42px;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 10px;
+  position: relative;
+  display: inline-block;
+  background: url('../assets/images/vova.png') no-repeat;
+  background-size: 80%;
+  background-position: 0 -10px;
+}
+
+.platformItem span.real {
+  width: 107px;
+  height: 38px;
+  bottom: 4px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: url('../assets/images/real.png') no-repeat;
+  background-size: 75%;
+  background-position: 0 -16px;
+}
+
+.real {
+  width: 107px;
+  height: 42px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: url('../assets/images/real.png') no-repeat;
+  background-size: 80%;
+  background-position: 0 -16px;
+}
+
+.platformItem span.allegro {
+  width: 108px;
+  height: 42px;
+  bottom: 0px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: url('../assets/images/allegro.png') no-repeat;
+  background-size: 88%;
+  background-position: 5px 2px;
+}
+
+.allegro_img {
+  width: 108px;
+  height: 42px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: url('../assets/images/allegro.png') no-repeat;
+  background-size: 80%;
+  background-position: 12px 8px;
+}
+
+.platformItem span.ept {
+  width: 107px;
+  height: 38px;
+  bottom: 4px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: url('../assets/images/ept.png') no-repeat;
+  background-size: 75%;
+  background-position: 13px 11px;
+}
+
+.ept_img {
+  width: 107px;
+  height: 42px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: url('../assets/images/ept.png') no-repeat;
+  background-size: 85%;
+  background-position: 11px 11px;
+}
+
+.platformItem span.jdyn {
+  width: 107px;
+  height: 38px;
+  bottom: 4px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: url('../assets/images/jdyn.png') no-repeat;
+  background-size: 100%;
+  background-position: -2px 5px;
+}
+
+.jdyn_img {
+  width: 107px;
+  height: 42px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: url('../assets/images/jdyn.png') no-repeat;
+  background-size: 100%;
+  background-position: 0px 4px;
+}
+
+.modalItemHeader .payPalHelp {
+  margin-left: 10px;
+}
+
+.modalItemHeader .addNewInput {
+  position: absolute;
+  right: 11px;
+  top: 7px;
+  color: #3399ff;
+  cursor: pointer;
+}
+
+.addNewBindingData>.ivu-form {
+  width: 528px;
+}
+
+.stopStatus {
+  color: #de2910;
+}
+
+.openStatus {
+  color: #3cb034;
+}
+
+.manageOperate .iconfont {
+  font-size: 14px;
+}
+
+.paypalAuthGuide {
+  display: inline-block;
+  margin-top: 6px;
+}
+
+.pseudoButton {
+  position: relative;
+  float: left;
+  margin-left: -1px;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: 1.5;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 6px 15px;
+  font-size: 12px;
+  border-radius: 4px;
+  transition: color 0.2s linear, background-color 0.2s linear, border 0.2s linear;
+  color: #495060;
+  background-color: #f7f7f7;
+  border-color: #dddee1;
+}
+
+.pseudoButton:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
+.ivu-btn-group:not(.ivu-btn-group-vertical)>.pseudoButton:last-child:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+/* --------------   SHOP STYLE [[ --------------  */
+.shopTable span.platformLogo {
+  width: 107px;
+  height: 42px;
+  display: block;
+}
+
+.shopTable span.aliexpress {
+  background-position: 0 -116px;
+}
+
+.shopTable span.wish {
+  background-position: 0 -168px;
+}
+
+.shopTable span.alibabagj {
+  background-position: 0 -980px;
+}
+
+.shopTable span.amazon {
+  background-position: 0 -70px !important;
+}
+
+.shopTable span.ebay {
+  background-position: 0 -32px;
+}
+
+.shopTable span.shopify {
+  height: 70px;
+  background-position: 0 -238px;
+}
+
+.shopTable span.lazada {
+  background-position: 0 -192px;
+}
+
+.shopTable span.wish {
+  background-position: 0 -156px;
+}
+
+.shopTable span.alibabagj {
+  height: 70px;
+  background-position: 0 -960px;
+}
+
+.shopTable span.joom {
+  background-position: 0 -330px;
+}
+
+.shopTable span.tophatter {
+  background-position: 0 -302px;
+}
+
+.shopTable span.cdiscount {
+  background-position: 0 -854px;
+}
+
+.shopTable span.newegg {
+  background-position: 0 -906px;
+}
+
+.shopTable span.priceminister {
+  background-position: 0 -365px;
+}
+
+.shopTable span.walmart {
+  background-position: 0 -415px;
+}
+
+.shopTable span.dhgate {
+  background-position: 0 -455px;
+}
+
+.shopTable span.alibaba {
+  background-position: 0 -500px;
+}
+
+.shopTable span.yandex {
+  background-position: 0 -750px;
+}
+
+.shopTable span.mycom {
+  background-position: 0 -660px;
+}
+
+.shopTable span.shopee {
+  background-position: 0 -550px;
+}
+
+.shopTable span.mercadolibre {
+  background-position: 0 -600px;
+}
+
+.shopTable span.factorymarket {
+  background-position: 0 -705px;
+}
+
+.shopTable p.hasAuth {
+  color: #3cb034;
+}
+
+.shopTable p.noAuth {
+  color: #de2910;
+}
+
+.addNewBindingGotoAuth {
+  text-align: center;
+}
+
+.addNewBindingGotoAuth .shopAuthor {
+  font-size: 66px;
+  color: #bbb;
+}
+
+.addNewBindingGotoAuth .anbgaText {
+  margin-top: -10px;
+}
+
+.addNewBindingGotoAuth .anbgaAuth {
+  margin-top: 5px;
+}
+
+.authGreen {
+  color: #3cb034 !important;
+}
+
+.numTips {
+  white-space: normal;
+}
+
+.addAmazonAccountModal .ivu-modal {
+  width: 640px !important;
+}
+
+.addAmazonAccountModal .ivu-modal-footer {
+  display: none;
+}
+/*# sourceMappingURL=index.css.map */

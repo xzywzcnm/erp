@@ -1,0 +1,409 @@
+.tongtool-emoji span {
+  background: url('../assets/images/tbIcon.png') no-repeat;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 8px auto 0 auto;
+}
+.tongtool-emoji span.emoji0 {
+  background-position: 0 0px;
+  content: '/:000';
+}
+.tongtool-emoji span.emoji1 {
+  background-position: 0 -25px;
+  content: '/:001';
+}
+.tongtool-emoji span.emoji2 {
+  background-position: 0 -50px;
+  content: '/:002';
+}
+.tongtool-emoji span.emoji3 {
+  background-position: 0 -75px;
+  content: '/:003';
+}
+.tongtool-emoji span.emoji4 {
+  background-position: 0 -100px;
+  content: '/:004';
+}
+.tongtool-emoji span.emoji5 {
+  background-position: 0 -125px;
+  content: '/:005';
+}
+.tongtool-emoji span.emoji6 {
+  background-position: 0 -150px;
+  content: '/:006';
+}
+.tongtool-emoji span.emoji7 {
+  background-position: 0 -175px;
+  content: '/:007';
+}
+.tongtool-emoji span.emoji8 {
+  background-position: 0 -200px;
+  content: '/:008';
+}
+.tongtool-emoji span.emoji9 {
+  background-position: 0 -225px;
+  content: '/:009';
+}
+.tongtool-emoji span.emoji10 {
+  background-position: 0 -250px;
+  content: '/:0010';
+}
+.tongtool-emoji span.emoji11 {
+  background-position: 0 -275px;
+  content: '/:0011';
+}
+.tongtool-emoji span.emoji12 {
+  background-position: 0 -300px;
+  content: '/:0012';
+}
+.tongtool-emoji span.emoji13 {
+  background-position: 0 -325px;
+  content: '/:0013';
+}
+.tongtool-emoji span.emoji14 {
+  background-position: 0 -350px;
+  content: '/:0014';
+}
+.tongtool-emoji span.emoji15 {
+  background-position: 0 -375px;
+  content: '/:0015';
+}
+.tongtool-emoji span.emoji16 {
+  background-position: 0 -400px;
+  content: '/:0016';
+}
+.tongtool-emoji span.emoji17 {
+  background-position: 0 -425px;
+  content: '/:0017';
+}
+.tongtool-emoji span.emoji18 {
+  background-position: 0 -450px;
+  content: '/:0018';
+}
+.tongtool-emoji span.emoji19 {
+  background-position: 0 -475px;
+  content: '/:0019';
+}
+.tongtool-emoji span.emoji20 {
+  background-position: 0 -500px;
+  content: '/:0020';
+}
+.tongtool-emoji span.emoji21 {
+  background-position: 0 -525px;
+  content: '/:0021';
+}
+.tongtool-emoji span.emoji22 {
+  background-position: 0 -550px;
+  content: '/:0022';
+}
+.tongtool-emoji span.emoji23 {
+  background-position: 0 -575px;
+  content: '/:0023';
+}
+.tongtool-emoji span.emoji24 {
+  background-position: 0 -600px;
+  content: '/:0024';
+}
+.tongtool-emoji span.emoji25 {
+  background-position: 0 -625px;
+  content: '/:0025';
+}
+.tongtool-emoji span.emoji26 {
+  background-position: 0 -650px;
+  content: '/:0026';
+}
+.tongtool-emoji span.emoji27 {
+  background-position: 0 -675px;
+  content: '/:0027';
+}
+.tongtool-emoji span.emoji28 {
+  background-position: 0 -700px;
+  content: '/:0028';
+}
+.tongtool-emoji span.emoji29 {
+  background-position: 0 -725px;
+  content: '/:0029';
+}
+.tongtool-emoji span.emoji30 {
+  background-position: 0 -750px;
+  content: '/:0030';
+}
+.tongtool-emoji span.emoji31 {
+  background-position: 0 -775px;
+  content: '/:0031';
+}
+.tongtool-emoji span.emoji32 {
+  background-position: 0 -800px;
+  content: '/:0032';
+}
+.tongtool-emoji span.emoji33 {
+  background-position: 0 -825px;
+  content: '/:0033';
+}
+.tongtool-emoji span.emoji34 {
+  background-position: 0 -850px;
+  content: '/:0034';
+}
+.tongtool-emoji span.emoji35 {
+  background-position: 0 -875px;
+  content: '/:0035';
+}
+.tongtool-emoji span.emoji36 {
+  background-position: 0 -900px;
+  content: '/:0036';
+}
+.tongtool-emoji span.emoji37 {
+  background-position: 0 -925px;
+  content: '/:0037';
+}
+.tongtool-emoji span.emoji38 {
+  background-position: 0 -950px;
+  content: '/:0038';
+}
+.tongtool-emoji span.emoji39 {
+  background-position: 0 -975px;
+  content: '/:0039';
+}
+.tongtool-emoji span.emoji40 {
+  background-position: 0 -1000px;
+  content: '/:0040';
+}
+.tongtool-emoji span.emoji41 {
+  background-position: 0 -1025px;
+  content: '/:0041';
+}
+.tongtool-emoji span.emoji42 {
+  background-position: 0 -1050px;
+  content: '/:0042';
+}
+.tongtool-emoji span.emoji43 {
+  background-position: 0 -1075px;
+  content: '/:0043';
+}
+.tongtool-emoji span.emoji44 {
+  background-position: 0 -1100px;
+  content: '/:0044';
+}
+.tongtool-emoji span.emoji45 {
+  background-position: 0 -1125px;
+  content: '/:0045';
+}
+.tongtool-emoji span.emoji46 {
+  background-position: 0 -1150px;
+  content: '/:0046';
+}
+.tongtool-emoji span.emoji47 {
+  background-position: 0 -1175px;
+  content: '/:0047';
+}
+.tongtool-emoji span.emoji48 {
+  background-position: 0 -1200px;
+  content: '/:0048';
+}
+.tongtool-emoji span.emoji49 {
+  background-position: 0 -1225px;
+  content: '/:0049';
+}
+.tongtool-emoji span.emoji50 {
+  background-position: 0 -1250px;
+  content: '/:0050';
+}
+.tongtool-emoji span.emoji51 {
+  background-position: 0 -1275px;
+  content: '/:0051';
+}
+.tongtool-emoji span.emoji52 {
+  background-position: 0 -1300px;
+  content: '/:0052';
+}
+.tongtool-emoji span.emoji53 {
+  background-position: 0 -1325px;
+  content: '/:0053';
+}
+.tongtool-emoji span.emoji54 {
+  background-position: 0 -1350px;
+  content: '/:0054';
+}
+.tongtool-emoji span.emoji55 {
+  background-position: 0 -1375px;
+  content: '/:0055';
+}
+.tongtool-emoji span.emoji56 {
+  background-position: 0 -1400px;
+  content: '/:0056';
+}
+.tongtool-emoji span.emoji57 {
+  background-position: 0 -1425px;
+  content: '/:0057';
+}
+.tongtool-emoji span.emoji58 {
+  background-position: 0 -1450px;
+  content: '/:0058';
+}
+.tongtool-emoji span.emoji59 {
+  background-position: 0 -1475px;
+  content: '/:0059';
+}
+.tongtool-emoji span.emoji60 {
+  background-position: 0 -1500px;
+  content: '/:0060';
+}
+.tongtool-emoji span.emoji61 {
+  background-position: 0 -1525px;
+  content: '/:0061';
+}
+.tongtool-emoji span.emoji62 {
+  background-position: 0 -1550px;
+  content: '/:0062';
+}
+.tongtool-emoji span.emoji63 {
+  background-position: 0 -1575px;
+  content: '/:0063';
+}
+.tongtool-emoji span.emoji64 {
+  background-position: 0 -1600px;
+  content: '/:0064';
+}
+.tongtool-emoji span.emoji65 {
+  background-position: 0 -1625px;
+  content: '/:0065';
+}
+.tongtool-emoji span.emoji66 {
+  background-position: 0 -1650px;
+  content: '/:0066';
+}
+.tongtool-emoji span.emoji67 {
+  background-position: 0 -1675px;
+  content: '/:0067';
+}
+.tongtool-emoji span.emoji68 {
+  background-position: 0 -1700px;
+  content: '/:0068';
+}
+.tongtool-emoji span.emoji69 {
+  background-position: 0 -1725px;
+  content: '/:0069';
+}
+.tongtool-emoji span.emoji70 {
+  background-position: 0 -1750px;
+  content: '/:0070';
+}
+.tongtool-emoji span.emoji71 {
+  background-position: 0 -1775px;
+  content: '/:0071';
+}
+.tongtool-emoji span.emoji72 {
+  background-position: 0 -1800px;
+  content: '/:0072';
+}
+.tongtool-emoji span.emoji73 {
+  background-position: 0 -1825px;
+  content: '/:0073';
+}
+.tongtool-emoji span.emoji74 {
+  background-position: 0 -1850px;
+  content: '/:0074';
+}
+.tongtool-emoji span.emoji75 {
+  background-position: 0 -1875px;
+  content: '/:0075';
+}
+.tongtool-emoji span.emoji76 {
+  background-position: 0 -1900px;
+  content: '/:0076';
+}
+.tongtool-emoji span.emoji77 {
+  background-position: 0 -1925px;
+  content: '/:0077';
+}
+.tongtool-emoji span.emoji78 {
+  background-position: 0 -1950px;
+  content: '/:0078';
+}
+.tongtool-emoji span.emoji79 {
+  background-position: 0 -1975px;
+  content: '/:0079';
+}
+.tongtool-emoji span.emoji80 {
+  background-position: 0 -2000px;
+  content: '/:0080';
+}
+.tongtool-emoji span.emoji81 {
+  background-position: 0 -2025px;
+  content: '/:0081';
+}
+.tongtool-emoji span.emoji82 {
+  background-position: 0 -2050px;
+  content: '/:0082';
+}
+.tongtool-emoji span.emoji83 {
+  background-position: 0 -2075px;
+  content: '/:0083';
+}
+.tongtool-emoji span.emoji84 {
+  background-position: 0 -2100px;
+  content: '/:0084';
+}
+.tongtool-emoji span.emoji85 {
+  background-position: 0 -2125px;
+  content: '/:0085';
+}
+.tongtool-emoji span.emoji86 {
+  background-position: 0 -2150px;
+  content: '/:0086';
+}
+.tongtool-emoji span.emoji87 {
+  background-position: 0 -2175px;
+  content: '/:0087';
+}
+.tongtool-emoji span.emoji88 {
+  background-position: 0 -2200px;
+  content: '/:0088';
+}
+.tongtool-emoji span.emoji89 {
+  background-position: 0 -2225px;
+  content: '/:0089';
+}
+.tongtool-emoji span.emoji90 {
+  background-position: 0 -2250px;
+  content: '/:0090';
+}
+.tongtool-emoji span.emoji91 {
+  background-position: 0 -2275px;
+  content: '/:0091';
+}
+.tongtool-emoji span.emoji92 {
+  background-position: 0 -2300px;
+  content: '/:0092';
+}
+.tongtool-emoji span.emoji93 {
+  background-position: 0 -2325px;
+  content: '/:0093';
+}
+.tongtool-emoji span.emoji94 {
+  background-position: 0 -2350px;
+  content: '/:0094';
+}
+.tongtool-emoji span.emoji95 {
+  background-position: 0 -2375px;
+  content: '/:0095';
+}
+.tongtool-emoji span.emoji96 {
+  background-position: 0 -2400px;
+  content: '/:0096';
+}
+.tongtool-emoji span.emoji97 {
+  background-position: 0 -2425px;
+  content: '/:0097';
+}
+.tongtool-emoji span.emoji98 {
+  background-position: 0 -2450px;
+  content: '/:0098';
+}
+.tongtool-emoji span.emoji99 {
+  background-position: 0 -2475px;
+  content: '/:0099';
+}
+/*# sourceMappingURL=emoji.css.map */

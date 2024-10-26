@@ -1,0 +1,16 @@
+
+/* --------------   messageProcessing STYLE [[ --------------  */
+
+.clear{clear:both}
+.left{float:left}
+
+.menu{margin:0 50px;padding:30px 0;}
+.menu .tree{width:10%;max-width:150px;height:812px;}
+.menu .tree .ivu-tree-title{font-size:16px;}
+.menu .content{width:80%;margin-left: 2%;}
+.menu .content h2{margin-bottom: 15px;}
+.menu .content .add{margin-bottom: 10px;}
+
+.oper{margin:0 50px;padding:30px 0;}
+.oper .content h2{margin-bottom: 15px;}
+.oper .content .add{margin-bottom: 10px;}

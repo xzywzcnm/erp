@@ -1,0 +1,9 @@
+/build/
+/config/
+/dist/
+/*.js
+/public/
+/node_modules/
+
+##忽略通途文件代码的不规范,,后续优化
+##/src/views/supplierPurchase/purchaseSetting/components/common/strategyModal.vue

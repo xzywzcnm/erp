@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 1px;
+}
+
+.ivu-checkbox-wrapper {
+  display: block;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.usersFilter,
+.addBinding,
+.shopTable {
+  padding: 0 12px;
+}
+
+.shopTable {
+  margin-top: 10px
+}
+
+.addModalData {
+  margin: 16px 0 10px 16px;
+}
+
+.addModalData .ivu-form-item {
+  margin-bottom: 10px
+}
+
+.addModalData .ivu-form-item-error {
+  margin-bottom: 24px
+}
+
+.stopStatus {
+  color: #de2910
+}
+
+.openStatus {
+  color: #3cb034
+}
+
+.line {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin: 20px 0;
+}
+
+
+.error500 {
+  position: relative;
+}
+
+.error500-body-con {
+  width: 700px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  top: 272px;
+  transform: translate(-50%, -50%);
+}
+
+.error500-body-con-title {
+  text-align: center;
+  font-size: 240px;
+  font-weight: 700;
+  color: #2d8cf0;
+  height: 260px;
+  line-height: 260px;
+  margin-top: 40px;
+}
+
+.error500-0-span {
+  display: inline-block;
+  position: relative;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 20px solid #ed3f14;
+  color: #ed3f14;
+  margin-right: 10px;
+}
+
+.error500-body-con-message {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: #dddde2;
+
+}
+
+.error500-btn-con {
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 40px;
+}

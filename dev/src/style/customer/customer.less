@@ -1,0 +1,70 @@
+@customer-prefix-css: ~"@{css-prefix}customer";
+@import '../main';
+.@{customer-prefix-css} {
+  &-automaticSendingMessageRulesOfStation {
+    margin: 0 @normal-padding @normal-padding;
+    background-color: @white;
+
+    & .rightLaybel {
+      background-color: @tiny-gray;
+      border: 1px solid @border-color;
+      margin: 10px;
+      flex-shrink: 2;
+
+      & .rightLabelTitle {
+        line-height: 2.5;
+      }
+
+      & .addNewRules {
+        margin: 10px;
+      }
+
+      & .searchForm {
+        & .ivu-form-item {
+          margin-bottom: 0
+        }
+      }
+    }
+
+    & .tableContainer {
+      margin: 10px;
+    }
+
+    & .demo-split-pane {
+      & .leftTitle {
+        cursor: pointer;
+      }
+
+      & .leftItem {
+        cursor: pointer;
+        padding-left: 20px;
+        border-bottom: 1px dashed @border-color;
+      }
+
+      & .leftItem:hover {
+        background-color: @tint-primary;
+        color: @white;
+      }
+
+      & .leftGrayBg {
+        background-color: @tiny-gray;
+      }
+    }
+  }
+
+  &-automaticSendingMesRules {
+    & .activeTitle {
+      padding: 0 6px;
+    }
+
+    & .ivu-input-disabled,
+    & .ivu-select-disabled .ivu-select-selection,
+    & .ivu-input-number-disabled .ivu-input-number-input {
+      color: @title-color;
+    }
+  }
+}
+
+.ivu-tag i.ivu-icon {
+  color: @title-color !important;
+}

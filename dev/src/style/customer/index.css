@@ -1,0 +1,30 @@
+.tongtool-customerCenter-ebayCancelOrder .tableControl,
+.tongtool-customerCenter-ebayCancelOrder .orderTable {
+  position: relative;
+}
+
+.tongtool-customerCenter-ebayCancelOrder .ivu-form-item {
+  margin-bottom: 8px;
+}
+
+.tongtool-customerCenter-ebayCancelOrder .buttonForm .ivu-form-item-label {
+  line-height: 32px;
+}
+
+.tongtool-customerCenter-ebayCancelOrder .normalRight {
+  margin-right: 10px;
+}
+
+.tongtool-customerCenter-ebayCancelOrder .commonFilter .ivu-input {
+  width: 280px;
+}
+
+.tongtool-customerCenter-ebayCancelOrder .availableMes {
+  margin: 0 10px 10px;
+}
+
+.tongtool-customerCenter-evaluate .formItem .ivu-form-item {
+  margin-bottom: 0;
+}
+
+/*# sourceMappingURL=index.css.map */

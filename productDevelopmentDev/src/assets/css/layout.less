@@ -1,0 +1,523 @@
+@import '~@/assets/my-theme/variable.less';
+
+/*
+头部导航 ==========================================================
+*/
+.ivu-menu-horizontal {
+  height: @height;
+  line-height: @height;
+}
+
+.header_box {
+  min-height: @height;
+  display: flex;
+  justify-content: space-between;
+}
+
+// 头部导航左侧
+.left_box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .logo_box {
+    width: 192px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo_box em {
+    font-style: normal;
+    font-weight: 400;
+    margin-left: 12px;
+    position: relative;
+    bottom: -1px;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  .toggleMenu {
+    margin-left: 16px;
+    width: 36px;
+    vertical-align: middle;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+// 头部导航右侧
+.right_box {
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+}
+
+.user_info_box {
+  display: flex;
+  align-items: center;
+
+  .timevalue {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .icon_box {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    top: -2px;
+  }
+
+  .icon-yonghu {
+    font-size: 23px;
+    color: #fff;
+  }
+
+  .text_name {
+    font-size: 13px;
+    margin-left: 5px;
+    color: #fff;
+    position: relative;
+    top: 3px;
+  }
+
+  .logout_item {
+    display: flex;
+    align-items: center;
+  }
+
+  .ivu-poptip {
+    margin-right: 15px;
+  }
+
+  .user_info {
+    display: inline-block;
+    color: #fff;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .style_right {
+    margin-right: 15px;
+
+    .ivu-dropdown-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .lang {
+      margin: 0 10px 0 0;
+      top: 0;
+    }
+  }
+
+  .poptip_style {
+    margin: 0;
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .time_zone .ivu-select-dropdown {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .mapSelect {
+    background: url("../images/map.png") no-repeat center center;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.top-container {
+  width: 100%;
+  background-color: @erp-header-bgcolor;
+  position: fixed;
+  z-index: 999;
+
+  .warehouse_dropdown {
+    max-height: 600px !important;
+    overflow-y: auto !important;
+  }
+
+  .ivu-select-dropdown {
+    min-width: 140px !important;
+  }
+
+  .languages_dropdown {
+    top: 25px !important;
+    left: -140px !important;
+  }
+
+  .layout-flag-button {
+    display: block;
+    text-align: center;
+  }
+
+  .flags-sprite,
+  .en-US,
+  .zh-CN,
+  .zh-TW,
+  .flags-france,
+  .flags-germany,
+  .flags-italy,
+  .flags-japan,
+  .flags-korea,
+  .flags-portugal,
+  .flags-russia,
+  .flags-spain {
+    background-image: url("../images/flags.png");
+    background-repeat: no-repeat;
+  }
+
+  .zh-CN,
+  .zh-TW {
+    background-position: 0 -32px;
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.logout_item {
+  .icon_logout {
+    font-size: 17px;
+  }
+
+  .text {
+    font-size: 13px;
+    margin-left: 5px;
+  }
+}
+
+/*
+左侧导航栏==================================================================
+*/
+.leftMenu {
+  width: @leftWidth;
+  position: fixed;
+  top: @height;
+  bottom: 0;
+  background-color: #fff;
+  overflow: hidden;
+
+  .ivu-select-selected-value {
+    font-size: 14px !important;
+  }
+}
+
+.style_dropdownbox {
+  max-height: 280px;
+  .ivu-select-item {
+    padding: 0;
+    font-size: 14px !important;
+  }
+  .system_link {
+    display: inline-block;
+    padding: 7px 16px;
+    width: 100%;
+    color: @erp-primary-information;
+    &:hover {
+      color: @erp-primary-color;
+      text-decoration: underline;
+    }
+  }
+}
+
+.leftMenu--main {
+  height: 100%;
+  position: relative;
+  padding-top: 60px;
+
+  .leftMenuHeader {
+    position: absolute;
+    top: 0px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    border-bottom: 1px solid @erp-stroke-color;
+    border-right: 1px solid @erp-stroke-color;
+    width: @leftWidth;
+    box-shadow: 0px -1px 5px #888888;
+    z-index: 9999;
+
+    .ivu-icon-grid {
+      padding-right: 10px;
+      color: #666;
+    }
+  }
+
+  .menuContainer {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-right: -10px;
+  }
+
+  .menuContainer--main {
+    width: 100%;
+    margin-right: 10px;
+  }
+}
+
+.nav-title {
+
+  .ivu-menu-submenu-title {
+    height: 40px;
+    padding: 0 20px;
+  }
+
+  .white-space-nowrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .ivu-menu-submenu-title {
+    .nav-title-text {
+      flex: 1;
+      padding-right: 7px;
+    }
+
+    .iconfont {
+      margin-right: 10px;
+    }
+
+    .ivu-menu-submenu-title-icon {
+      right: 7px !important;
+    }
+  }
+}
+
+.lav-uls {
+  height: 36px;
+
+  .uls-space-nowrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 60px !important;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.layout-hide-text .leftMenu {
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.layout-show-text .leftMenu {
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+  overflow: auto;
+}
+
+/*
+右侧主板 ============================================================
+*/
+.layout--main {
+  height: 100%;
+  // padding: 0 10px;
+  position: relative;
+  // overflow-y: auto;
+  // overflow-x: hidden;
+  // overflow: hidden;
+}
+
+.layout-breadcrumb {
+  height: 46px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  right: 10px;
+}
+
+.container--box {
+  height: 100%;
+  padding-top: 46px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+
+  .page-main {
+    height: 100%;
+    overflow: hidden;
+
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity .3s;
+    }
+
+    .fade-enter,
+    .fade-leave-to {
+      opacity: 0;
+    }
+  }
+}
+
+.mainBox {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #f3f3f3;
+  box-sizing: border-box;
+
+  /*修改滚动条样式*/
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgb(239, 239, 239);
+    border-radius: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #bfbfbf;
+    border-radius: 10px;
+  }
+
+  .card-self-style {
+    height: 100%;
+
+    .ivu-card-body {
+      padding: 10px;
+      height: 100%;
+      box-sizing: border-box;
+      background-color: #fff;
+    }
+  }
+
+  .list-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .table-main {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      .table-list {
+        flex: 1;
+        overflow: hidden;
+      }
+
+      .ivu-table-wrapper {
+        height: 100%;
+      }
+
+      /* 分页样式 */
+      .table-page {
+        padding: 10px 10px 0;
+        overflow: hidden;
+      }
+
+      .table-page-right {
+        float: right;
+      }
+    }
+
+  }
+
+  .ivu-table-tip table {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+}
+
+
+.layout {
+  background: #f5f7f9;
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+
+  .ivu-layout {
+    height: 100%;
+  }
+}
+
+.layout-nav {
+  width: 420px;
+  margin: 0 auto;
+}
+
+.layout-assistant {
+  width: 300px;
+  margin: 0 auto;
+  height: inherit;
+}
+
+.layout-content {
+  min-height: 100%;
+  /* margin:15px; */
+  overflow: hidden;
+  background: #fff;
+  border-radius: 4px;
+  position: relative;
+  padding-top: 50px;
+  background-color: #f3f3f4;
+}
+
+.layout-content-main {
+  padding: 10px;
+}
+
+.layout-copy {
+  text-align: center;
+  padding: 10px 0 20px;
+  color: #9ea7b4;
+}
+
+.layout-hide-text ul.ivu-menu {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  opacity: 0;
+}
+
+.layout-show-text ul.ivu-menu {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 1;
+}
+
+.layout-right {
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+  width: 100%;
+}

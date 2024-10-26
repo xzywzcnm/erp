@@ -1,0 +1,107 @@
+/*
+ * @Author: Jaycee
+ * @Date: 2022-06-08 10:43:30
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2022-06-21 17:21:02
+ * @Descript 列表页面样式
+ */
+.listPage {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+// 搜索模块
+.searchMain {
+    padding: 10px 10px 0 10px;
+    background-color: #fff;
+
+    .ivu-form-item {
+        margin-bottom: 10px;
+    }
+
+    .ivu-form-item-content,
+    .dyt-select-demo {
+        width: 240px;
+
+        .ivu-date-picker {
+            width: 100%;
+        }
+    }
+
+    .ignore-width {
+        .ivu-form-item-content {
+            width: auto;
+        }
+    }
+
+    .ivu-icon.ivu-icon-ios-close {
+        color: #666 !important;
+    }
+}
+
+// 功能模块
+.funMain {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #fff;
+
+    .funMain__flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+// 分页模块
+.pagesMain {
+    padding: 10px;
+    // background-color: #fff;
+    text-align: right;
+}
+
+// 表格模块
+.tableMain {
+    flex: 1;
+    overflow: hidden;
+    // padding: 10px;
+    background-color: #fff;
+
+    .tableBox {
+        height: 100%;
+    }
+}
+
+// 提示条
+.alert-primary {
+    display: inline-block;
+    padding: 2px 4px;
+    border-radius: 2px;
+    border: 1px solid #abdcff;
+    background-color: #f0faff;
+}
+
+// 表格缩略图样式
+.preview-main .abbreviation_style {
+    padding: 4px 0;
+    margin: 0 -4px;
+    justify-content: center;
+
+    .pic-items {
+        padding: 0 4px;
+    }
+}
+
+// 解决表格固定列错位问题
+.fix-table-dislocation {
+    .ivu-table-fixed-right {
+        display: flex;
+        flex-direction: column;
+
+        .ivu-table-fixed-body {
+            flex: 1;
+            overflow: hidden;
+            padding-bottom: 10px;
+        }
+    }
+}

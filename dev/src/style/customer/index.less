@@ -1,0 +1,41 @@
+@customerCenter-prefix-css: ~"@{css-prefix}customerCenter";
+@import '../main';
+
+.@{customerCenter-prefix-css} {
+  &-ebayCancelOrder {
+
+    & .tableControl,
+    & .orderTable {
+      position: relative;
+    }
+
+    & .ivu-form-item {
+      margin-bottom: 8px;
+    }
+
+    & .buttonForm .ivu-form-item-label {
+      line-height: 32px;
+    }
+
+    & .normalRight {
+      margin-right: 10px;
+    }
+
+    & .commonFilter .ivu-input {
+      width: 280px;
+    }
+
+    & .availableMes {
+      margin: 0 10px 10px;
+    }
+  }
+
+  &-evaluate {
+    & .formItem {
+      & .ivu-form-item {
+        margin-bottom: 0;
+
+      }
+    }
+  }
+}

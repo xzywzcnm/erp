@@ -1,0 +1,142 @@
+{
+  "id": "3482823",
+  "name": "erpDev",
+  "font_family": "lapa",
+  "css_prefix_text": "lapa-",
+  "description": "拉帕erp系统的dev模块",
+  "glyphs": [
+    {
+      "icon_id": "1363843",
+      "name": "编辑",
+      "font_class": "rim-edit",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "9568068",
+      "name": "编辑",
+      "font_class": "edit",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "36500802",
+      "name": "可低温熨烫",
+      "font_class": "kediwenyuntang",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "36500803",
+      "name": "不可熨烫",
+      "font_class": "bukeyuntang",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "36500801",
+      "name": "翻转干燥",
+      "font_class": "fanzhuanganzao",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "36091491",
+      "name": "不可漂白",
+      "font_class": "bukepiaobai",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "36062386",
+      "name": "禁止",
+      "font_class": "jinzhi",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "36062387",
+      "name": "停放",
+      "font_class": "tingfang",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "36062388",
+      "name": "30度",
+      "font_class": "a-30du",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "36062389",
+      "name": "手洗",
+      "font_class": "shouxi",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "12010209",
+      "name": "退款申请",
+      "font_class": "tuikuanshenqing",
+      "unicode": "e7cf",
+      "unicode_decimal": 59343
+    },
+    {
+      "icon_id": "7685342",
+      "name": "warning",
+      "font_class": "warning",
+      "unicode": "e751",
+      "unicode_decimal": 59217
+    },
+    {
+      "icon_id": "4114031",
+      "name": "copy",
+      "font_class": "copy",
+      "unicode": "e685",
+      "unicode_decimal": 59013
+    },
+    {
+      "icon_id": "32844158",
+      "name": "middle-reputation",
+      "font_class": "middle-reputation",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "32801938",
+      "name": "good-reputation",
+      "font_class": "good-reputation",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "32801939",
+      "name": "bad-reputation",
+      "font_class": "bad-reputation",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "31137",
+      "name": "邮件",
+      "font_class": "solid-core-mail",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "31321651",
+      "name": "截留订单",
+      "font_class": "jieliudingdan",
+      "unicode": "e62ee",
+      "unicode_decimal": 942830
+    },
+    {
+      "icon_id": "11239051",
+      "name": "退货",
+      "font_class": "tuihuo",
+      "unicode": "e6488",
+      "unicode_decimal": 943240
+    }
+  ]
+}
